@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>城道（shirodo）— 日本の名城めぐりアプリ</title>
+<meta name="description" content="城は、知ってから行くほど面白い。SHIRODO（城道）は、日本100名城をめぐる城活アプリ。答えではなく“問い”を渡し、武将の視点で城と城がつながる物語を体感できます。">
+
+<meta property="og:title" content="城道（shirodo）— 日本の名城めぐりアプリ">
+<meta property="og:description" content="城は、知ってから行くほど面白い。答えではなく“問い”を渡す城活アプリ。">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/4/4c/Matsumoto_Castle_1-1.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏯</text></svg>">
+
+<style>
+  :root {
+    --gold: #d4a843;
+    --bg: #0b0a08;
+    --bg-alt: #14120e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: #f2ede2;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    line-height: 1.8;
+  }
+  .serif {
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  }
+  a { color: var(--gold); }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 20px;
+    background: linear-gradient(rgba(10,9,7,0.55), rgba(10,9,7,0.85)),
+                url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Matsumoto_Castle_1-1.jpg') center/cover no-repeat;
+  }
+  .hero .brand {
+    font-size: 2.6rem;
+    letter-spacing: 0.08em;
+    margin: 0 0 12px;
+  }
+  .hero .brand small {
+    display: block;
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-top: 8px;
+  }
+  .hero .tagline {
+    font-size: 1.3rem;
+    max-width: 26em;
+    margin: 20px 0 36px;
+  }
+  .photo-credit {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: #14120e;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-size: 1.05rem;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    box-shadow: 0 4px 16px rgba(212,168,67,0.25);
+  }
+  .cta-button:active { transform: scale(0.97); }
+
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .lead {
+    text-align: center;
+  }
+  .lead h2 {
+    font-size: 1.9rem;
+    margin-bottom: 24px;
+  }
+  .lead p {
+    font-size: 1.05rem;
+    color: #cfc8b8;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    background: var(--bg-alt);
+    border-radius: 24px;
+  }
+  @media (min-width: 640px) {
+    .features { grid-template-columns: 1fr 1fr; }
+  }
+  .feature h3 {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin: 0 0 8px;
+    border-left: 3px solid var(--gold);
+    padding-left: 12px;
+  }
+  .feature p {
+    margin: 0;
+    color: #cfc8b8;
+    font-size: 0.95rem;
+  }
+
+  .cta-repeat {
+    text-align: center;
+  }
+  .cta-repeat p {
+    color: #cfc8b8;
+    margin-bottom: 28px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px 60px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.8rem;
+  }
+  footer a { color: rgba(255,255,255,0.55); }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <h1 class="brand serif">
+    城道
+    <small>SHIRODO</small>
+  </h1>
+  <p class="tagline serif">城は、知ってから行くほど面白い。</p>
+  <a class="cta-button" href="https://apps.apple.com/app/id6781983836">App Storeで見る ›</a>
+  <span class="photo-credit">松本城（長野県）© Wikipedia Commons</span>
+</section>
+
+<section class="lead">
+  <h2 class="serif">答えではなく、<br>“問い”を渡す。</h2>
+  <p>
+    「信長はなぜ、この山に城を築いたのか」——<br>
+    答えは教えません。あなたが現地で確かめるための問いを渡します。<br>
+    仮説を持って訪れた城は、何も知らずに見る城とは、まったく違う深さで立ち上がります。
+  </p>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <h3>今日の城</h3>
+    <p>毎日ひとつ、城にまつわる「問い」が届きます。歴史にくわしくなくても、ふと考えたくなる切り口から城の世界へ。</p>
+  </div>
+  <div class="feature">
+    <h3>登城を記録し、石高を集める</h3>
+    <p>行った城を「登城」として記録。集めた石高に応じて称号が上がっていきます。「一城の主」から、いつか「日本全土」へ。</p>
+  </div>
+  <div class="feature">
+    <h3>人物の旅・物語録</h3>
+    <p>織田信長、徳川家康、真田信繁——武将たちの視点で、城と城が一本の線でつながる「物語」を体感できます。</p>
+  </div>
+  <div class="feature">
+    <h3>全100名城の見どころの一点</h3>
+    <p>それぞれの城に「行く理由になる一点」と「現地での見方」を収録。着いて写真を撮るだけで終わらせない体験へ。</p>
+  </div>
+  <div class="feature">
+    <h3>訪問後のメモ</h3>
+    <p>現地で感じたこと、問いへの“自分なりの答え”を書き残せます。仮説→現地→検証のサイクルが積み上がっていきます。</p>
+  </div>
+  <div class="feature">
+    <h3>地図で旅を俯瞰</h3>
+    <p>登った城（金）、行きたい城（赤）を地図で一覧。次はどこへ行こうか——旅の計画がふくらみます。</p>
+  </div>
+</section>
+
+<section class="cta-repeat">
+  <p class="serif">まずは地図の上だけでも、<br>日本100名城をめぐってみませんか。</p>
+  <a class="cta-button" href="https://apps.apple.com/app/id6781983836">App Storeで見る ›</a>
+</section>
+
+<footer>
+  <p>すべての記録は、あなたの端末内だけに保存されます。アカウント登録・広告・トラッキングはありません。</p>
+  <p>
+    <a href="https://katsuhikosakata29-max.github.io/shirodo-privacy/">プライバシーポリシー</a>
+    &nbsp;·&nbsp;
+    © 2026 Katsuhiko Sakata
+  </p>
+</footer>
+
+</body>
+</html>
