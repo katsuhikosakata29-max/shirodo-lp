@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>城道（SHIRODO）— 文脈で城をめぐる、人文知の旅</title>
-<meta name="description" content="城は、文脈を知ってから見ると面白い。時代の熱量、人々の思い、その「文脈」を毎日ひとつの問いにして届ける城活アプリ。SHIRODO（城道）で、日本100名城を旅する。">
+<meta name="description" content="城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。SHIRODO（城道）で、日本100名城をめぐる。">
 <meta property="og:title" content="城道（SHIRODO）— 文脈で城をめぐる">
-<meta property="og:description" content="城は、文脈を知ってから見ると面白い。時代と人をたどる「問い」を届ける城活アプリ。">
+<meta property="og:description" content="城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。">
 <meta property="og:image" content="https://shirodo.com/assets/matsumoto-castle.jpg">
 <meta property="og:url" content="https://shirodo.com/">
 <meta property="og:type" content="website">
@@ -372,6 +372,13 @@
     display: flex;
     flex-direction: column;
   }
+  .phone-shot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
   .phone-notch {
     position: absolute;
     top: 8px; left: 50%; transform: translateX(-50%);
@@ -379,11 +386,6 @@
     background: #000;
     border-radius: 999px;
     z-index: 10;
-  }
-  .phone-status {
-    padding: 14px 20px 6px;
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: 0.65rem; color: var(--washi); font-weight: 600;
   }
   .phone-caption {
     text-align: center;
@@ -402,93 +404,6 @@
     margin-bottom: 4px;
     font-weight: 500;
   }
-
-  /* --- Phone Screen 1: 今日の城 --- */
-  .screen-today { padding: 8px 16px; color: var(--washi); flex: 1; display: flex; flex-direction: column; }
-  .screen-today .st-date { font-size: 0.6rem; color: var(--gold); letter-spacing: 0.2em; margin-top: 10px; }
-  .screen-today .st-castle { font-family: var(--f-serif); font-size: 1.15rem; margin-top: 6px; letter-spacing: 0.06em; }
-  .screen-today .st-hero {
-    height: 90px;
-    margin: 14px -16px 12px;
-    background:
-      linear-gradient(rgba(10,9,8,0.3), rgba(10,9,8,0.7)),
-      url('assets/matsumoto-castle.jpg') center/cover;
-    position: relative;
-  }
-  .screen-today .st-q-label {
-    font-size: 0.55rem; color: var(--gold); letter-spacing: 0.22em; margin-top: 4px;
-  }
-  .screen-today .st-q {
-    font-family: var(--f-serif);
-    font-size: 0.72rem;
-    line-height: 1.55;
-    margin-top: 6px;
-    color: var(--washi);
-  }
-  .screen-today .st-btn {
-    margin-top: auto; margin-bottom: 20px;
-    padding: 9px;
-    background: var(--gold);
-    color: var(--sumi);
-    text-align: center;
-    border-radius: 8px;
-    font-size: 0.65rem;
-    font-weight: 700;
-  }
-
-  /* --- Phone Screen 2: 地図 --- */
-  .screen-map { flex: 1; position: relative; background: #1a1710; overflow: hidden; }
-  .screen-map::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image:
-      radial-gradient(circle at 30% 45%, transparent 40px, rgba(201,169,97,0.06) 41px, transparent 42px),
-      radial-gradient(circle at 60% 55%, transparent 60px, rgba(201,169,97,0.06) 61px, transparent 62px),
-      linear-gradient(45deg, rgba(201,169,97,0.03) 1px, transparent 1px),
-      linear-gradient(-45deg, rgba(201,169,97,0.03) 1px, transparent 1px);
-    background-size: auto, auto, 16px 16px, 16px 16px;
-  }
-  .screen-map .m-header {
-    padding: 40px 16px 12px; font-family: var(--f-serif); font-size: 0.85rem; color: var(--washi);
-    position: relative; z-index: 2;
-  }
-  .screen-map .m-stats {
-    padding: 0 16px; font-size: 0.6rem; color: var(--washi-dim); letter-spacing: 0.1em;
-    position: relative; z-index: 2;
-  }
-  .screen-map .m-stats .gold-num { color: var(--gold); font-weight: 700; font-size: 0.72rem; }
-  .pin { position: absolute; z-index: 3; }
-  .pin::before {
-    content: ""; display: block;
-    width: 10px; height: 10px; border-radius: 50%;
-  }
-  .pin.gold::before { background: var(--gold); box-shadow: 0 0 12px var(--gold-bright); }
-  .pin.red::before { background: var(--vermilion); box-shadow: 0 0 10px rgba(163,58,42,0.7); }
-  .pin.grey::before { background: rgba(255,255,255,0.15); }
-
-  /* --- Phone Screen 3: 称号 --- */
-  .screen-rank { flex: 1; padding: 44px 18px 20px; color: var(--washi); overflow: hidden; }
-  .screen-rank h4 {
-    font-family: var(--f-serif); font-size: 0.7rem; color: var(--gold);
-    letter-spacing: 0.24em; margin-bottom: 12px;
-  }
-  .screen-rank .current-rank {
-    font-family: var(--f-serif); font-size: 1.35rem; letter-spacing: 0.08em;
-    margin-bottom: 4px;
-  }
-  .screen-rank .kokudaka { font-size: 0.62rem; color: var(--washi-dim); }
-  .screen-rank .kokudaka b { color: var(--gold-bright); font-size: 0.75rem; }
-  .rank-list { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; }
-  .rank-item {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 10px; font-size: 0.6rem;
-    border: 1px solid rgba(201,169,97,0.15); border-radius: 4px;
-  }
-  .rank-item.done { background: rgba(201,169,97,0.08); border-color: rgba(201,169,97,0.4); }
-  .rank-item.current { background: rgba(201,169,97,0.16); border-color: var(--gold); }
-  .rank-item .r-name { font-family: var(--f-serif); }
-  .rank-item .r-koku { color: var(--washi-dim); font-size: 0.55rem; letter-spacing: 0.06em; }
-  .rank-item.done .r-koku, .rank-item.current .r-koku { color: var(--gold); }
 
   /* ======= 使い方 3ステップ ======= */
   .howto { padding: 88px 24px; max-width: 780px; margin: 0 auto; }
@@ -795,11 +710,11 @@
   <h1 class="serif">城道</h1>
   <span class="brand-en">S H I R O D O</span>
   <p class="hero-tagline">
-    城は、文脈を知ってから<br>見ると面白い。
+    城は、文脈を知ってから<br>訪ねると面白い。
   </p>
   <p class="hero-sub">
-    石垣の重み、天守の緊張、城下の営み——<br>
-    その時代の熱量をたどる、人文知のための城活アプリ。
+    毎朝ひとつの"問い"をきっかけに城を訪ね、<br>
+    登城を記録していく。シンプルな城活アプリ。
   </p>
   <div class="hero-ctas">
     <a class="cta-primary" href="https://apps.apple.com/app/id6781983836">
@@ -867,8 +782,11 @@
 <section class="screens reveal">
   <div class="screens-head">
     <span class="section-eyebrow">画面</span>
-    <h2 class="serif">アプリの中を、<br>ちょっとだけ。</h2>
-    <p style="color: var(--washi-dim); font-size: 0.92rem;">左右にスワイプしてご覧ください。</p>
+    <h2 class="serif">アプリの中を、<br>少しだけ。</h2>
+    <p style="color: var(--washi-dim); font-size: 0.92rem;">
+      左右にスワイプしてご覧ください。信長や家康など、実在の人物の足跡をたどることも、<br>
+      テーマ別の"物語"を集めていくこともできます。
+    </p>
   </div>
   <div class="screens-scroll">
     <!-- 画面1：今日の城 -->
@@ -876,14 +794,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <div class="screen-today">
-            <div class="st-date">2026 . 07 . 02   WED</div>
-            <div class="st-castle">松本城</div>
-            <div class="st-hero"></div>
-            <div class="st-q-label">今日の問い</div>
-            <div class="st-q">戦のない時代に、なぜこれほど黒く重く威圧的な天守が生まれたのか</div>
-            <div class="st-btn">物語を読む</div>
-          </div>
+          <img class="phone-shot" src="assets/screen-today.jpg" alt="今日の城と問い" width="640" height="1301">
         </div>
       </div>
       <div class="phone-caption">
@@ -892,27 +803,54 @@
       </div>
     </div>
 
-    <!-- 画面2：地図 -->
+    <!-- 画面2：人物の旅（信長） -->
     <div class="phone">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <div class="screen-map">
-            <div class="m-header">日本100名城</div>
-            <div class="m-stats"><span class="gold-num">12</span> / 100 登城</div>
-            <span class="pin gold" style="top: 35%; left: 62%"></span>
-            <span class="pin gold" style="top: 42%; left: 55%"></span>
-            <span class="pin gold" style="top: 48%; left: 68%"></span>
-            <span class="pin red" style="top: 30%; left: 72%"></span>
-            <span class="pin red" style="top: 55%; left: 45%"></span>
-            <span class="pin red" style="top: 62%; left: 58%"></span>
-            <span class="pin grey" style="top: 25%; left: 78%"></span>
-            <span class="pin grey" style="top: 38%; left: 48%"></span>
-            <span class="pin grey" style="top: 50%; left: 40%"></span>
-            <span class="pin grey" style="top: 65%; left: 35%"></span>
-            <span class="pin grey" style="top: 70%; left: 68%"></span>
-            <span class="pin grey" style="top: 42%; left: 82%"></span>
-          </div>
+          <img class="phone-shot" src="assets/screen-nobunaga.jpg" alt="人物の旅：織田信長" width="640" height="1291" loading="lazy">
+        </div>
+      </div>
+      <div class="phone-caption">
+        <strong>JOURNEY</strong>
+        人物の旅をたどる
+      </div>
+    </div>
+
+    <!-- 画面3：物語録 -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img class="phone-shot" src="assets/screen-storyline.jpg" alt="物語録：国宝天守五城" width="640" height="1291" loading="lazy">
+        </div>
+      </div>
+      <div class="phone-caption">
+        <strong>STORY</strong>
+        テーマ別の物語を集める
+      </div>
+    </div>
+
+    <!-- 画面4：探す -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img class="phone-shot" src="assets/screen-search.jpg" alt="城を探す" width="640" height="1291" loading="lazy">
+        </div>
+      </div>
+      <div class="phone-caption">
+        <strong>DISCOVER</strong>
+        100名城を探す
+      </div>
+    </div>
+
+    <!-- 画面5：地図 -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <img class="phone-shot" src="assets/screen-map.jpg" alt="地図で旅を俯瞰する" width="640" height="1304" loading="lazy">
         </div>
       </div>
       <div class="phone-caption">
@@ -921,28 +859,17 @@
       </div>
     </div>
 
-    <!-- 画面3：称号 -->
+    <!-- 画面6：城の詳細 -->
     <div class="phone">
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <div class="screen-rank">
-            <h4>あなたの称号</h4>
-            <div class="current-rank">伊達家</div>
-            <div class="kokudaka">石高 <b>620,000</b> 石</div>
-            <div class="rank-list">
-              <div class="rank-item done"><span class="r-name">一城の主</span><span class="r-koku">100,000石</span></div>
-              <div class="rank-item done"><span class="r-name">井伊家</span><span class="r-koku">300,000石</span></div>
-              <div class="rank-item current"><span class="r-name">伊達家 ▶</span><span class="r-koku">600,000石</span></div>
-              <div class="rank-item"><span class="r-name">加賀百万石</span><span class="r-koku">1,000,000石</span></div>
-              <div class="rank-item"><span class="r-name">豊臣秀吉</span><span class="r-koku">2,000,000石</span></div>
-            </div>
-          </div>
+          <img class="phone-shot" src="assets/screen-detail.jpg" alt="城の詳細" width="640" height="1307" loading="lazy">
         </div>
       </div>
       <div class="phone-caption">
-        <strong>RANK</strong>
-        称号が上がっていく
+        <strong>DETAIL</strong>
+        問いと物語を読む
       </div>
     </div>
   </div>
@@ -964,7 +891,7 @@
       <div class="step-num">弐</div>
       <div class="step-body">
         <h3>今日の"問い"を読む</h3>
-        <p>毎朝ひとつ、城にまつわる問いが届きます。武将の視点で、時代の熱量をたどる短い物語つき。</p>
+        <p>毎朝ひとつ、城にまつわる問いが届きます。時代の熱量をたどる短い物語つき。</p>
       </div>
     </div>
     <div class="step">
@@ -1018,12 +945,12 @@
       </div>
       <div class="ladder-item">
         <span class="ladder-num">七</span>
-        <span class="ladder-name">徳川幕府</span>
+        <span class="ladder-name">織田信長</span>
         <span class="ladder-koku">4,000,000石</span>
       </div>
       <div class="ladder-item">
         <span class="ladder-num">八</span>
-        <span class="ladder-name">織田信長</span>
+        <span class="ladder-name">徳川幕府</span>
         <span class="ladder-koku">8,000,000石</span>
       </div>
       <div class="ladder-item">
@@ -1046,23 +973,22 @@
   <h2 class="serif">なぜ、このアプリを<br>作ろうと思ったのか。</h2>
   <div class="story-body">
     <p>
-      きっかけは、"文脈"という言葉でした。ある歴史番組で、その時その時代の文化、人々の状況、熱量や思いをトレースしていくことこそが、<span class="accent">人文知</span>につながるのだ、と語られていて——ずっと引っかかっていました。
+      きっかけは、あるラジオ・podcastでした。私自身そのリスナーで、歴史を<span class="accent">"文脈"</span>から面白く掘り下げていく番組づくりに、ずっと感銘を受けてきました。聴くたびに、「その人物や土地の文脈を知ると、見え方が変わる」と実感していて——大好きな城めぐりという形で、それを体験にできないかと考えて城道を作り始めました。
     </p>
     <p>
       城は情報がたくさんある場所です。石垣の積み方、櫓の配置、城下の営み。でも、事実の羅列だけを追いかけると、なんだかテストの答え合わせのようになってしまう。
     </p>
     <div class="story-quote">
-      本当に面白いのは、その城に生きた人が<br>何を怖れ、何を守ろうとしたか。<br>その"熱量"を、追体験することでした。
+      本当に面白いのは、その時の城主、住んでいる人の文脈を想像しながら、<br>城をみたり、城からの景色を眺めたり、<br>城の造り、石垣の高さ、城がある場所を感じることでした。
     </div>
     <p>
-      そこで、毎朝ひとつだけ「問い」を届けることにしました。答えは書きません。問いをきっかけに時代を想像し、実際に城へ行き、自分なりの答えを持ち帰る——その往復から、少しずつ人文知が積み上がっていく。
+      そこで、毎朝ひとつだけ「問い」を届けることにしました。問いをきっかけに時代を想像し、実際に城へ行き、自分なりの答えを持ち帰る——その往復から、少しずつ人文知が積み上がっていく。
     </p>
     <p>
       城道は、<span class="accent">城を"訪れる"から、"読む"へ</span>変えていくためのアプリです。同じビジョンに共感してくださる方と、一緒に日本を旅していけたら嬉しいです。
     </p>
     <div class="story-sign">
-      <strong>坂田 勝彦</strong>
-      SHIRODO 開発者
+      城道開発者
     </div>
   </div>
 </section>
@@ -1074,7 +1000,7 @@
   <div class="faq-list">
     <details class="faq-item">
       <summary>料金はかかりますか？</summary>
-      <div class="faq-body">無料でお使いいただけます。アプリ内広告もありません。今後、追加機能を有料オプションとして提供する可能性はありますが、基本機能は無料で使えるように維持していきます。</div>
+      <div class="faq-body">無料でお使いいただけます。アプリ内広告もありません。</div>
     </details>
     <details class="faq-item">
       <summary>アカウント登録は必要ですか？</summary>
