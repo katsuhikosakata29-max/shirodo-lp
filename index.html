@@ -2,210 +2,1160 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>城道（shirodo）— 日本の名城めぐりアプリ</title>
-<meta name="description" content="城は、文脈を知ってから見ると面白い。SHIRODO（城道）は、日本100名城をめぐる城活アプリ。時代の空気や人々の思いをたどる“問い”を渡し、武将の視点で城と城がつながる物語を体感できます。">
-
-<meta property="og:title" content="城道（shirodo）— 日本の名城めぐりアプリ">
-<meta property="og:description" content="城は、文脈を知ってから見ると面白い。時代と人をたどる“問い”を届ける城活アプリ。">
-<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/4/4c/Matsumoto_Castle_1-1.jpg">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>城道（SHIRODO）— 文脈で城をめぐる、人文知の旅</title>
+<meta name="description" content="城は、文脈を知ってから見ると面白い。時代の熱量、人々の思い、その「文脈」を毎日ひとつの問いにして届ける城活アプリ。SHIRODO（城道）で、日本100名城を旅する。">
+<meta property="og:title" content="城道（SHIRODO）— 文脈で城をめぐる">
+<meta property="og:description" content="城は、文脈を知ってから見ると面白い。時代と人をたどる「問い」を届ける城活アプリ。">
+<meta property="og:image" content="https://shirodo.com/assets/matsumoto-castle.jpg">
+<meta property="og:url" content="https://shirodo.com/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏯</text></svg>">
 
-<style>
-  :root {
-    --gold: #d4a843;
-    --bg: #0b0a08;
-    --bg-alt: #14120e;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: #f2ede2;
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-    line-height: 1.8;
-  }
-  .serif {
-    font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
-  }
-  a { color: var(--gold); }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap">
 
+<style>
+  /* =========================================================
+     城道 A案：静謐な巻物
+     - モバイルファースト（375px基準）
+     - タイポグラフィ2種類のみ：Shippori Mincho（見出し）＋ Noto Sans JP（本文）
+     - 黒×金の武家的世界観を維持しつつ、朱の差し色を追加
+     ========================================================= */
+  :root {
+    --gold: #c9a961;
+    --gold-bright: #e5c67d;
+    --vermilion: #a33a2a;
+    --sumi: #0a0908;
+    --sumi-2: #14120e;
+    --sumi-3: #1e1a14;
+    --washi: #f2ede2;
+    --washi-dim: #b5ad9b;
+    --line: rgba(201, 169, 97, 0.22);
+
+    --f-serif: "Shippori Mincho", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --f-sans: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--sumi);
+    color: var(--washi);
+    font-family: var(--f-sans);
+    font-weight: 400;
+    line-height: 1.85;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: var(--f-serif); font-weight: 500; line-height: 1.4; letter-spacing: 0.02em; }
+  a { color: var(--gold-bright); text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  /* ======= ナビゲーション（追従） ======= */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    padding: 14px 20px;
+    background: linear-gradient(to bottom, rgba(10,9,8,0.95), rgba(10,9,8,0.6) 80%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.3s;
+  }
+  .nav-brand {
+    font-family: var(--f-serif);
+    font-size: 1.05rem;
+    letter-spacing: 0.14em;
+    color: var(--washi);
+    font-weight: 600;
+  }
+  .nav-brand small {
+    font-size: 0.6rem;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    margin-left: 6px;
+    font-family: var(--f-sans);
+    font-weight: 500;
+  }
+  .nav-cta {
+    padding: 8px 18px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: var(--gold);
+    color: var(--sumi);
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ======= ヒーロー ======= */
   .hero {
     position: relative;
-    width: 100%;
-    max-width: none;
     min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 32px 20px;
-    background: linear-gradient(rgba(10,9,7,0.55), rgba(10,9,7,0.85)),
-                url('https://upload.wikimedia.org/wikipedia/commons/4/4c/Matsumoto_Castle_1-1.jpg') center/cover no-repeat;
+    padding: 100px 24px 60px;
+    overflow: hidden;
+    isolation: isolate;
   }
-  .hero .brand {
-    font-size: 2.6rem;
-    letter-spacing: 0.08em;
-    margin: 0 0 12px;
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0; z-index: -2;
+    background:
+      linear-gradient(180deg, rgba(10,9,8,0.35) 0%, rgba(10,9,8,0.55) 40%, rgba(10,9,8,0.92) 100%),
+      url('assets/matsumoto-castle.jpg') center 30%/cover no-repeat;
   }
-  .hero .brand small {
-    display: block;
-    font-size: 1rem;
+  /* ノイズテクスチャ */
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0; z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0 0.4 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.5; mix-blend-mode: overlay; pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.72rem;
+    color: var(--gold-bright);
+    letter-spacing: 0.16em;
+    margin-bottom: 28px;
+    background: rgba(10,9,8,0.4);
+  }
+  .hero-badge::before {
+    content: ""; width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 14vw, 4.6rem);
+    letter-spacing: 0.15em;
+    margin: 0 0 8px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  }
+  .hero .brand-en {
+    font-family: var(--f-sans);
+    font-size: 0.78rem;
+    letter-spacing: 0.42em;
     color: var(--gold);
-    letter-spacing: 0.2em;
-    margin-top: 8px;
+    margin-bottom: 32px;
+    display: block;
   }
-  .hero .hero-cta {
-    margin-top: 32px;
+  .hero-tagline {
+    font-family: var(--f-serif);
+    font-size: clamp(1.1rem, 4.6vw, 1.5rem);
+    line-height: 1.7;
+    color: var(--washi);
+    max-width: 20em;
+    margin: 0 auto 12px;
+    text-wrap: pretty;
   }
-  .photo-credit {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    font-size: 0.7rem;
-    color: rgba(255,255,255,0.5);
+  .hero-sub {
+    font-size: 0.88rem;
+    color: var(--washi-dim);
+    max-width: 26em;
+    margin: 0 auto 40px;
+    line-height: 1.9;
   }
-
-  .cta-button {
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+  }
+  .cta-primary {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     background: var(--gold);
-    color: #14120e;
+    color: var(--sumi);
     font-weight: 700;
-    text-decoration: none;
-    padding: 14px 32px;
+    padding: 16px 34px;
     border-radius: 999px;
-    font-size: 1.05rem;
-    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
-    box-shadow: 0 4px 16px rgba(212,168,67,0.25);
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    box-shadow: 0 8px 30px rgba(201,169,97,0.35), 0 0 0 1px rgba(255,220,140,0.4) inset;
+    transition: transform 0.15s, box-shadow 0.15s;
+    min-height: 52px;
   }
-  .cta-button:active { transform: scale(0.97); }
+  .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,169,97,0.5), 0 0 0 1px rgba(255,220,140,0.6) inset; }
+  .cta-primary:active { transform: scale(0.97); }
+  .cta-primary .arrow { transition: transform 0.2s; }
+  .cta-primary:hover .arrow { transform: translateX(4px); }
 
-  section {
-    max-width: 760px;
+  .apple-badge {
+    display: inline-block;
+    height: 44px;
+    transition: opacity 0.15s;
+  }
+  .apple-badge:hover { opacity: 0.85; }
+  .apple-badge svg { height: 100%; width: auto; display: block; }
+
+  .hero-scroll {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    font-size: 0.65rem; letter-spacing: 0.3em; color: var(--washi-dim);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .hero-scroll::after {
+    content: ""; width: 1px; height: 32px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: pulse-line 2s ease-in-out infinite;
+  }
+  @keyframes pulse-line {
+    0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+  .photo-credit {
+    position: absolute; bottom: 8px; right: 12px;
+    font-size: 0.62rem; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* ======= 汎用セクション ======= */
+  .section {
+    padding: 88px 24px;
+    max-width: 780px;
     margin: 0 auto;
-    padding: 80px 24px;
+    position: relative;
   }
-
-  .lead {
-    text-align: center;
-  }
-  .lead h2 {
-    font-size: 1.9rem;
-    margin-bottom: 24px;
-  }
-  .lead p {
-    font-size: 1.05rem;
-    color: #cfc8b8;
-  }
-
-  .features {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-    background: var(--bg-alt);
-    border-radius: 24px;
-  }
-  @media (min-width: 640px) {
-    .features { grid-template-columns: 1fr 1fr; }
-  }
-  .feature h3 {
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
     color: var(--gold);
-    font-size: 1.1rem;
-    margin: 0 0 8px;
-    border-left: 3px solid var(--gold);
-    padding-left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-weight: 500;
   }
-  .feature p {
-    margin: 0;
-    color: #cfc8b8;
-    font-size: 0.95rem;
+  .section-eyebrow::before {
+    content: ""; width: 20px; height: 1px; background: var(--gold);
   }
-
-  .cta-repeat {
-    text-align: center;
-  }
-  .cta-repeat p {
-    color: #cfc8b8;
+  .section h2 {
+    font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+    line-height: 1.55;
     margin-bottom: 28px;
+    text-wrap: balance;
+  }
+  .section .lead-copy {
+    font-family: var(--f-serif);
+    font-size: clamp(1rem, 3.8vw, 1.12rem);
+    color: var(--washi);
+    line-height: 2;
+    text-wrap: pretty;
+  }
+  .section .lead-copy p + p { margin-top: 1.2em; }
+  .accent {
+    color: var(--gold-bright);
+    font-weight: 500;
   }
 
+  /* ======= 「文脈」思想セクション ======= */
+  .philosophy {
+    background: linear-gradient(180deg, var(--sumi) 0%, var(--sumi-2) 100%);
+    position: relative;
+  }
+  .philosophy::before {
+    content: "文";
+    position: absolute;
+    top: 40px; right: -20px;
+    font-family: var(--f-serif);
+    font-size: 24rem;
+    color: rgba(201,169,97,0.04);
+    line-height: 1;
+    pointer-events: none;
+    font-weight: 700;
+  }
+
+  /* ======= 「今日の問い」実例 ======= */
+  .questions {
+    background: var(--sumi-2);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 88px 0;
+  }
+  .questions-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .questions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .q-card {
+    background: rgba(30,26,20,0.5);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .q-card::before {
+    content: "";
+    position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .q-meta {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.72rem; color: var(--gold);
+    letter-spacing: 0.14em;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .q-meta .dot { width: 4px; height: 4px; background: var(--gold-bright); border-radius: 50%; opacity: 0.5; }
+  .q-castle {
+    color: var(--washi-dim);
+    font-family: var(--f-serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+  .q-body {
+    font-family: var(--f-serif);
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--washi);
+    text-wrap: pretty;
+  }
+  .q-hint {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    color: var(--washi-dim);
+    line-height: 1.75;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(201,169,97,0.15);
+  }
+
+  /* ======= アプリのスクリーンショットギャラリー ======= */
+  .screens {
+    padding: 88px 0 100px;
+    background: var(--sumi);
+  }
+  .screens-head { max-width: 780px; margin: 0 auto; padding: 0 24px 40px; }
+  .screens-scroll {
+    display: flex;
+    gap: 20px;
+    padding: 20px 24px 40px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .screens-scroll::-webkit-scrollbar { display: none; }
+  .phone {
+    flex: 0 0 260px;
+    scroll-snap-align: center;
+    position: relative;
+  }
+  .phone-frame {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #2a2620, #14120e);
+    padding: 10px;
+    box-shadow:
+      0 20px 60px rgba(0,0,0,0.6),
+      0 0 0 1px rgba(201,169,97,0.15),
+      inset 0 0 0 1px rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 28px;
+    background: var(--sumi-2);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .phone-notch {
+    position: absolute;
+    top: 8px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 18px;
+    background: #000;
+    border-radius: 999px;
+    z-index: 10;
+  }
+  .phone-status {
+    padding: 14px 20px 6px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.65rem; color: var(--washi); font-weight: 600;
+  }
+  .phone-caption {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 0.85rem;
+    color: var(--washi-dim);
+    font-family: var(--f-serif);
+    letter-spacing: 0.05em;
+  }
+  .phone-caption strong {
+    display: block;
+    color: var(--gold-bright);
+    font-size: 0.75rem;
+    font-family: var(--f-sans);
+    letter-spacing: 0.24em;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  /* --- Phone Screen 1: 今日の城 --- */
+  .screen-today { padding: 8px 16px; color: var(--washi); flex: 1; display: flex; flex-direction: column; }
+  .screen-today .st-date { font-size: 0.6rem; color: var(--gold); letter-spacing: 0.2em; margin-top: 10px; }
+  .screen-today .st-castle { font-family: var(--f-serif); font-size: 1.15rem; margin-top: 6px; letter-spacing: 0.06em; }
+  .screen-today .st-hero {
+    height: 90px;
+    margin: 14px -16px 12px;
+    background:
+      linear-gradient(rgba(10,9,8,0.3), rgba(10,9,8,0.7)),
+      url('assets/matsumoto-castle.jpg') center/cover;
+    position: relative;
+  }
+  .screen-today .st-q-label {
+    font-size: 0.55rem; color: var(--gold); letter-spacing: 0.22em; margin-top: 4px;
+  }
+  .screen-today .st-q {
+    font-family: var(--f-serif);
+    font-size: 0.72rem;
+    line-height: 1.55;
+    margin-top: 6px;
+    color: var(--washi);
+  }
+  .screen-today .st-btn {
+    margin-top: auto; margin-bottom: 20px;
+    padding: 9px;
+    background: var(--gold);
+    color: var(--sumi);
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.65rem;
+    font-weight: 700;
+  }
+
+  /* --- Phone Screen 2: 地図 --- */
+  .screen-map { flex: 1; position: relative; background: #1a1710; overflow: hidden; }
+  .screen-map::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 45%, transparent 40px, rgba(201,169,97,0.06) 41px, transparent 42px),
+      radial-gradient(circle at 60% 55%, transparent 60px, rgba(201,169,97,0.06) 61px, transparent 62px),
+      linear-gradient(45deg, rgba(201,169,97,0.03) 1px, transparent 1px),
+      linear-gradient(-45deg, rgba(201,169,97,0.03) 1px, transparent 1px);
+    background-size: auto, auto, 16px 16px, 16px 16px;
+  }
+  .screen-map .m-header {
+    padding: 40px 16px 12px; font-family: var(--f-serif); font-size: 0.85rem; color: var(--washi);
+    position: relative; z-index: 2;
+  }
+  .screen-map .m-stats {
+    padding: 0 16px; font-size: 0.6rem; color: var(--washi-dim); letter-spacing: 0.1em;
+    position: relative; z-index: 2;
+  }
+  .screen-map .m-stats .gold-num { color: var(--gold); font-weight: 700; font-size: 0.72rem; }
+  .pin { position: absolute; z-index: 3; }
+  .pin::before {
+    content: ""; display: block;
+    width: 10px; height: 10px; border-radius: 50%;
+  }
+  .pin.gold::before { background: var(--gold); box-shadow: 0 0 12px var(--gold-bright); }
+  .pin.red::before { background: var(--vermilion); box-shadow: 0 0 10px rgba(163,58,42,0.7); }
+  .pin.grey::before { background: rgba(255,255,255,0.15); }
+
+  /* --- Phone Screen 3: 称号 --- */
+  .screen-rank { flex: 1; padding: 44px 18px 20px; color: var(--washi); overflow: hidden; }
+  .screen-rank h4 {
+    font-family: var(--f-serif); font-size: 0.7rem; color: var(--gold);
+    letter-spacing: 0.24em; margin-bottom: 12px;
+  }
+  .screen-rank .current-rank {
+    font-family: var(--f-serif); font-size: 1.35rem; letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .screen-rank .kokudaka { font-size: 0.62rem; color: var(--washi-dim); }
+  .screen-rank .kokudaka b { color: var(--gold-bright); font-size: 0.75rem; }
+  .rank-list { margin-top: 18px; display: flex; flex-direction: column; gap: 8px; }
+  .rank-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 10px; font-size: 0.6rem;
+    border: 1px solid rgba(201,169,97,0.15); border-radius: 4px;
+  }
+  .rank-item.done { background: rgba(201,169,97,0.08); border-color: rgba(201,169,97,0.4); }
+  .rank-item.current { background: rgba(201,169,97,0.16); border-color: var(--gold); }
+  .rank-item .r-name { font-family: var(--f-serif); }
+  .rank-item .r-koku { color: var(--washi-dim); font-size: 0.55rem; letter-spacing: 0.06em; }
+  .rank-item.done .r-koku, .rank-item.current .r-koku { color: var(--gold); }
+
+  /* ======= 使い方 3ステップ ======= */
+  .howto { padding: 88px 24px; max-width: 780px; margin: 0 auto; }
+  .steps { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+  .step {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding-bottom: 24px;
+    position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 21px; top: 44px; bottom: -12px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold) 0%, transparent 90%);
+    opacity: 0.35;
+  }
+  .step-num {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    font-family: var(--f-serif);
+    font-size: 1.15rem;
+    color: var(--gold);
+    font-weight: 600;
+    background: var(--sumi-2);
+    position: relative;
+    z-index: 1;
+  }
+  .step-body h3 {
+    font-size: 1.1rem;
+    color: var(--washi);
+    margin-bottom: 6px;
+  }
+  .step-body p {
+    color: var(--washi-dim);
+    font-size: 0.9rem;
+    line-height: 1.85;
+  }
+
+  /* ======= 称号ステップ - 独立ビジュアル ======= */
+  .titles {
+    background: var(--sumi-2);
+    padding: 88px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .titles-inner { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .titles-ladder {
+    margin-top: 40px;
+    display: flex; flex-direction: column;
+    gap: 2px;
+  }
+  .ladder-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 14px 18px;
+    background: rgba(30,26,20,0.4);
+    border-left: 3px solid transparent;
+    transition: background 0.2s;
+  }
+  .ladder-item:nth-child(1) { border-left-color: rgba(201,169,97,0.18); }
+  .ladder-item:nth-child(2) { border-left-color: rgba(201,169,97,0.28); }
+  .ladder-item:nth-child(3) { border-left-color: rgba(201,169,97,0.38); }
+  .ladder-item:nth-child(4) { border-left-color: rgba(201,169,97,0.48); }
+  .ladder-item:nth-child(5) { border-left-color: rgba(201,169,97,0.58); }
+  .ladder-item:nth-child(6) { border-left-color: rgba(201,169,97,0.68); }
+  .ladder-item:nth-child(7) { border-left-color: rgba(201,169,97,0.78); }
+  .ladder-item:nth-child(8) { border-left-color: rgba(201,169,97,0.88); }
+  .ladder-item:nth-child(9) { border-left-color: rgba(201,169,97,0.95); }
+  .ladder-item:nth-child(10) {
+    border-left-color: var(--gold);
+    background: linear-gradient(90deg, rgba(201,169,97,0.12), transparent 60%);
+  }
+  .ladder-num {
+    font-family: var(--f-serif);
+    color: var(--gold);
+    font-size: 0.8rem;
+    min-width: 32px;
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+  }
+  .ladder-name {
+    font-family: var(--f-serif);
+    font-size: 1.05rem;
+    color: var(--washi);
+    letter-spacing: 0.06em;
+  }
+  .ladder-koku {
+    font-size: 0.75rem;
+    color: var(--washi-dim);
+    letter-spacing: 0.08em;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ======= 開発者の想い ======= */
+  .story {
+    padding: 100px 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .story::before {
+    content: "";
+    position: absolute;
+    left: 24px; top: 90px;
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  .story h2 {
+    font-size: clamp(1.5rem, 5.5vw, 1.9rem);
+    margin-bottom: 32px;
+    line-height: 1.6;
+    text-wrap: balance;
+  }
+  .story-body {
+    font-family: var(--f-serif);
+    font-size: 1rem;
+    line-height: 2.1;
+    color: var(--washi);
+  }
+  .story-body p + p { margin-top: 1.4em; }
+  .story-quote {
+    padding: 24px 20px;
+    margin: 32px 0;
+    border-left: 3px solid var(--gold);
+    background: rgba(201,169,97,0.05);
+    font-size: 0.95rem;
+    color: var(--gold-bright);
+    font-style: normal;
+  }
+  .story-sign {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 0.8rem;
+    color: var(--washi-dim);
+    letter-spacing: 0.05em;
+  }
+  .story-sign strong {
+    display: block;
+    color: var(--washi);
+    font-family: var(--f-serif);
+    font-size: 1rem;
+    margin-bottom: 4px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ======= FAQ ======= */
+  .faq {
+    padding: 88px 24px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .faq-list { margin-top: 32px; }
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq-item summary {
+    padding: 22px 40px 22px 4px;
+    font-size: 1rem;
+    color: var(--washi);
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    font-weight: 500;
+    font-family: var(--f-serif);
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: "＋";
+    position: absolute;
+    right: 4px; top: 50%; transform: translateY(-50%);
+    color: var(--gold);
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+  }
+  .faq-item[open] summary::after { content: "－"; }
+  .faq-item summary:hover { color: var(--gold-bright); }
+  .faq-item .faq-body {
+    padding: 0 4px 24px;
+    color: var(--washi-dim);
+    font-size: 0.9rem;
+    line-height: 1.9;
+  }
+
+  /* ======= 最終CTA ======= */
+  .final-cta {
+    padding: 100px 24px;
+    text-align: center;
+    background:
+      linear-gradient(180deg, rgba(10,9,8,0.4) 0%, rgba(10,9,8,0.9) 100%),
+      url('assets/kumamoto-castle.jpg') center/cover fixed;
+    position: relative;
+  }
+  .final-cta::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0 0.4 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.5; mix-blend-mode: overlay; pointer-events: none;
+  }
+  .final-cta-inner { position: relative; max-width: 640px; margin: 0 auto; }
+  .final-cta h2 {
+    font-size: clamp(1.7rem, 6.5vw, 2.4rem);
+    margin-bottom: 16px;
+    text-wrap: balance;
+    line-height: 1.55;
+  }
+  .final-cta p {
+    color: var(--washi-dim);
+    font-family: var(--f-serif);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    max-width: 24em;
+    margin-left: auto; margin-right: auto;
+  }
+  .final-cta .cta-primary { font-size: 1.05rem; padding: 18px 40px; }
+  .cta-note {
+    margin-top: 20px;
+    font-size: 0.75rem;
+    color: var(--washi-dim);
+    letter-spacing: 0.08em;
+  }
+
+  /* ======= フッター ======= */
   footer {
     text-align: center;
     padding: 40px 24px 60px;
     color: rgba(255,255,255,0.4);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+    background: var(--sumi);
+    border-top: 1px solid var(--line);
   }
-  footer a { color: rgba(255,255,255,0.55); }
+  footer p { margin-bottom: 10px; line-height: 1.7; }
+  footer a { color: rgba(255,255,255,0.55); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(201,169,97,0.4); }
+  .footer-brand {
+    font-family: var(--f-serif);
+    font-size: 1rem;
+    color: var(--gold);
+    letter-spacing: 0.16em;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+
+  /* ======= 出現アニメーション ======= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition-delay: 0.05s;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* ======= PC対応 ======= */
+  @media (min-width: 768px) {
+    .nav { padding: 18px 40px; }
+    .nav-brand { font-size: 1.2rem; }
+    .nav-cta { padding: 10px 22px; font-size: 0.85rem; }
+    .hero { padding: 120px 40px 80px; }
+    .section, .howto, .story, .faq { padding-left: 40px; padding-right: 40px; }
+    .questions-inner, .screens-head, .titles-inner { padding-left: 40px; padding-right: 40px; }
+    .hero-ctas { flex-direction: row; }
+    .final-cta { padding: 120px 40px; }
+    .phone { flex: 0 0 280px; }
+    .screens-scroll { padding-left: 40px; padding-right: 40px; }
+    .step { grid-template-columns: 56px 1fr; gap: 28px; }
+    .step-num { width: 56px; height: 56px; font-size: 1.3rem; }
+    .step:not(:last-child)::after { left: 27px; top: 56px; }
+  }
+  @media (min-width: 1024px) {
+    .hero h1 { font-size: 5.2rem; }
+    .screens-scroll { justify-content: center; overflow: visible; padding: 20px 40px 40px; }
+    .phone { flex: 0 0 260px; }
+  }
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <h1 class="brand serif">
-    城道
-    <small>SHIRODO</small>
-  </h1>
-  <a class="cta-button hero-cta" href="https://apps.apple.com/app/id6781983836">App Storeで見る ›</a>
-  <span class="photo-credit">松本城（長野県）© Wikipedia Commons</span>
-</section>
+<!-- ============= NAV ============= -->
+<nav class="nav">
+  <div class="nav-brand">城道<small>SHIRODO</small></div>
+  <a class="nav-cta" href="https://apps.apple.com/app/id6781983836">入手</a>
+</nav>
 
-<section class="lead">
-  <h2 class="serif">城は、文脈を知ってから見ると面白い。</h2>
-  <p>
-    石垣を見て、「なぜここに？」と思ったことはありませんか。<br>
-    そこに生きた人々が、何を恐れ、何を守ろうとしていたのか——<br>
-    時代の空気をたどっていくと、同じ景色に感情が重なってくる。<br>
-    SHIRODOは、その“文脈”を毎日ひとつの問いにして届ける城活アプリです。
+<!-- ============= HERO ============= -->
+<header class="hero">
+  <span class="hero-badge">iOS APP — 日本100名城</span>
+  <h1 class="serif">城道</h1>
+  <span class="brand-en">S H I R O D O</span>
+  <p class="hero-tagline">
+    城は、文脈を知ってから<br>見ると面白い。
   </p>
+  <p class="hero-sub">
+    石垣の重み、天守の緊張、城下の営み——<br>
+    その時代の熱量をたどる、人文知のための城活アプリ。
+  </p>
+  <div class="hero-ctas">
+    <a class="cta-primary" href="https://apps.apple.com/app/id6781983836">
+      App Storeで入手する
+      <span class="arrow">›</span>
+    </a>
+    <a class="apple-badge" href="https://apps.apple.com/app/id6781983836" aria-label="Download on the App Store">
+      <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="40" rx="7" fill="#000" stroke="#a8a8a8" stroke-width="0.5"/>
+        <path d="M25.5 20.2c0-2.7 2.2-4 2.3-4.1-1.3-1.8-3.2-2.1-3.9-2.1-1.7-0.2-3.2 1-4.1 1-0.9 0-2.1-1-3.5-0.9-1.8 0-3.5 1-4.4 2.6-1.9 3.3-0.5 8.1 1.3 10.8 0.9 1.3 2 2.7 3.4 2.7 1.4-0.1 1.9-0.9 3.5-0.9 1.7 0 2.1 0.9 3.5 0.9 1.5 0 2.4-1.3 3.3-2.7 1.1-1.5 1.5-3 1.5-3.1-0.1-0.1-3-1.1-3-4.2zm-2.7-7.6c0.7-0.9 1.2-2.1 1.1-3.4-1 0.1-2.3 0.7-3 1.6-0.7 0.8-1.3 2.1-1.1 3.3 1.2 0.1 2.3-0.6 3-1.5z" fill="#fff"/>
+        <text x="42" y="16" font-family="-apple-system, sans-serif" font-size="7" fill="#fff">Download on the</text>
+        <text x="42" y="30" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#fff">App Store</text>
+      </svg>
+    </a>
+  </div>
+  <span class="hero-scroll">SCROLL</span>
+  <span class="photo-credit">松本城（長野県）© Wikipedia Commons</span>
+</header>
+
+<!-- ============= PHILOSOPHY ============= -->
+<section class="section philosophy reveal">
+  <span class="section-eyebrow">思想</span>
+  <h2 class="serif">「文脈」を知ると、<br>同じ景色に感情が重なる。</h2>
+  <div class="lead-copy">
+    <p>石垣を見て、「なぜここに？」と思ったことはありませんか。</p>
+    <p>
+      そこに生きた人々が、<span class="accent">何を恐れ、何を守ろうとしていたのか</span>——<br>
+      時代の空気、人々の熱量、思いを追体験していくと、目の前の景色にゆっくり感情が重なってくる。
+    </p>
+    <p>
+      SHIRODOは、その"文脈"を毎日ひとつの<span class="accent">「問い」</span>にして届ける、城活のためのアプリです。
+    </p>
+  </div>
 </section>
 
-<section class="features">
-  <div class="feature">
-    <h3>今日の城</h3>
-    <p>毎日ひとつ、城にまつわる「問い」が届きます。歴史にくわしくなくても、ふと考えたくなる切り口から城の世界へ。</p>
-  </div>
-  <div class="feature">
-    <h3>登城を記録し、石高を集める</h3>
-    <p>行った城を「登城」として記録。集めた石高に応じて称号が上がっていきます。「一城の主」から、いつか「日本全土」へ。</p>
-  </div>
-  <div class="feature">
-    <h3>人物の旅・物語録</h3>
-    <p>織田信長、徳川家康、真田信繁——武将たちの視点で、城と城が一本の線でつながる「物語」を体感できます。</p>
-  </div>
-  <div class="feature">
-    <h3>全100名城の見どころの一点</h3>
-    <p>それぞれの城に「行く理由になる一点」と「現地での見方」を収録。着いて写真を撮るだけで終わらせない体験へ。</p>
-  </div>
-  <div class="feature">
-    <h3>訪問後のメモ</h3>
-    <p>現地で感じたこと、問いへの“自分なりの答え”を書き残せます。仮説→現地→検証のサイクルが積み上がっていきます。</p>
-  </div>
-  <div class="feature">
-    <h3>地図で旅を俯瞰</h3>
-    <p>登った城（金）、行きたい城（赤）を地図で一覧。次はどこへ行こうか——旅の計画がふくらみます。</p>
+<!-- ============= 今日の問い（実例） ============= -->
+<section class="questions reveal">
+  <div class="questions-inner">
+    <span class="section-eyebrow">今日の問い</span>
+    <h2 class="serif">たとえば、こんな問いが<br>毎朝ひとつ届きます。</h2>
+    <p style="color: var(--washi-dim); font-size: 0.92rem; max-width: 32em;">
+      歴史にくわしくなくて大丈夫。ふと考えたくなる切り口から、その城の時代へ入っていきます。
+    </p>
+    <div class="questions-list">
+      <article class="q-card">
+        <div class="q-meta"><span>Q.01</span><span class="dot"></span><span class="q-castle">松本城 — 1593年</span></div>
+        <p class="q-body">戦のない時代に、なぜこれほど<br>黒く重く威圧的な天守が生まれたのか。</p>
+        <p class="q-hint">実戦仕様の黒い大天守に、のちに朱塗りの「月見櫓」が増築された。戦う城と、月を愛でる城が一棟に同居しています。</p>
+      </article>
+      <article class="q-card">
+        <div class="q-meta"><span>Q.02</span><span class="dot"></span><span class="q-castle">姫路城 — 1601年</span></div>
+        <p class="q-body">1945年の大空襲で市街地が焦土と化すなか、<br>この城だけが白く輝き続けたのはなぜか。</p>
+        <p class="q-hint">偶然か、設計か、それとも守り続けた人々の意志か。白漆喰の壁が照り返す光の理由を辿ります。</p>
+      </article>
+      <article class="q-card">
+        <div class="q-meta"><span>Q.03</span><span class="dot"></span><span class="q-castle">熊本城 — 1607年</span></div>
+        <p class="q-body">2016年の地震で多くの石垣が崩れながら、<br>なぜ櫓は崩れ落ちずに踏みとどまったのか。</p>
+        <p class="q-hint">隅の石だけで建ち続けた「奇跡の一本石垣」。加藤清正が築いた武者返しの石垣に隠された設計を読み解きます。</p>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="cta-repeat">
-  <p class="serif">まずは地図の上だけでも、<br>日本100名城をめぐってみませんか。</p>
-  <a class="cta-button" href="https://apps.apple.com/app/id6781983836">App Storeで見る ›</a>
+<!-- ============= アプリ画面ギャラリー ============= -->
+<section class="screens reveal">
+  <div class="screens-head">
+    <span class="section-eyebrow">画面</span>
+    <h2 class="serif">アプリの中を、<br>ちょっとだけ。</h2>
+    <p style="color: var(--washi-dim); font-size: 0.92rem;">左右にスワイプしてご覧ください。</p>
+  </div>
+  <div class="screens-scroll">
+    <!-- 画面1：今日の城 -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="screen-today">
+            <div class="st-date">2026 . 07 . 02   WED</div>
+            <div class="st-castle">松本城</div>
+            <div class="st-hero"></div>
+            <div class="st-q-label">今日の問い</div>
+            <div class="st-q">戦のない時代に、なぜこれほど黒く重く威圧的な天守が生まれたのか</div>
+            <div class="st-btn">物語を読む</div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">
+        <strong>TODAY</strong>
+        今日の城と問い
+      </div>
+    </div>
+
+    <!-- 画面2：地図 -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="screen-map">
+            <div class="m-header">日本100名城</div>
+            <div class="m-stats"><span class="gold-num">12</span> / 100 登城</div>
+            <span class="pin gold" style="top: 35%; left: 62%"></span>
+            <span class="pin gold" style="top: 42%; left: 55%"></span>
+            <span class="pin gold" style="top: 48%; left: 68%"></span>
+            <span class="pin red" style="top: 30%; left: 72%"></span>
+            <span class="pin red" style="top: 55%; left: 45%"></span>
+            <span class="pin red" style="top: 62%; left: 58%"></span>
+            <span class="pin grey" style="top: 25%; left: 78%"></span>
+            <span class="pin grey" style="top: 38%; left: 48%"></span>
+            <span class="pin grey" style="top: 50%; left: 40%"></span>
+            <span class="pin grey" style="top: 65%; left: 35%"></span>
+            <span class="pin grey" style="top: 70%; left: 68%"></span>
+            <span class="pin grey" style="top: 42%; left: 82%"></span>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">
+        <strong>MAP</strong>
+        旅を俯瞰する
+      </div>
+    </div>
+
+    <!-- 画面3：称号 -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="screen-rank">
+            <h4>あなたの称号</h4>
+            <div class="current-rank">伊達家</div>
+            <div class="kokudaka">石高 <b>620,000</b> 石</div>
+            <div class="rank-list">
+              <div class="rank-item done"><span class="r-name">一城の主</span><span class="r-koku">100,000石</span></div>
+              <div class="rank-item done"><span class="r-name">井伊家</span><span class="r-koku">300,000石</span></div>
+              <div class="rank-item current"><span class="r-name">伊達家 ▶</span><span class="r-koku">600,000石</span></div>
+              <div class="rank-item"><span class="r-name">加賀百万石</span><span class="r-koku">1,000,000石</span></div>
+              <div class="rank-item"><span class="r-name">豊臣秀吉</span><span class="r-koku">2,000,000石</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-caption">
+        <strong>RANK</strong>
+        称号が上がっていく
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ============= 使い方 3ステップ ============= -->
+<section class="howto reveal">
+  <span class="section-eyebrow">はじめ方</span>
+  <h2 class="serif">3ステップで、<br>今日から城活。</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">壱</div>
+      <div class="step-body">
+        <h3>App Storeで入手する</h3>
+        <p>無料でダウンロード。アカウント登録も、広告も、トラッキングもありません。すぐ始められます。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">弐</div>
+      <div class="step-body">
+        <h3>今日の"問い"を読む</h3>
+        <p>毎朝ひとつ、城にまつわる問いが届きます。武将の視点で、時代の熱量をたどる短い物語つき。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">参</div>
+      <div class="step-body">
+        <h3>登城を記録し、旅を積み上げる</h3>
+        <p>訪れた城を登城として記録。石高が積み上がり、称号が上がっていきます。地図で自分の旅を俯瞰する楽しさも。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 称号ラダー ============= -->
+<section class="titles reveal">
+  <div class="titles-inner">
+    <span class="section-eyebrow">称号</span>
+    <h2 class="serif">「城めぐりはじめ」から、<br>「日本全土」へ。</h2>
+    <p style="color: var(--washi-dim); font-size: 0.92rem;">
+      登った城の石高が積み上がるほど、あなたの称号が上がっていきます。
+    </p>
+    <div class="titles-ladder">
+      <div class="ladder-item">
+        <span class="ladder-num">一</span>
+        <span class="ladder-name">城めぐりはじめ</span>
+        <span class="ladder-koku">10,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">二</span>
+        <span class="ladder-name">一城の主</span>
+        <span class="ladder-koku">100,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">三</span>
+        <span class="ladder-name">井伊家</span>
+        <span class="ladder-koku">300,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">四</span>
+        <span class="ladder-name">伊達家</span>
+        <span class="ladder-koku">600,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">五</span>
+        <span class="ladder-name">加賀百万石</span>
+        <span class="ladder-koku">1,000,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">六</span>
+        <span class="ladder-name">豊臣秀吉</span>
+        <span class="ladder-koku">2,000,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">七</span>
+        <span class="ladder-name">徳川幕府</span>
+        <span class="ladder-koku">4,000,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">八</span>
+        <span class="ladder-name">織田信長</span>
+        <span class="ladder-koku">8,000,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">九</span>
+        <span class="ladder-name">日本の3分の2</span>
+        <span class="ladder-koku">20,000,000石</span>
+      </div>
+      <div class="ladder-item">
+        <span class="ladder-num">十</span>
+        <span class="ladder-name">日本全土</span>
+        <span class="ladder-koku">30,000,000石</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= 開発者の想い ============= -->
+<section class="story reveal">
+  <span class="section-eyebrow">開発者より</span>
+  <h2 class="serif">なぜ、このアプリを<br>作ろうと思ったのか。</h2>
+  <div class="story-body">
+    <p>
+      きっかけは、"文脈"という言葉でした。ある歴史番組で、その時その時代の文化、人々の状況、熱量や思いをトレースしていくことこそが、<span class="accent">人文知</span>につながるのだ、と語られていて——ずっと引っかかっていました。
+    </p>
+    <p>
+      城は情報がたくさんある場所です。石垣の積み方、櫓の配置、城下の営み。でも、事実の羅列だけを追いかけると、なんだかテストの答え合わせのようになってしまう。
+    </p>
+    <div class="story-quote">
+      本当に面白いのは、その城に生きた人が<br>何を怖れ、何を守ろうとしたか。<br>その"熱量"を、追体験することでした。
+    </div>
+    <p>
+      そこで、毎朝ひとつだけ「問い」を届けることにしました。答えは書きません。問いをきっかけに時代を想像し、実際に城へ行き、自分なりの答えを持ち帰る——その往復から、少しずつ人文知が積み上がっていく。
+    </p>
+    <p>
+      城道は、<span class="accent">城を"訪れる"から、"読む"へ</span>変えていくためのアプリです。同じビジョンに共感してくださる方と、一緒に日本を旅していけたら嬉しいです。
+    </p>
+    <div class="story-sign">
+      <strong>坂田 勝彦</strong>
+      SHIRODO 開発者
+    </div>
+  </div>
+</section>
+
+<!-- ============= FAQ ============= -->
+<section class="faq reveal">
+  <span class="section-eyebrow">よくある質問</span>
+  <h2 class="serif">はじめる前に、<br>気になること。</h2>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>料金はかかりますか？</summary>
+      <div class="faq-body">無料でお使いいただけます。アプリ内広告もありません。今後、追加機能を有料オプションとして提供する可能性はありますが、基本機能は無料で使えるように維持していきます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>アカウント登録は必要ですか？</summary>
+      <div class="faq-body">不要です。ダウンロード後すぐに使い始められます。個人情報の入力もありません。</div>
+    </details>
+    <details class="faq-item">
+      <summary>オフラインでも使えますか？</summary>
+      <div class="faq-body">「今日の問い」の取得時に通信が必要ですが、一度読み込んだ内容や記録は、電波の届かない城でもオフラインで確認できます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>データはどこに保存されますか？</summary>
+      <div class="faq-body">すべての登城記録・メモは、あなたのiPhone端末内にのみ保存されます。当方のサーバーへ送信・保管することはありません。トラッキングも一切行いません。</div>
+    </details>
+    <details class="faq-item">
+      <summary>Android版はありますか？</summary>
+      <div class="faq-body">現在はiOSのみでの提供となります。Android版の予定は現時点ではありませんが、ご要望が多ければ検討します。</div>
+    </details>
+    <details class="faq-item">
+      <summary>歴史にくわしくないのですが、大丈夫ですか？</summary>
+      <div class="faq-body">むしろ、そういう方に楽しんでいただけるアプリです。「なぜ？」から入る問いなので、教科書的な知識は必要ありません。ふと考えたくなる切り口から城の世界へ入っていきます。</div>
+    </details>
+    <details class="faq-item">
+      <summary>対応している城は？</summary>
+      <div class="faq-body">日本100名城（公益財団法人日本城郭協会選定）を収録しています。続日本100名城への対応は、順次検討中です。</div>
+    </details>
+  </div>
+</section>
+
+<!-- ============= 最終CTA ============= -->
+<section class="final-cta reveal">
+  <div class="final-cta-inner">
+    <span class="section-eyebrow" style="justify-content: center; display: inline-flex;">はじめよう</span>
+    <h2 class="serif">まずは地図の上だけでも、<br>日本100名城をめぐってみませんか。</h2>
+    <p>今日の問いは、いま届いています。</p>
+    <div class="hero-ctas" style="align-items: center; justify-content: center;">
+      <a class="cta-primary" href="https://apps.apple.com/app/id6781983836">
+        App Storeで入手する
+        <span class="arrow">›</span>
+      </a>
+      <a class="apple-badge" href="https://apps.apple.com/app/id6781983836" aria-label="Download on the App Store">
+        <svg viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+          <rect width="120" height="40" rx="7" fill="#000" stroke="#a8a8a8" stroke-width="0.5"/>
+          <path d="M25.5 20.2c0-2.7 2.2-4 2.3-4.1-1.3-1.8-3.2-2.1-3.9-2.1-1.7-0.2-3.2 1-4.1 1-0.9 0-2.1-1-3.5-0.9-1.8 0-3.5 1-4.4 2.6-1.9 3.3-0.5 8.1 1.3 10.8 0.9 1.3 2 2.7 3.4 2.7 1.4-0.1 1.9-0.9 3.5-0.9 1.7 0 2.1 0.9 3.5 0.9 1.5 0 2.4-1.3 3.3-2.7 1.1-1.5 1.5-3 1.5-3.1-0.1-0.1-3-1.1-3-4.2zm-2.7-7.6c0.7-0.9 1.2-2.1 1.1-3.4-1 0.1-2.3 0.7-3 1.6-0.7 0.8-1.3 2.1-1.1 3.3 1.2 0.1 2.3-0.6 3-1.5z" fill="#fff"/>
+          <text x="42" y="16" font-family="-apple-system, sans-serif" font-size="7" fill="#fff">Download on the</text>
+          <text x="42" y="30" font-family="-apple-system, sans-serif" font-size="14" font-weight="600" fill="#fff">App Store</text>
+        </svg>
+      </a>
+    </div>
+    <p class="cta-note">無料 · 広告なし · iOS 16以上</p>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
 <footer>
-  <p>すべての記録は、あなたの端末内だけに保存されます。アカウント登録・広告・トラッキングはありません。</p>
+  <span class="footer-brand">城道 SHIRODO</span>
+  <p>すべての記録は、あなたの端末内だけに保存されます。<br>アカウント登録・広告・トラッキングはありません。</p>
   <p>
     <a href="https://katsuhikosakata29-max.github.io/shirodo-privacy/">プライバシーポリシー</a>
-    &nbsp;·&nbsp;
-    © 2026 Katsuhiko Sakata
+    &nbsp;·&nbsp; © 2026 Katsuhiko Sakata
   </p>
 </footer>
+
+<script>
+  // スクロール出現アニメーション
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ナビの背景を強調
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) nav.style.background = 'rgba(10,9,8,0.92)';
+    else nav.style.background = '';
+  }, { passive: true });
+</script>
 
 </body>
 </html>
