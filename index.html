@@ -27,12 +27,36 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "城道（SHIRODO）",
+  "alternateName": "SHIRODO",
   "url": "https://shirodo.com/",
-  "operatingSystem": "iOS",
+  "operatingSystem": "iOS 16以降",
   "applicationCategory": "TravelApplication",
+  "inLanguage": "ja-JP",
   "description": "城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。日本100名城をめぐる。",
   "image": "https://shirodo.com/assets/matsumoto-castle.jpg",
+  "screenshot": [
+    "https://shirodo.com/assets/screen-today.jpg",
+    "https://shirodo.com/assets/screen-nobunaga.jpg",
+    "https://shirodo.com/assets/screen-storyline.jpg",
+    "https://shirodo.com/assets/screen-search.jpg",
+    "https://shirodo.com/assets/screen-map.jpg",
+    "https://shirodo.com/assets/screen-detail.jpg"
+  ],
+  "featureList": [
+    "毎朝ひとつの「問い」で城の文脈を学ぶ",
+    "日本100名城の登城記録",
+    "織田信長・徳川家康など人物の足跡をたどる旅",
+    "テーマ別の「物語録」を集める",
+    "地図で自分の旅を俯瞰",
+    "石高に応じた称号システム",
+    "広告なし・トラッキングなし・アカウント登録不要"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Katsuhiko Sakata"
+  },
   "downloadUrl": "https://apps.apple.com/app/id6781983836",
+  "installUrl": "https://apps.apple.com/app/id6781983836",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -40,7 +64,73 @@
   }
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "ja-JP",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "料金はかかりますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "無料でお使いいただけます。アプリ内広告もありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "アカウント登録は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不要です。ダウンロード後すぐに使い始められます。個人情報の入力もありません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "オフラインでも使えますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "「今日の問い」の取得時に通信が必要ですが、一度読み込んだ内容や記録は、電波の届かない城でもオフラインで確認できます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "データはどこに保存されますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "すべての登城記録・メモは、あなたのiPhone端末内にのみ保存されます。当方のサーバーへ送信・保管することはありません。トラッキングも一切行いません。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Android版はありますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "現在はiOSのみでの提供となります。Android版の予定は現時点ではありませんが、ご要望が多ければ検討します。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "歴史にくわしくないのですが、大丈夫ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "むしろ、そういう方に楽しんでいただけるアプリです。「なぜ？」から入る問いなので、教科書的な知識は必要ありません。ふと考えたくなる切り口から城の世界へ入っていきます。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "対応している城は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "日本100名城（公益財団法人日本城郭協会選定）を収録しています。続日本100名城への対応は、順次検討中です。"
+      }
+    }
+  ]
+}
+</script>
 
+<link rel="preload" as="image" href="assets/matsumoto-castle.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap">
@@ -822,7 +912,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img class="phone-shot" src="assets/screen-today.jpg" alt="今日の城と問い" width="640" height="1301">
+          <img class="phone-shot" src="assets/screen-today.jpg" alt="今日の城と問い" width="640" height="1301" decoding="async">
         </div>
       </div>
       <div class="phone-caption">
@@ -836,7 +926,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img class="phone-shot" src="assets/screen-nobunaga.jpg" alt="人物の旅：織田信長" width="640" height="1291" loading="lazy">
+          <img class="phone-shot" src="assets/screen-nobunaga.jpg" alt="人物の旅：織田信長" width="640" height="1291" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="phone-caption">
@@ -850,7 +940,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img class="phone-shot" src="assets/screen-storyline.jpg" alt="物語録：国宝天守五城" width="640" height="1291" loading="lazy">
+          <img class="phone-shot" src="assets/screen-storyline.jpg" alt="物語録：国宝天守五城" width="640" height="1291" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="phone-caption">
@@ -864,7 +954,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img class="phone-shot" src="assets/screen-search.jpg" alt="城を探す" width="640" height="1291" loading="lazy">
+          <img class="phone-shot" src="assets/screen-search.jpg" alt="城を探す" width="640" height="1291" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="phone-caption">
@@ -878,7 +968,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img class="phone-shot" src="assets/screen-map.jpg" alt="地図で旅を俯瞰する" width="640" height="1304" loading="lazy">
+          <img class="phone-shot" src="assets/screen-map.jpg" alt="地図で旅を俯瞰する" width="640" height="1304" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="phone-caption">
@@ -892,7 +982,7 @@
       <div class="phone-frame">
         <div class="phone-screen">
           <div class="phone-notch"></div>
-          <img class="phone-shot" src="assets/screen-detail.jpg" alt="城の詳細" width="640" height="1307" loading="lazy">
+          <img class="phone-shot" src="assets/screen-detail.jpg" alt="城の詳細" width="640" height="1307" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="phone-caption">
