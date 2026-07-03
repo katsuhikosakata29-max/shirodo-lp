@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://shirodo.com/</loc>
-    <lastmod>2026-07-02</lastmod>
+    <lastmod>2026-07-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/matsumoto-castle.jpg</image:loc>
+      <image:title>松本城の天守（長野県）</image:title>
+      <image:caption>戦のない時代に生まれた黒く重い天守。城道アプリの「今日の問い」の題材のひとつ。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/kumamoto-castle.jpg</image:loc>
+      <image:title>熊本城（熊本県）</image:title>
+      <image:caption>加藤清正が築いた武者返しの石垣で知られる名城。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/screen-today.jpg</image:loc>
+      <image:title>城道アプリ「今日の城と問い」画面</image:title>
+      <image:caption>毎朝ひとつ、城にまつわる問いが届く。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/screen-nobunaga.jpg</image:loc>
+      <image:title>城道アプリ「人物の旅：織田信長」画面</image:title>
+      <image:caption>実在の人物の足跡をたどる旅。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/screen-storyline.jpg</image:loc>
+      <image:title>城道アプリ「物語録：国宝天守五城」画面</image:title>
+      <image:caption>テーマ別の物語を集める。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/screen-search.jpg</image:loc>
+      <image:title>城道アプリ「城を探す」画面</image:title>
+      <image:caption>日本100名城を検索・閲覧。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/screen-map.jpg</image:loc>
+      <image:title>城道アプリ「地図で旅を俯瞰する」画面</image:title>
+      <image:caption>登城の旅を地図上で振り返る。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://shirodo.com/assets/screen-detail.jpg</image:loc>
+      <image:title>城道アプリ「城の詳細」画面</image:title>
+      <image:caption>城ごとの問いと物語を読む。</image:caption>
+    </image:image>
   </url>
 </urlset>

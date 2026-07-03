@@ -129,6 +129,20 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "城道（SHIRODO）",
+  "alternateName": "SHIRODO",
+  "url": "https://shirodo.com/",
+  "inLanguage": "ja-JP",
+  "publisher": {
+    "@type": "Person",
+    "name": "Katsuhiko Sakata"
+  }
+}
+</script>
 
 <link rel="preload" as="image" href="assets/matsumoto-castle.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,6 +171,13 @@
     --f-sans: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0);
+    white-space: nowrap; border: 0;
+  }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
     background: var(--sumi);
@@ -825,8 +846,8 @@
 <!-- ============= HERO ============= -->
 <header class="hero">
   <span class="hero-badge">iOS APP — 日本100名城</span>
-  <h1 class="serif">城道</h1>
-  <span class="brand-en">S H I R O D O</span>
+  <h1 class="serif">城道<span class="visually-hidden">（SHIRODO）— 文脈で城をめぐる、日本100名城の城活アプリ</span></h1>
+  <span class="brand-en" aria-hidden="true">S H I R O D O</span>
   <p class="hero-tagline">
     城は、文脈を知ってから<br>訪ねると面白い。
   </p>
