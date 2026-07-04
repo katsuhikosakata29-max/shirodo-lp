@@ -25,18 +25,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Pagesのビルド方式をworkflowに固定する（legacyのままだと
-      # 旧pages-build-deploymentが並走し、リポジトリ全体で上書き公開してしまう）
-      - name: Ensure Pages build type is workflow
-        run: |
-          curl -sS -X PUT \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/${{ github.repository }}/pages" \
-            -d '{"build_type":"workflow"}' \
-            -o /tmp/pages_update.json -w "HTTP %{http_code}\n" || true
-          cat /tmp/pages_update.json || true
-
+      # 前提: リポジトリ設定 Settings → Pages → Source は「GitHub Actions」であること。
+      # 「Deploy from a branch」に戻すと旧デプロイが並走し、リポジトリ全体が公開されてしまう
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
