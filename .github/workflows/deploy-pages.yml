@@ -29,10 +29,19 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # 公開するファイルだけを_siteに集める（許可リスト方式）。
+      # README等のドキュメントや設定ファイルは公開されない。
+      # 新しく公開したいファイルができたら、ここに追加すること。
+      - name: Build publish directory
+        run: |
+          mkdir _site
+          cp index.html robots.txt sitemap.xml googlef6d63fab54b72de2.html _site/
+          cp -r assets _site/assets
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
