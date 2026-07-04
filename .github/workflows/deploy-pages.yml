@@ -1,0 +1,55 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Pagesのデプロイは直列。後続pushが来たら待機（実行中のデプロイは中断しない）
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url || steps.retry.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 初回実行時にPagesのビルド方式をlegacy(branch)からworkflowへ自動切替
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      # 公開するファイルだけを_siteに集める（許可リスト方式）。
+      # README等のドキュメントや設定ファイルは公開されない。
+      # 新しく公開したいファイルができたら、ここに追加すること。
+      - name: Build publish directory
+        run: |
+          mkdir _site
+          cp index.html robots.txt sitemap.xml googlef6d63fab54b72de2.html _site/
+          cp -r assets _site/assets
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+
+      # Pages側の一時的エラー（"Deployment failed, try again later"）対策の自動リトライ
+      - name: Retry deploy after transient failure
+        id: retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
