@@ -47,4 +47,10 @@
       <image:caption>城ごとの問いと物語を読む。</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://shirodo.com/100meijo/</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
