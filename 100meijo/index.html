@@ -562,7 +562,39 @@
    "name": "日本100名城とは何ですか？",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "公益財団法人日本城郭協会が2006年に選定した、日本を代表する100の城です。江戸城・大阪城・姫路城などの有名な城から、根室半島チャシ跡群のような史跡まで、全都道府県から選ばれています。"
+    "text": "日本100名城とは、公益財団法人日本城郭協会が2006年に選定した、日本を代表する100の城です。江戸城・大阪城・姫路城などの有名な城から、根室半島チャシ跡群のような史跡まで、全都道府県から選ばれています。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "100名城スタンプ帳はどこで買えますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "公式スタンプ帳は単体では販売されておらず、公式ガイドブック『日本100名城に行こう 公式スタンプ帳つき』（770円・税込）の巻末に付属しています。全国の書店やAmazon・楽天などの通販で購入できます。続日本100名城と一体になった『日本100名城と続日本100名城に行こう』（1,300円・税込）もあります。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "100名城スタンプは24時間いつでも押せますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "いいえ。100名城スタンプの多くは管理事務所・休憩所・資料館などの屋内に設置されており、押せるのは開館時間内だけです。冬期は設置場所が休業・移動する城もあるため、遠方の城へ行く前に日本城郭協会サイトの「スタンプ設置場所などの変更一覧」で確認するのが確実です。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "100名城を全部まわると何年かかりますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "決まった期限はなく、押印に有効期間もありません。集中してまわる人は数か月〜1年、週末や連休を使う人は3年前後、10年かけてゆっくり達成する人もいます。離島や山城を含むため、自分のペースで計画するのがおすすめです。"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "スタンプを押し間違えたらどうなりますか？",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "押し間違えても登城認定が受けられなくなるわけではありません。日本城郭協会が公式サイトのよくある質問で対処法を案内しているので、慌てて別の用紙に押し直す前に確認してください。なお、別の紙に押したスタンプを切り貼りしたものは原則無効とされています。"
    }
   },
   {
@@ -578,7 +610,7 @@
    "name": "スタンプ帳を忘れても記録できますか？",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "はい。城道はスマートフォンだけで登城記録を残せるので、スタンプ帳を忘れた日や、スタンプ設置場所が閉まっていた日でも、その場で記録できます。"
+    "text": "はい。城道（SHIRODO）はスマートフォンだけで登城記録を残せるので、スタンプ帳を忘れた日や、スタンプ設置場所が閉まっていた日でも、その場で記録できます。"
    }
   },
   {
@@ -594,7 +626,7 @@
    "name": "アプリは無料ですか？",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "無料でお使いいただけます。アプリ内広告もありません。アカウント登録も不要です。"
+    "text": "城道（SHIRODO）は無料でお使いいただけます。アプリ内広告もありません。アカウント登録も不要です。"
    }
   }
  ]
@@ -731,8 +763,13 @@
 
   .about, .faq { margin-bottom: 56px; }
   .about h2, .faq h2 { font-family: var(--f-serif); font-size: 1.4rem; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+  .about h2 + h2, .about h2:not(:first-child) { margin-top: 40px; }
   .about p { font-size: 0.92rem; color: var(--washi-dim); margin-bottom: 14px; }
   .about p strong { color: var(--washi); font-weight: 500; }
+  .about .steps { margin: 0 0 14px 1.4em; font-size: 0.92rem; color: var(--washi-dim); }
+  .about .steps li { margin-bottom: 8px; }
+  .src-note { font-size: 0.75rem !important; }
+  .src-note a { color: var(--washi-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
 
   .faq-item { border-bottom: 1px solid rgba(201,169,97,0.12); }
   .faq-item summary {
@@ -790,7 +827,7 @@
       <li><a href="#kinki"><span class="toc-label">近畿</span><span class="toc-count">49–62</span></a></li>
       <li><a href="#chugoku-shikoku"><span class="toc-label">中国・四国</span><span class="toc-count">63–84</span></a></li>
       <li><a href="#kyushu-okinawa"><span class="toc-label">九州・沖縄</span><span class="toc-count">85–100</span></a></li>
-      <li><a href="#about"><span class="toc-label">日本100名城のめぐり方</span></a></li>
+      <li><a href="#about"><span class="toc-label">スタンプラリーとは・やり方</span></a></li>
       <li><a href="#faq"><span class="toc-label">よくある質問</span></a></li>
     </ol>
   </nav>
@@ -1633,17 +1670,45 @@
   </section>
 
   <section class="about" id="about">
-    <h2>日本100名城のめぐり方</h2>
-    <p><strong>公式スタンプラリー</strong>は、各城に設置されたスタンプを専用スタンプ帳（日本城郭協会発行）に集めていく仕組みです。全城制覇すると協会に登城完了の認定を申請できます。</p>
+    <h2>日本100名城スタンプラリーとは？</h2>
+    <p>日本100名城スタンプラリーとは、公益財団法人日本城郭協会が2007年に始めた公式企画で、100名城それぞれに設置された専用スタンプを公式スタンプ帳に集めるものです。全100城を押印すると協会に登城完了の認定を申請でき、達成者として登録されます。押印に有効期間はないため、何年かけてめぐっても構いません。</p>
+
+    <h2>スタンプラリーのやり方は？</h2>
+    <p>やり方は3ステップです。公式スタンプ帳を入手し、各城のスタンプ設置場所で押印し、全城達成後に登城認定を申請します。まわる順番は決まっていないので、行きやすい城から始められます。</p>
+    <ol class="steps">
+      <li>公式ガイドブック『日本100名城に行こう 公式スタンプ帳つき』（770円・税込）を書店・通販で入手する</li>
+      <li>各城のスタンプ設置場所（管理事務所・休憩所・資料館など）で、スタンプ帳に直接押印する（別紙に押した切り貼りは原則無効）</li>
+      <li>全100城達成後、日本城郭協会へスタンプ帳を郵送して登城認定を申請する</li>
+    </ol>
+    <p class="src-note">出典: <a href="https://jokaku.jp/" target="_blank" rel="noopener">公益財団法人日本城郭協会</a>（日本100名城の選定は2006年、スタンプラリー開始は2007年）</p>
+
+    <h2>スタンプの代わりにスマホで記録するには？</h2>
     <p><strong>城道（SHIRODO）</strong>は、その旅にもうひとつの楽しみ方を足すアプリです。スタンプの代わりに登城記録・メモ・写真をスマホに残せるので、スタンプ帳を忘れた日も記録が途切れません。そして何より、各城の「なぜ？」から入る問いと物語で、<strong>文脈を知ってから城を訪ねる</strong>体験ができます。</p>
     <p>記録はあなたの端末とiCloudにのみ保存され、開発者のサーバーには送信されません。</p>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
 
   <section class="faq" id="faq">
     <h2>よくある質問</h2>
     <details class="faq-item">
       <summary>日本100名城とは何ですか？</summary>
-      <div class="faq-body">公益財団法人日本城郭協会が2006年に選定した、日本を代表する100の城です。江戸城・大阪城・姫路城などの有名な城から、根室半島チャシ跡群のような史跡まで、全都道府県から選ばれています。</div>
+      <div class="faq-body">日本100名城とは、公益財団法人日本城郭協会が2006年に選定した、日本を代表する100の城です。江戸城・大阪城・姫路城などの有名な城から、根室半島チャシ跡群のような史跡まで、全都道府県から選ばれています。</div>
+    </details>
+    <details class="faq-item">
+      <summary>100名城スタンプ帳はどこで買えますか？</summary>
+      <div class="faq-body">公式スタンプ帳は単体では販売されておらず、公式ガイドブック『日本100名城に行こう 公式スタンプ帳つき』（770円・税込）の巻末に付属しています。全国の書店やAmazon・楽天などの通販で購入できます。続日本100名城と一体になった『日本100名城と続日本100名城に行こう』（1,300円・税込）もあります。</div>
+    </details>
+    <details class="faq-item">
+      <summary>100名城スタンプは24時間いつでも押せますか？</summary>
+      <div class="faq-body">いいえ。100名城スタンプの多くは管理事務所・休憩所・資料館などの屋内に設置されており、押せるのは開館時間内だけです。冬期は設置場所が休業・移動する城もあるため、遠方の城へ行く前に日本城郭協会サイトの「スタンプ設置場所などの変更一覧」で確認するのが確実です。</div>
+    </details>
+    <details class="faq-item">
+      <summary>100名城を全部まわると何年かかりますか？</summary>
+      <div class="faq-body">決まった期限はなく、押印に有効期間もありません。集中してまわる人は数か月〜1年、週末や連休を使う人は3年前後、10年かけてゆっくり達成する人もいます。離島や山城を含むため、自分のペースで計画するのがおすすめです。</div>
+    </details>
+    <details class="faq-item">
+      <summary>スタンプを押し間違えたらどうなりますか？</summary>
+      <div class="faq-body">押し間違えても登城認定が受けられなくなるわけではありません。日本城郭協会が公式サイトのよくある質問で対処法を案内しているので、慌てて別の用紙に押し直す前に確認してください。なお、別の紙に押したスタンプを切り貼りしたものは原則無効とされています。</div>
     </details>
     <details class="faq-item">
       <summary>100名城のスタンプラリーとどう違いますか？</summary>
@@ -1651,7 +1716,7 @@
     </details>
     <details class="faq-item">
       <summary>スタンプ帳を忘れても記録できますか？</summary>
-      <div class="faq-body">はい。城道はスマートフォンだけで登城記録を残せるので、スタンプ帳を忘れた日や、スタンプ設置場所が閉まっていた日でも、その場で記録できます。</div>
+      <div class="faq-body">はい。城道（SHIRODO）はスマートフォンだけで登城記録を残せるので、スタンプ帳を忘れた日や、スタンプ設置場所が閉まっていた日でも、その場で記録できます。</div>
     </details>
     <details class="faq-item">
       <summary>続日本100名城には対応していますか？</summary>
@@ -1659,8 +1724,9 @@
     </details>
     <details class="faq-item">
       <summary>アプリは無料ですか？</summary>
-      <div class="faq-body">無料でお使いいただけます。アプリ内広告もありません。アカウント登録も不要です。</div>
+      <div class="faq-body">城道（SHIRODO）は無料でお使いいただけます。アプリ内広告もありません。アカウント登録も不要です。</div>
     </details>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
 
 </main>
