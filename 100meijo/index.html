@@ -671,6 +671,37 @@
   }
   .cta-note { font-size: 0.72rem; color: var(--washi-dim); margin-top: 10px; }
 
+  .toc {
+    background: var(--sumi-2); border: 1px solid var(--line); border-radius: 12px;
+    padding: 24px 26px; margin-bottom: 52px;
+    scroll-margin-top: 76px;
+  }
+  .toc-title {
+    font-family: var(--f-serif); font-size: 0.95rem; color: var(--gold);
+    letter-spacing: 0.2em; margin-bottom: 16px;
+  }
+  .toc ol { list-style: none; }
+  .toc li { border-bottom: 1px solid rgba(201,169,97,0.12); }
+  .toc li:last-child { border-bottom: none; }
+  .toc a {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 11px 2px; font-size: 0.92rem; color: var(--washi);
+  }
+  .toc a:hover .toc-label { color: var(--gold-bright); }
+  .toc-count { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em; margin-left: 12px; white-space: nowrap; }
+  @media (min-width: 720px) {
+    .toc ol { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; }
+    .toc li:nth-last-child(2) { border-bottom: none; }
+  }
+
+  .region, .about, .faq { scroll-margin-top: 76px; }
+  .back-to-toc {
+    display: inline-block; margin-top: 18px; font-size: 0.78rem;
+    color: var(--washi-dim); text-decoration: underline;
+    text-underline-offset: 3px; text-decoration-color: var(--line);
+  }
+  .back-to-toc:hover { color: var(--gold-bright); }
+
   .region { margin-bottom: 52px; }
   .region h3 {
     font-size: 1.3rem; padding-bottom: 10px; margin-bottom: 18px;
@@ -750,7 +781,21 @@
     <p class="cta-note">無料 · 広告なし · iOS 16以上</p>
   </div>
 
-  <section class="region">
+  <nav class="toc" id="toc" aria-label="目次">
+    <p class="toc-title">目 次</p>
+    <ol>
+      <li><a href="#hokkaido-tohoku"><span class="toc-label">北海道・東北</span><span class="toc-count">1–13</span></a></li>
+      <li><a href="#kanto-koshinetsu"><span class="toc-label">関東・甲信越</span><span class="toc-count">14–32</span></a></li>
+      <li><a href="#hokuriku-tokai"><span class="toc-label">北陸・東海</span><span class="toc-count">33–48</span></a></li>
+      <li><a href="#kinki"><span class="toc-label">近畿</span><span class="toc-count">49–62</span></a></li>
+      <li><a href="#chugoku-shikoku"><span class="toc-label">中国・四国</span><span class="toc-count">63–84</span></a></li>
+      <li><a href="#kyushu-okinawa"><span class="toc-label">九州・沖縄</span><span class="toc-count">85–100</span></a></li>
+      <li><a href="#about"><span class="toc-label">日本100名城のめぐり方</span></a></li>
+      <li><a href="#faq"><span class="toc-label">よくある質問</span></a></li>
+    </ol>
+  </nav>
+
+  <section class="region" id="hokkaido-tohoku">
     <h3 class="serif">北海道・東北<span class="rcount">13城</span></h3>
     <ol class="castle-list">
       <li class="castle" id="c1">
@@ -858,8 +903,9 @@
         </div>
       </li>
     </ol>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
-  <section class="region">
+  <section class="region" id="kanto-koshinetsu">
     <h3 class="serif">関東・甲信越<span class="rcount">19城</span></h3>
     <ol class="castle-list">
       <li class="castle" id="c14">
@@ -1015,8 +1061,9 @@
         </div>
       </li>
     </ol>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
-  <section class="region">
+  <section class="region" id="hokuriku-tokai">
     <h3 class="serif">北陸・東海<span class="rcount">16城</span></h3>
     <ol class="castle-list">
       <li class="castle" id="c33">
@@ -1148,8 +1195,9 @@
         </div>
       </li>
     </ol>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
-  <section class="region">
+  <section class="region" id="kinki">
     <h3 class="serif">近畿<span class="rcount">14城</span></h3>
     <ol class="castle-list">
       <li class="castle" id="c49">
@@ -1265,8 +1313,9 @@
         </div>
       </li>
     </ol>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
-  <section class="region">
+  <section class="region" id="chugoku-shikoku">
     <h3 class="serif">中国・四国<span class="rcount">22城</span></h3>
     <ol class="castle-list">
       <li class="castle" id="c63">
@@ -1446,8 +1495,9 @@
         </div>
       </li>
     </ol>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
-  <section class="region">
+  <section class="region" id="kyushu-okinawa">
     <h3 class="serif">九州・沖縄<span class="rcount">16城</span></h3>
     <ol class="castle-list">
       <li class="castle" id="c85">
@@ -1579,16 +1629,17 @@
         </div>
       </li>
     </ol>
+    <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
 
-  <section class="about">
+  <section class="about" id="about">
     <h2>日本100名城のめぐり方</h2>
     <p><strong>公式スタンプラリー</strong>は、各城に設置されたスタンプを専用スタンプ帳（日本城郭協会発行）に集めていく仕組みです。全城制覇すると協会に登城完了の認定を申請できます。</p>
     <p><strong>城道（SHIRODO）</strong>は、その旅にもうひとつの楽しみ方を足すアプリです。スタンプの代わりに登城記録・メモ・写真をスマホに残せるので、スタンプ帳を忘れた日も記録が途切れません。そして何より、各城の「なぜ？」から入る問いと物語で、<strong>文脈を知ってから城を訪ねる</strong>体験ができます。</p>
     <p>記録はあなたの端末とiCloudにのみ保存され、開発者のサーバーには送信されません。</p>
   </section>
 
-  <section class="faq">
+  <section class="faq" id="faq">
     <h2>よくある質問</h2>
     <details class="faq-item">
       <summary>日本100名城とは何ですか？</summary>
