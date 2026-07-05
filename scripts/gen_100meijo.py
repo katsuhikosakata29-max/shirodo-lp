@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 """castles.json から /100meijo/index.html を生成する"""
 import json, html
+from datetime import date
+
+TODAY = date.today().isoformat()
+TODAY_JA = f"{date.today().year}年{date.today().month}月{date.today().day}日"
 
 SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 OUT = "/Users/sakatakatsuhiko/Developer/shirodo-lp/100meijo/index.html"
@@ -110,6 +114,17 @@ faqpage = {
     ],
 }
 
+webpage = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "日本100名城 一覧（全100城・地方別）",
+    "url": "https://shirodo.com/100meijo/",
+    "inLanguage": "ja-JP",
+    "dateModified": TODAY,
+    "author": {"@id": "https://shirodo.com/#author"},
+    "publisher": {"@id": "https://shirodo.com/#author"},
+}
+
 breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -148,6 +163,9 @@ page = f'''<!DOCTYPE html>
 <meta name="twitter:description" content="日本100名城の全一覧を地方別・公式番号順に掲載。各城に「なぜ？」から入る問い付き。">
 <meta name="twitter:image" content="https://shirodo.com/assets/matsumoto-castle.jpg">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏯</text></svg>">
+<script type="application/ld+json">
+{jld(webpage)}
+</script>
 <script type="application/ld+json">
 {jld(breadcrumb)}
 </script>
@@ -212,6 +230,7 @@ page = f'''<!DOCTYPE html>
 
   h1 {{ font-family: var(--f-serif); font-size: 1.9rem; line-height: 1.5; margin-bottom: 6px; }}
   .h1-sub {{ font-size: 0.85rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 24px; }}
+  .updated {{ color: var(--washi-dim); letter-spacing: 0.02em; }}
   .lead {{ color: var(--washi-dim); font-size: 0.95rem; margin-bottom: 16px; }}
   .lead strong {{ color: var(--washi); font-weight: 500; }}
 
@@ -331,7 +350,7 @@ page = f'''<!DOCTYPE html>
   <p class="breadcrumb"><a href="/">城道（SHIRODO）</a> › 日本100名城 一覧</p>
 
   <h1>日本100名城 一覧<span class="visually-hidden">（全100城・地方別・公式番号順）</span></h1>
-  <p class="h1-sub">全100城 · 地方別 · 公式番号順</p>
+  <p class="h1-sub">全100城 · 地方別 · 公式番号順　<span class="updated">最終更新: {TODAY_JA}</span></p>
 
   <p class="lead"><strong>日本100名城</strong>は、公益財団法人日本城郭協会が選定した、日本を代表する100の城です。このページでは全100城を地方別に、公式スタンプラリーの番号順で掲載しています。</p>
   <p class="lead">各城には、登城記録アプリ<strong>城道（SHIRODO）</strong>に収録されている「問い」を添えました。答えを知ってから訪ねると、同じ石垣がちがって見えます。</p>
