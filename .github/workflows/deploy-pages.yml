@@ -39,6 +39,7 @@ jobs:
           cp index.html robots.txt sitemap.xml googlef6d63fab54b72de2.html _site/
           cp -r assets _site/assets
           cp -r 100meijo _site/100meijo
+          cp -r guide _site/guide
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
