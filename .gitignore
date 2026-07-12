@@ -2,3 +2,4 @@
 .posthog_key
 .env
 .env.*
+implementation-notes.md
