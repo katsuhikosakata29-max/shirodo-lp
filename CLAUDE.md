@@ -4,6 +4,8 @@
 
 ## 開発の進め方（未知の共同発見）
 
+以下で参照する `/unknowns` と `/quiz` スキルは、共通プラグイン [katsuhikosakata29-max/claude-skills](https://github.com/katsuhikosakata29-max/claude-skills) が提供する（このリポジトリには置かない）。未インストールの環境では一度だけ `/plugin marketplace add katsuhikosakata29-max/claude-skills` → `/plugin install katsu-workflow@claude-skills` を実行する。
+
 このリポジトリの開発者は個人開発者（本業PM）で、レビュアーがいない。Claude への依頼を「作業指示→結果の受け取り」にせず、「未知の共同発見」として進めること。
 
 ### 実装前
