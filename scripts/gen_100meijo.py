@@ -303,7 +303,6 @@ page = f'''<!DOCTYPE html>
     font-size: 0.82rem; color: var(--gold-bright); margin-top: 8px;
     padding-left: 12px; border-left: 2px solid var(--line); line-height: 1.7;
   }}
-  .hook::before {{ content: "問い　"; color: var(--washi-dim); font-size: 0.7rem; letter-spacing: 0.15em; }}
 
   .about, .faq {{ margin-bottom: 56px; }}
   .about h2, .faq h2 {{ font-family: var(--f-serif); font-size: 1.4rem; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }}
