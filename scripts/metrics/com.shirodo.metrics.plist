@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.shirodo.metrics</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/sakatakatsuhiko/Developer/shirodo-lp/scripts/metrics/.venv/bin/python</string>
+    <string>/Users/sakatakatsuhiko/Developer/shirodo-lp/scripts/metrics/run_daily.py</string>
+    <string>--notify</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/sakatakatsuhiko/Developer/shirodo-lp/scripts/metrics</string>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>8</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+  <!-- スリープ等で8:00に走れなかった場合も、次に起きたときに実行される -->
+  <key>StandardOutPath</key>
+  <string>/tmp/shirodo-metrics.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/shirodo-metrics.err</string>
+</dict>
+</plist>

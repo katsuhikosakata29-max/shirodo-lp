@@ -11,8 +11,8 @@
 <meta property="og:title" content="城道（SHIRODO）— 文脈で城をめぐる">
 <meta property="og:description" content="城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。">
 <meta property="og:image" content="https://shirodo.com/assets/matsumoto-castle.jpg">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="1440">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="松本城の天守">
 <meta property="og:url" content="https://shirodo.com/">
 <meta property="og:type" content="website">
@@ -28,7 +28,7 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "城道（SHIRODO）",
-  "alternateName": "SHIRODO",
+  "alternateName": ["SHIRODO", "シロドウ", "しろどう", "城道アプリ", "shirodo"],
   "url": "https://shirodo.com/",
   "operatingSystem": "iOS 16以降",
   "applicationCategory": "TravelApplication",
@@ -146,7 +146,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "城道（SHIRODO）",
-  "alternateName": "SHIRODO",
+  "alternateName": ["SHIRODO", "シロドウ", "しろどう", "城道アプリ", "shirodo"],
   "url": "https://shirodo.com/",
   "inLanguage": "ja-JP",
   "sameAs": [
@@ -387,6 +387,20 @@
       white-space: nowrap;
     }
   }
+
+  .hero-shindan {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 22px;
+    font-size: 0.82rem;
+    color: var(--washi-dim);
+    border-bottom: 1px solid rgba(201,169,97,0.4);
+    padding-bottom: 2px;
+    letter-spacing: 0.04em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .hero-shindan:hover { color: var(--gold-bright); border-color: var(--gold); }
 
   .hero-scroll {
     position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
@@ -888,6 +902,7 @@
     .phone { flex: 0 0 260px; }
   }
 </style>
+<script defer src="/assets/analytics.js"></script>
 </head>
 <body>
 
@@ -931,6 +946,7 @@
       <span>iPhoneのカメラで読み取ると<br>App Storeが開きます</span>
     </div>
   </div>
+  <a class="hero-shindan" href="/shindan/">1分でわかる、城めぐりタイプ診断 ›</a>
   <span class="hero-scroll">SCROLL</span>
   <span class="photo-credit">松本城（長野県）© Wikipedia Commons</span>
 </header>
@@ -1271,7 +1287,8 @@
   <span class="footer-brand">城道 SHIRODO</span>
   <p>すべての記録は、あなたの端末とあなたのiCloudにのみ保存されます。<br>アカウント登録・広告・トラッキングはありません。</p>
   <p>
-    <a href="/100meijo/">日本100名城 一覧</a>
+    <a href="/shindan/">城めぐりタイプ診断</a>
+    &nbsp;·&nbsp; <a href="/100meijo/">日本100名城 一覧</a>
     &nbsp;·&nbsp; <a href="/guide/mochimono/">城巡りの持ち物ガイド</a>
     &nbsp;·&nbsp; <a href="https://katsuhikosakata29-max.github.io/shirodo-privacy/">プライバシーポリシー</a>
     &nbsp;·&nbsp; © 2026 Katsuhiko Sakata

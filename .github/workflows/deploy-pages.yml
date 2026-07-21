@@ -40,6 +40,7 @@ jobs:
           cp -r assets _site/assets
           cp -r 100meijo _site/100meijo
           cp -r guide _site/guide
+          cp -r shindan _site/shindan
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
