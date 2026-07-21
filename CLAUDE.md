@@ -4,7 +4,7 @@
 
 ## 開発の進め方（未知の共同発見）
 
-以下で参照する `/unknowns` と `/quiz` スキルは、共通プラグイン [katsuhikosakata29-max/claude-skills](https://github.com/katsuhikosakata29-max/claude-skills) が提供する（このリポジトリには置かない）。未インストールの環境では一度だけ `/plugin marketplace add katsuhikosakata29-max/claude-skills` → `/plugin install katsu-workflow@claude-skills` を実行する。
+以下で参照する `/unknowns` スキルは、共通プラグイン [katsuhikosakata29-max/claude-skills](https://github.com/katsuhikosakata29-max/claude-skills) が提供する（このリポジトリには置かない）。未インストールの環境では一度だけ `/plugin marketplace add katsuhikosakata29-max/claude-skills` → `/plugin install katsu-workflow@claude-skills` を実行する。
 
 このリポジトリの開発者は個人開発者（本業PM）で、レビュアーがいない。Claude への依頼を「作業指示→結果の受け取り」にせず、「未知の共同発見」として進めること。
 
@@ -17,7 +17,3 @@
 
 - 計画や指示から逸脱せざるを得ないエッジケースに遭遇したら、保守的な選択肢を取り、`implementation-notes.md` の「Deviations」セクションに記録して続行する（作業のたびに新規作成してよい。コミットには含めない）。
 - 質問で作業を止めるのは、破壊的操作か本質的なスコープ変更のときだけ。
-
-### 実装後
-
-- 大きめの変更（複数ファイル・挙動変更を伴うもの）のコミット・マージ前には `/quiz` スキルの利用を提案する。ユーザーが変更内容のクイズに満点で答えられるまでマージを勧めない。
