@@ -2,4 +2,12 @@
 .posthog_key
 .env
 .env.*
+
+# 作業メモ（コミットしない）
 implementation-notes.md
+
+# Python (scripts/metrics)
+__pycache__/
+*.pyc
+scripts/metrics/.venv/
+.DS_Store

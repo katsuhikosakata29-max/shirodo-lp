@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>城道（SHIRODO）— 文脈で城をめぐる、人文知の旅</title>
-<meta name="description" content="城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。SHIRODO（城道）で、日本100名城をめぐる。">
+<title>城道（しろどう / SHIRODO）— 文脈で城をめぐる、人文知の旅</title>
+<meta name="description" content="城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。城道（しろどう／SHIRODO）で、日本100名城をめぐる。">
 <meta name="robots" content="index, follow">
 <meta name="apple-itunes-app" content="app-id=6781983836">
 <link rel="canonical" href="https://shirodo.com/">
 <meta property="og:title" content="城道（SHIRODO）— 文脈で城をめぐる">
 <meta property="og:description" content="城は、文脈を知ってから訪ねると面白い。毎朝ひとつの「問い」をきっかけに城を訪ね、登城を記録していく城活アプリ。">
 <meta property="og:image" content="https://shirodo.com/assets/matsumoto-castle.jpg">
-<meta property="og:image:width" content="1920">
-<meta property="og:image:height" content="1440">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="松本城の天守">
 <meta property="og:url" content="https://shirodo.com/">
 <meta property="og:type" content="website">
@@ -28,7 +28,7 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "城道（SHIRODO）",
-  "alternateName": "SHIRODO",
+  "alternateName": ["SHIRODO", "シロドウ", "しろどう", "城道アプリ", "shirodo"],
   "url": "https://shirodo.com/",
   "operatingSystem": "iOS 16以降",
   "applicationCategory": "TravelApplication",
@@ -74,6 +74,14 @@
   "@type": "FAQPage",
   "inLanguage": "ja-JP",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "「城道」の読み方は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "アプリ名の「城道」は「しろどう」と読みます。英語表記はSHIRODOです。一般的な言葉としての「城道」は「じょうどう」（城へ通じる道や城内の通路）と読まれることもありますが、日本100名城の登城記録アプリの名前としては「しろどう（SHIRODO）」と読みます。"
+      }
+    },
     {
       "@type": "Question",
       "name": "料金はかかりますか？",
@@ -146,7 +154,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "城道（SHIRODO）",
-  "alternateName": "SHIRODO",
+  "alternateName": ["SHIRODO", "シロドウ", "しろどう", "城道アプリ", "shirodo"],
   "url": "https://shirodo.com/",
   "inLanguage": "ja-JP",
   "sameAs": [
@@ -387,6 +395,20 @@
       white-space: nowrap;
     }
   }
+
+  .hero-shindan {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 22px;
+    font-size: 0.82rem;
+    color: var(--washi-dim);
+    border-bottom: 1px solid rgba(201,169,97,0.4);
+    padding-bottom: 2px;
+    letter-spacing: 0.04em;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .hero-shindan:hover { color: var(--gold-bright); border-color: var(--gold); }
 
   .hero-scroll {
     position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
@@ -888,6 +910,7 @@
     .phone { flex: 0 0 260px; }
   }
 </style>
+<script defer src="/assets/analytics.js"></script>
 </head>
 <body>
 
@@ -900,7 +923,7 @@
 <!-- ============= HERO ============= -->
 <header class="hero">
   <span class="hero-badge">iOS APP — 日本100名城</span>
-  <h1 class="serif">城道<span class="visually-hidden">（SHIRODO）— 文脈で城をめぐる、日本100名城の城活アプリ</span></h1>
+  <h1 class="serif">城道<span class="visually-hidden">（しろどう・SHIRODO）— 文脈で城をめぐる、日本100名城の城活アプリ</span></h1>
   <span class="brand-en" aria-hidden="true">S H I R O D O</span>
   <p class="hero-tagline">
     城は、文脈を知ってから<br>訪ねると面白い。
@@ -931,6 +954,7 @@
       <span>iPhoneのカメラで読み取ると<br>App Storeが開きます</span>
     </div>
   </div>
+  <a class="hero-shindan" href="/shindan/">1分でわかる、城めぐりタイプ診断 ›</a>
   <span class="hero-scroll">SCROLL</span>
   <span class="photo-credit">松本城（長野県）© Wikipedia Commons</span>
 </header>
@@ -1174,7 +1198,7 @@
   <h2 class="serif">なぜ、このアプリを<br>作ろうと思ったのか。</h2>
   <div class="story-body">
     <p>
-      きっかけは、あるラジオ・podcastでした。私自身そのリスナーで、歴史を<span class="accent">"文脈"</span>から面白く掘り下げていく番組づくりに、ずっと感銘を受けてきました。聴くたびに、「その人物や土地の文脈を知ると、見え方が変わる」と実感していて——大好きな城めぐりという形で、それを体験にできないかと考えて城道を作り始めました。
+      きっかけは、あるラジオ・podcastでした。私自身そのリスナーで、歴史を<span class="accent">"文脈"</span>から面白く掘り下げていく番組づくりに、ずっと感銘を受けてきました。聴くたびに、「その人物や土地の文脈を知ると、見え方が変わる」と実感していて——大好きな城めぐりという形で、それを体験にできないかと考えて城道（しろどう）を作り始めました。
     </p>
     <p>
       城は情報がたくさんある場所です。石垣の積み方、櫓の配置、城下の営み。でも、事実の羅列だけを追いかけると、なんだかテストの答え合わせのようになってしまう。
@@ -1199,6 +1223,10 @@
   <span class="section-eyebrow">よくある質問</span>
   <h2 class="serif">はじめる前に、<br>気になること。</h2>
   <div class="faq-list">
+    <details class="faq-item">
+      <summary>「城道」の読み方は？</summary>
+      <div class="faq-body">アプリ名の「城道」は<strong>「しろどう」</strong>と読みます。英語表記はSHIRODOです。一般的な言葉としての「城道」は「じょうどう」（城へ通じる道や城内の通路）と読まれることもありますが、日本100名城の登城記録アプリの名前としては「しろどう（SHIRODO）」と読みます。</div>
+    </details>
     <details class="faq-item">
       <summary>料金はかかりますか？</summary>
       <div class="faq-body">城道（SHIRODO）は無料でお使いいただけます。アプリ内広告もありません。</div>
@@ -1271,7 +1299,8 @@
   <span class="footer-brand">城道 SHIRODO</span>
   <p>すべての記録は、あなたの端末とあなたのiCloudにのみ保存されます。<br>アカウント登録・広告・トラッキングはありません。</p>
   <p>
-    <a href="/100meijo/">日本100名城 一覧</a>
+    <a href="/shindan/">城めぐりタイプ診断</a>
+    &nbsp;·&nbsp; <a href="/100meijo/">日本100名城 一覧</a>
     &nbsp;·&nbsp; <a href="/guide/mochimono/">城巡りの持ち物ガイド</a>
     &nbsp;·&nbsp; <a href="https://katsuhikosakata29-max.github.io/shirodo-privacy/">プライバシーポリシー</a>
     &nbsp;·&nbsp; © 2026 Katsuhiko Sakata
