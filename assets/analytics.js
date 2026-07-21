@@ -12,6 +12,11 @@ posthog.init('phc_tmBFzGtxuy8poyxFaRy4hxGtuyu2B23DMwhMnEjTPRYH', {
   defaults: '2025-05-24'
 });
 
+// 自分のアクセス除外: ?ph_optout=1 を一度開くとそのブラウザは以後計測されない(?ph_optout=0で復帰)
+var phOptout = new URLSearchParams(location.search).get('ph_optout');
+if (phOptout === '1') posthog.opt_out_capturing();
+if (phOptout === '0') posthog.opt_in_capturing();
+
 // App Storeリンクのクリック計測(CVRのファネル分母は $pageview、分子はこのイベント)
 document.addEventListener('click', function (ev) {
   var link = ev.target && ev.target.closest && ev.target.closest('a[href*="apps.apple.com"]');
