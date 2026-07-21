@@ -469,6 +469,26 @@
     font-weight: 500;
   }
 
+  /* ======= 目次 ======= */
+  section[id] { scroll-margin-top: 80px; }
+  .toc-section { background: var(--sumi-2); }
+  .toc-nav { border-left: 1px solid var(--line); padding-left: 20px; }
+  .toc-nav a {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 10px 0;
+    font-family: var(--f-serif);
+    font-size: 1rem;
+    color: var(--washi);
+    border-bottom: 1px dotted rgba(201,169,97,0.18);
+    transition: color 0.15s;
+  }
+  .toc-nav a:last-child { border-bottom: none; }
+  .toc-nav a:hover { color: var(--gold-bright); }
+  .toc-nav .num {
+    font-size: 0.72rem; color: var(--gold); letter-spacing: 0.1em;
+    font-family: var(--f-sans); flex: none; width: 1.6em;
+  }
+
   /* ======= 「文脈」思想セクション ======= */
   .philosophy {
     background: linear-gradient(180deg, var(--sumi) 0%, var(--sumi-2) 100%);
@@ -961,7 +981,7 @@
 
 <!-- ============= PHILOSOPHY ============= -->
 <section class="section philosophy reveal">
-  <span class="section-eyebrow">思想</span>
+  <span class="section-eyebrow">城道とは</span>
   <h2 class="serif">「文脈」を知ると、<br>同じ景色に感情が重なる。</h2>
   <div class="lead-copy">
     <p>石垣を見て、「なぜここに？」と思ったことはありませんか。</p>
@@ -975,8 +995,22 @@
   </div>
 </section>
 
+<!-- ============= 目次 ============= -->
+<section class="section toc-section reveal">
+  <span class="section-eyebrow">目次</span>
+  <nav class="toc-nav" aria-label="ページ内目次">
+    <a href="#questions"><span class="num">01</span>今日の問い — 毎朝届く、城への入り口</a>
+    <a href="#screens"><span class="num">02</span>画面 — アプリの中身を少しだけ</a>
+    <a href="#howto"><span class="num">03</span>はじめ方 — 3ステップで今日から城活</a>
+    <a href="#titles"><span class="num">04</span>称号 — 登った城の石高で称号が上がる</a>
+    <a href="#story"><span class="num">05</span>開発者より — なぜ作ったのか</a>
+    <a href="#faq"><span class="num">06</span>よくある質問</a>
+    <a href="#get"><span class="num">07</span>アプリを入手する</a>
+  </nav>
+</section>
+
 <!-- ============= 今日の問い（実例） ============= -->
-<section class="questions reveal">
+<section class="questions reveal" id="questions">
   <div class="questions-inner">
     <span class="section-eyebrow">今日の問い</span>
     <h2 class="serif">たとえば、こんな問いが<br>毎朝ひとつ届きます。</h2>
@@ -1004,7 +1038,7 @@
 </section>
 
 <!-- ============= アプリ画面ギャラリー ============= -->
-<section class="screens reveal">
+<section class="screens reveal" id="screens">
   <div class="screens-head">
     <span class="section-eyebrow">画面</span>
     <h2 class="serif">アプリの中を、<br>少しだけ。</h2>
@@ -1101,7 +1135,7 @@
 </section>
 
 <!-- ============= 使い方 3ステップ ============= -->
-<section class="howto reveal">
+<section class="howto reveal" id="howto">
   <span class="section-eyebrow">はじめ方</span>
   <h2 class="serif">3ステップで、<br>今日から城活。</h2>
   <div class="steps">
@@ -1130,7 +1164,7 @@
 </section>
 
 <!-- ============= 称号ラダー ============= -->
-<section class="titles reveal">
+<section class="titles reveal" id="titles">
   <div class="titles-inner">
     <span class="section-eyebrow">称号</span>
     <h2 class="serif">「城めぐりはじめ」から、<br>「日本全土」へ。</h2>
@@ -1193,7 +1227,7 @@
 </section>
 
 <!-- ============= 開発者の想い ============= -->
-<section class="story reveal">
+<section class="story reveal" id="story">
   <span class="section-eyebrow">開発者より</span>
   <h2 class="serif">なぜ、このアプリを<br>作ろうと思ったのか。</h2>
   <div class="story-body">
@@ -1219,7 +1253,7 @@
 </section>
 
 <!-- ============= FAQ ============= -->
-<section class="faq reveal">
+<section class="faq reveal" id="faq">
   <span class="section-eyebrow">よくある質問</span>
   <h2 class="serif">はじめる前に、<br>気になること。</h2>
   <div class="faq-list">
@@ -1263,7 +1297,7 @@
 </section>
 
 <!-- ============= 最終CTA ============= -->
-<section class="final-cta reveal">
+<section class="final-cta reveal" id="get">
   <div class="final-cta-inner">
     <span class="section-eyebrow" style="justify-content: center; display: inline-flex;">はじめよう</span>
     <h2 class="serif">まずは地図の上だけでも、<br>日本100名城をめぐってみませんか。</h2>
