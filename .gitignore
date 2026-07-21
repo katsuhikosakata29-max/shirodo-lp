@@ -2,3 +2,9 @@
 .posthog_key
 .env
 .env.*
+
+# Python (scripts/metrics)
+__pycache__/
+*.pyc
+scripts/metrics/.venv/
+.DS_Store
