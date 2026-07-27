@@ -398,7 +398,7 @@ page = f'''<!DOCTYPE html>
 
 <footer>
   <span class="footer-brand">城道 SHIRODO</span>
-  <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="https://katsuhikosakata29-max.github.io/shirodo-privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 Katsuhiko Sakata</p>
+  <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="/privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 Katsuhiko Sakata</p>
 </footer>
 
 </body>
