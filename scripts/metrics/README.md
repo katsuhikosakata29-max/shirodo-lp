@@ -64,11 +64,30 @@ python3 -m venv .venv
 ```sh
 .venv/bin/python run_daily.py          # 手動実行してDAILY.mdを確認
 cp com.shirodo.metrics.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.shirodo.metrics.plist
-launchctl start com.shirodo.metrics    # 即時テスト実行
+launchctl bootstrap gui/$UID ~/Library/LaunchAgents/com.shirodo.metrics.plist
+launchctl kickstart -p gui/$UID/com.shirodo.metrics   # 即時テスト実行
+launchctl print gui/$UID/com.shirodo.metrics | grep -E "state|runs|last exit"
 ```
 
+解除する場合は `launchctl bootout gui/$UID/com.shirodo.metrics`。
+
 ログ: `/tmp/shirodo-metrics.log` / `/tmp/shirodo-metrics.err`
+
+#### なぜ `launchctl load` ではないか
+
+`launchctl` の man ページは `load | unload` を **LEGACY SUBCOMMANDS** 節に分類し、
+「Recommended alternative subcommands: bootstrap | bootout | enable | disable」と
+代替を明示している。`start` / `stop` / `list` も同じ legacy 節にあり、
+サービスを即時実行する現行の手段は `kickstart`、状態確認は `print`。
+
+`load` は現在も動作するが、legacy 系はドメイン(system / gui/$UID)を
+「rootで実行したか否か」で暗黙に決めるため、LaunchAgent を意図しないドメインに
+入れる事故が起きやすい。`bootstrap gui/$UID` はドメインを明示するので曖昧さがない。
+
+根拠:
+
+- `man launchctl` の "LEGACY SUBCOMMANDS" 節（macOS 26.5.2 / Darwin man page, 2014-10-01 版で確認）
+- 同 man ページのオンラインミラー: <https://keith.github.io/xcode-man-pages/launchctl.1.html>
 
 ## 運用メモ
 
