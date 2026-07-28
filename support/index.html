@@ -50,12 +50,12 @@
   {
    "@type": "Question",
    "name": "機種変更したら登城記録が引き継がれていません",
-   "acceptedAnswer": {"@type": "Answer", "text": "城道（SHIRODO）の登城記録・メモはiCloudに自動で保存され、同じApple Accountの新しいiPhoneにアプリを入れるだけで引き継がれます。引き継がれていない場合は、旧端末と新端末で同じApple Accountにサインインしているか、設定アプリのApple Account内でiCloud Driveがオンになっているか、通信できる状態かをご確認ください。アプリを起動したまま数十秒待つと復元されることがあります。"}
+   "acceptedAnswer": {"@type": "Answer", "text": "城道（SHIRODO）の登城記録・メモはiCloudに自動で保存され、同じApple Accountの新しいiPhoneにアプリを入れるだけで引き継がれます。引き継がれていない場合は、旧端末と新端末で同じApple Accountにサインインしているか、設定アプリのApple Account内でiCloud Driveがオンになっているか、通信できる状態かをご確認ください。旧iPhoneが手元にあれば、通信できる状態で城道を起動して1分ほど待つと端末内の記録がiCloudへ保存され、新しいiPhoneで起動すると統合されます。新しいiPhoneですでに付けた記録が消えることはありません。なお登城記録は開発者のサーバーには送信されないため、運営者側から記録を復元することはできません。"}
   },
   {
    "@type": "Question",
    "name": "アプリを再インストールしたら記録が消えました",
-   "acceptedAnswer": {"@type": "Answer", "text": "同じApple AccountでiCloudにサインインしていれば、再インストール後にアプリを起動すると記録は自動で復元されます。すぐに反映されない場合は、通信できる状態でアプリを起動したまま少し待ってからご確認ください。それでも戻らない場合はお問い合わせください。"}
+   "acceptedAnswer": {"@type": "Answer", "text": "同じApple AccountでiCloudにサインインしていれば、再インストール後にアプリを起動すると記録は自動で復元されます。すぐに反映されない場合は、通信できる状態でアプリを起動したまま少し待ってからご確認ください。記録はあなたの端末とあなたのiCloudにのみ保存され開発者のサーバーには送信されないため、運営者側から復元することはできません。旧端末が手元にある場合は、そちらで城道を起動して1分ほど待つと記録がiCloudへ保存されます。"}
   },
   {
    "@type": "Question",
@@ -147,6 +147,18 @@
     padding-bottom: 10px; border-bottom: 1px solid var(--line);
   }
   h3 { font-family: var(--f-serif); font-size: 1.02rem; color: var(--gold-bright); margin: 26px 0 10px; }
+  h4 { font-family: var(--f-serif); font-size: 0.95rem; color: var(--washi); margin: 22px 0 8px; }
+
+  .warn {
+    background: rgba(163, 58, 42, 0.10);
+    border: 1px solid rgba(201, 169, 97, 0.28);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 20px; margin-bottom: 30px;
+  }
+  .warn p { font-size: 0.88rem; margin-bottom: 10px; }
+  .warn p:last-child { margin-bottom: 0; }
+  .warn strong { color: var(--washi); }
   p { font-size: 0.92rem; color: var(--washi-dim); margin-bottom: 14px; }
   p:last-child { margin-bottom: 0; }
   p strong, li strong { color: var(--washi); font-weight: 500; }
@@ -196,26 +208,52 @@
     <p>下記のよくある質問で解決しない場合は、メールでご連絡ください。開発者が直接返信します。</p>
     <a class="contact-mail" href="mailto:support.shirodo.app@gmail.com">support.shirodo.app@gmail.com</a>
     <p class="note">個人で開発・運営しているため、返信までに数日いただくことがあります。
-    不具合のご連絡は、<strong>お使いのiPhoneの機種・iOSのバージョン・アプリのバージョン</strong>を添えていただけると原因を特定しやすくなります。</p>
+    不具合のご連絡は、<strong>お使いのiPhoneの機種・iOSのバージョン・アプリのバージョン</strong>を添えていただけると原因を特定しやすくなります。<br>
+    なお、登城記録は開発者のサーバーに送信されない設計のため、<strong>運営者側から記録を確認したり復元したりすることはできません</strong>（<a href="#data">データの引き継ぎ・復元</a>を参照）。</p>
   </div>
 
   <section id="data">
     <h2>データの引き継ぎ・復元</h2>
 
+    <div class="warn">
+      <p><strong>はじめにお読みください：運営者は、あなたの記録を復元できません。</strong></p>
+      <p>登城記録・メモは<strong>あなたの端末とあなたのiCloudにのみ</strong>保存され、開発者のサーバーには一切送信されない設計です。
+      そのためお問い合わせをいただいても、運営者側であなたの記録を取り出したり、復元したりすることはできません。
+      復旧は下記の手順をご自身で試していただく形になります。アプリの不具合が疑われる場合は調査して修正しますので、状況をお知らせください。</p>
+    </div>
+
     <h3>機種変更したら登城記録が引き継がれていません</h3>
-    <p>登城記録・メモはあなたのiCloudに自動で保存されるため、<strong>同じApple Accountの新しいiPhoneにアプリを入れるだけで引き継がれます</strong>。特別な移行作業は必要ありません。引き継がれていない場合は、次の3点をご確認ください。</p>
+    <p>登城記録・メモはあなたのiCloudに自動で保存されるため、<strong>同じApple Accountの新しいiPhoneにアプリを入れるだけで引き継がれます</strong>。特別な移行作業は必要ありません。引き継がれていない場合は、まず次の3点をご確認ください。</p>
     <ol>
       <li>旧端末と新端末で<strong>同じApple Account</strong>にサインインしているか</li>
       <li>設定アプリ → 一番上のApple Account → iCloud で <strong>iCloud Driveがオン</strong>になっているか</li>
       <li>Wi-Fiまたはモバイル通信が使える状態か</li>
     </ol>
-    <p>復元には少し時間がかかることがあります。アプリを起動したまま数十秒お待ちいただき、それでも戻らない場合はお問い合わせください。</p>
+    <p>復元には少し時間がかかることがあります。通信できる状態でアプリを起動したまま、数十秒お待ちください。</p>
+
+    <h4>旧iPhoneが手元にある場合（最も確実な方法）</h4>
+    <p>旧端末に記録が残っていれば、次の手順で新端末へ移せます。</p>
+    <ol>
+      <li><strong>旧iPhoneを通信できる状態にして、城道を起動します。</strong>この時点で、端末内の記録がiCloudへ保存されます</li>
+      <li>そのまま<strong>1分ほど待ってから</strong>アプリを閉じます</li>
+      <li>新しいiPhoneで城道を起動します</li>
+    </ol>
+    <p>記録は<strong>統合される</strong>ため、新しいiPhoneですでに付けた登城記録が消えることはありません。</p>
+
+    <h4>旧iPhoneが手元にない場合</h4>
+    <p>iCloudに記録が残っていれば、上記の3点を確認したうえで再度アプリを起動すると復元されることがあります。
+    それでも戻らない場合、<strong>運営者側から復元する手段はありません</strong>。
+    旧端末のバックアップ（iCloudバックアップ、またはパソコンで作成したバックアップ）が残っていれば、
+    そこから端末を復元することでアプリのデータごと戻せる可能性があります。</p>
 
     <h3>アプリを再インストールしたら記録が消えました</h3>
-    <p>上と同じ仕組みで、<strong>再インストール後にアプリを起動すると自動で復元されます</strong>。すぐに反映されないときは、通信できる状態でしばらく起動したままお待ちください。</p>
+    <p>同じApple AccountでiCloudにサインインしていれば、<strong>再インストール後にアプリを起動すると自動で復元されます</strong>。
+    すぐに反映されないときは、通信できる状態でしばらく起動したままお待ちください。
+    それでも戻らない場合は、上の「旧iPhoneが手元にある場合」と同じ手順が有効です。</p>
 
     <h3>データはどこに保存されていますか</h3>
-    <p>登城記録・メモの中身は、<strong>あなたの端末とあなたのiCloudにのみ</strong>保存され、開発者のサーバーには送信されません。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
+    <p>登城記録・メモの中身は、<strong>あなたの端末とあなたのiCloudにのみ</strong>保存され、開発者のサーバーには送信されません。
+    運営者がその中身を見ることはできません。詳しくは<a href="/privacy/">プライバシーポリシー</a>をご覧ください。</p>
   </section>
 
   <section id="records">
