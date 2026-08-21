@@ -1,5 +1,6 @@
-"""report / fetch_asc(パース) / common(upsert) のユニットテスト。ネットワーク不要。"""
+"""report / fetch_asc(パース) / common(upsert) / run_daily(git) のユニットテスト。ネットワーク不要。"""
 import datetime
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -10,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import common
 import report
 from fetch_asc import parse_sales_tsv
+from run_daily import commit_and_push
 
 TODAY = datetime.date(2026, 7, 8)
 
@@ -89,6 +91,54 @@ class TestUpsertCsv(unittest.TestCase):
             self.assertEqual(len(rows), 2)
             self.assertEqual(rows[0]["clicks"], "2")  # 上書きされている
             self.assertEqual(rows[1]["date"], "2026-07-05")
+
+
+class TestCommitAndPush(unittest.TestCase):
+    def _init_repo(self, d):
+        root = Path(d)
+        for cmd in (["git", "init", "-q", "-b", "main"],
+                    ["git", "config", "user.email", "test@example.com"],
+                    ["git", "config", "user.name", "test"]):
+            subprocess.run(cmd, cwd=root, check=True, capture_output=True)
+        (root / "metrics").mkdir()
+        return root
+
+    def _git(self, root, *args):
+        return subprocess.run(["git", "-C", str(root), *args],
+                              capture_output=True, text=True)
+
+    def test_commits_metrics_and_reports_push_failure(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = self._init_repo(d)
+            (root / "metrics" / "gsc_daily.csv").write_text("date,clicks\n")
+            (root / "other.txt").write_text("触らない")  # metrics外は対象外
+            errors = commit_and_push(TODAY, repo_root=root)
+            # リモートがないのでpushだけ失敗し、コミットは残る
+            self.assertEqual(len(errors), 1)
+            self.assertIn("git push", errors[0])
+            log = self._git(root, "log", "--oneline").stdout
+            self.assertIn("chore(metrics): 2026-07-08 の日次データ", log)
+            status = self._git(root, "status", "--porcelain").stdout
+            self.assertIn("?? other.txt", status)  # metrics外は未コミットのまま
+
+    def test_no_changes_is_noop(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = self._init_repo(d)
+            (root / "metrics" / "gsc_daily.csv").write_text("date,clicks\n")
+            commit_and_push(TODAY, repo_root=root)
+            self.assertEqual(commit_and_push(TODAY, repo_root=root), [])
+
+    def test_skips_on_non_main_branch(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = self._init_repo(d)
+            (root / "metrics" / "gsc_daily.csv").write_text("date,clicks\n")
+            self._git(root, "add", "-A")
+            self._git(root, "commit", "-m", "init")
+            self._git(root, "checkout", "-q", "-b", "feature")
+            (root / "metrics" / "gsc_daily.csv").write_text("date,clicks\n2026-07-08,1\n")
+            self.assertEqual(commit_and_push(TODAY, repo_root=root), [])
+            log = self._git(root, "log", "--oneline").stdout
+            self.assertNotIn("chore(metrics)", log)
 
 
 if __name__ == "__main__":
