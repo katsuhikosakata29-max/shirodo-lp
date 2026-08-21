@@ -1,35 +1,12 @@
 # SHIRODO デイリーメトリクス — 2026-08-22
 
+> ⚠️ 取得エラー: GSC: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("HTTPSConnection(host='oauth2.googleapis.com', port=443): Failed to resolve 'oauth2.googleapis.com' ([Errno 8] nodename nor servname provided, or not known)")) / ASC: HTTPSConnectionPool(host='api.appstoreconnect.apple.com', port=443): Max retries exceeded with url: /v1/salesReports?filter%5Bfrequency%5D=DAILY&filter%5BreportDate%5D=2026-08-21&filter%5BreportType%5D=SALES&filter%5BreportSubType%5D=SUMMARY&filter%5BvendorNumber%5D=94471975 (Caused by NameResolutionError("HTTPSConnection(host='api.appstoreconnect.apple.com', port=443): Failed to resolve 'api.appstoreconnect.apple.com' ([Errno 8] nodename nor servname provided, or not known)"))
+
 ## Search Console (shirodo.com)
 - 直近7日クリック数: **3** ↓ (前週 5)
 - 直近7日表示回数: **189** ↓ (前週 237)
 - 直近7日 平均掲載順位: **13.5** (前週 15.6 / 小さいほど上位)
-- うち順位10位以内の表示: **43.4%** (11位以降はほぼクリックされない)
 - 最新日 2026-08-19: クリック 0 / 表示 34 / 順位 11.4
-
-### 上位クエリ (直近10日)
-| クエリ | クリック | 表示 | 順位 |
-|---|---|---|---|
-| 城道 | 1 | 6 | 1.7 |
-| 百名城 | 1 | 5 | 18.2 |
-| 100名城スタンプ帳 入手 | 0 | 9 | 1.0 |
-| 100 名城 | 0 | 3 | 36.7 |
-| 100名城 | 0 | 2 | 9.0 |
-| 100名城スタンプ帳 おすすめ | 0 | 2 | 1.0 |
-| shiredo | 0 | 2 | 2.0 |
-| お城巡り スタンプ帳 | 0 | 2 | 3.0 |
-| 城 城主 一覧 | 0 | 2 | 46.5 |
-| 100名城 スタンプ帳 おすすめ | 0 | 1 | 1.0 |
-
-### 上位ページ (直近10日)
-| ページ | クリック | 表示 | 順位 |
-|---|---|---|---|
-| https://shirodo.com/100meijo/ | 3 | 180 | 20.2 |
-| https://shirodo.com/guide/mochimono/ | 3 | 103 | 4.3 |
-| https://shirodo.com/ | 0 | 21 | 6.7 |
-| https://shirodo.com/shindan/ | 0 | 8 | 4.6 |
-| https://shirodo.com/privacy/ | 0 | 4 | 7.5 |
-| https://shirodo.com/support/ | 0 | 2 | 4.0 |
 
 ## App Store (城道)
 - 直近7日初回DL: **0** → (前週 0)
