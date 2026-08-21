@@ -401,6 +401,7 @@ page = f'''<!DOCTYPE html>
   <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="/support/">サポート</a> &nbsp;·&nbsp; <a href="/privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 Katsuhiko Sakata</p>
 </footer>
 
+<script defer src="/assets/analytics.js"></script>
 </body>
 </html>
 '''
