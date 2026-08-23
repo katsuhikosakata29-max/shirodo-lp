@@ -32,7 +32,8 @@ def collect(today):
         try:
             import fetch_gsc
             data = fetch_gsc.fetch(config["gsc"], today)
-            upsert_csv(GSC_DAILY_CSV, ["date", "clicks", "impressions"],
+            upsert_csv(GSC_DAILY_CSV,
+                       ["date", "clicks", "impressions", "position"],
                        data["daily"])
             gsc_queries = sorted(data["queries"],
                                  key=lambda r: (-r["clicks"], -r["impressions"]))
@@ -40,11 +41,11 @@ def collect(today):
                                key=lambda r: (-r["clicks"], -r["impressions"]))
             # クエリ/ページはスナップショットとして取得日付きで履歴も残す
             upsert_csv(GSC_QUERIES_CSV,
-                       ["date", "query", "clicks", "impressions"],
+                       ["date", "query", "clicks", "impressions", "position"],
                        [{"date": f"{today.isoformat()}|{q['query']}", **q}
                         for q in gsc_queries])
             upsert_csv(GSC_PAGES_CSV,
-                       ["date", "page", "clicks", "impressions"],
+                       ["date", "page", "clicks", "impressions", "position"],
                        [{"date": f"{today.isoformat()}|{p['page']}", **p}
                         for p in gsc_pages])
         except Exception as e:  # noqa: BLE001 - 片系failでも他系は続行

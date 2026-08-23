@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://shirodo.com/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -49,19 +49,19 @@
   </url>
   <url>
     <loc>https://shirodo.com/100meijo/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://shirodo.com/shindan/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://shirodo.com/guide/mochimono/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -73,13 +73,13 @@
   </url>
   <url>
     <loc>https://shirodo.com/support/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://shirodo.com/privacy/</loc>
-    <lastmod>2026-07-27</lastmod>
+    <lastmod>2026-08-23</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

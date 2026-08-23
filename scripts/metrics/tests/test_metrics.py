@@ -16,8 +16,11 @@ from run_daily import commit_and_push
 TODAY = datetime.date(2026, 7, 8)
 
 
-def daily(date, clicks, impressions):
-    return {"date": date, "clicks": str(clicks), "impressions": str(impressions)}
+def daily(date, clicks, impressions, position=None):
+    row = {"date": date, "clicks": str(clicks), "impressions": str(impressions)}
+    if position is not None:
+        row["position"] = str(position)
+    return row
 
 
 class TestReport(unittest.TestCase):
@@ -57,6 +60,60 @@ class TestReport(unittest.TestCase):
                 "redownloads": "2", "updates": "3"}]
         s = report.notification_summary(gsc, asc, TODAY)
         self.assertEqual(s, "GSC 7日: クリック2/表示14 | App 7日: DL6")
+
+    def test_notification_summary_includes_position(self):
+        gsc = [daily("2026-07-05", 2, 10, 8.0)]
+        s = report.notification_summary(gsc, [], TODAY)
+        self.assertEqual(s, "GSC 7日: クリック2/表示10/順位8.0")
+
+
+class TestPosition(unittest.TestCase):
+    def test_weighted_position_weights_by_impressions(self):
+        # 順位は合計でなく表示回数で加重平均する:
+        # (50*90 + 5*10) / 100 = 45.5 であって (50+5)/2 = 27.5 ではない
+        rows = [daily("2026-07-07", 0, 90, 50.0), daily("2026-07-06", 1, 10, 5.0)]
+        cur, prev = report.weighted_position(rows, TODAY)
+        self.assertEqual(cur, 45.5)
+        self.assertIsNone(prev)
+
+    def test_weighted_position_ignores_legacy_rows_without_position(self):
+        # position列が無い既存CSV行が混ざっても壊れず、ある行だけで平均する
+        rows = [daily("2026-07-07", 0, 90), daily("2026-07-06", 1, 10, 5.0)]
+        cur, _ = report.weighted_position(rows, TODAY)
+        self.assertEqual(cur, 5.0)
+
+    def test_weighted_position_none_when_no_data(self):
+        self.assertEqual(report.weighted_position([], TODAY), (None, None))
+        # 空文字(DictWriterのrestval)でも落ちない
+        rows = [daily("2026-07-07", 0, 5)]
+        rows[0]["position"] = ""
+        self.assertIsNone(report.weighted_position(rows, TODAY)[0])
+
+    def test_top10_share(self):
+        pages = [
+            {"page": "/a", "clicks": 5, "impressions": 66, "position": 6.0},
+            {"page": "/b", "clicks": 1, "impressions": 167, "position": 54.9},
+        ]
+        # 66 / (66+167) = 28.3%
+        self.assertEqual(report.top10_share(pages), 28.3)
+
+    def test_top10_share_none_without_position(self):
+        self.assertIsNone(report.top10_share(
+            [{"page": "/a", "clicks": 0, "impressions": 10}]))
+
+    def test_digest_surfaces_position_and_share(self):
+        gsc = [daily("2026-07-05", 0, 80, 52.0)]
+        pages = [{"page": "https://shirodo.com/100meijo/", "clicks": 0,
+                  "impressions": 80, "position": 52.0}]
+        md = report.build_digest(gsc, [], pages, [], TODAY)
+        self.assertIn("平均掲載順位: **52.0**", md)
+        self.assertIn("順位10位以内の表示: **0.0%**", md)
+        self.assertIn("| https://shirodo.com/100meijo/ | 0 | 80 | 52.0 |", md)
+
+    def test_digest_tolerates_missing_position(self):
+        # position列導入前のCSVだけでも例外なく生成できる
+        md = report.build_digest([daily("2026-07-05", 1, 8)], [], [], [], TODAY)
+        self.assertIn("平均掲載順位: **不明**", md)
 
 
 class TestAscParse(unittest.TestCase):

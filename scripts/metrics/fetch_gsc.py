@@ -54,7 +54,9 @@ def fetch(config, today=None):
         return [
             {dimension: r["keys"][0],
              "clicks": int(r["clicks"]),
-             "impressions": int(r["impressions"])}
+             "impressions": int(r["impressions"]),
+             # 掲載順位。表示回数がゼロでない限りAPIは必ず返す
+             "position": round(float(r["position"]), 1)}
             for r in rows
         ]
 
