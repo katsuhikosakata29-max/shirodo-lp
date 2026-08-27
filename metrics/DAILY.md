@@ -1,19 +1,43 @@
-# SHIRODO デイリーメトリクス — 2026-08-27
-
-> ⚠️ 取得エラー: GSC: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("HTTPSConnection(host='oauth2.googleapis.com', port=443): Failed to resolve 'oauth2.googleapis.com' ([Errno 8] nodename nor servname provided, or not known)")) / ASC: HTTPSConnectionPool(host='api.appstoreconnect.apple.com', port=443): Max retries exceeded with url: /v1/salesReports?filter%5Bfrequency%5D=DAILY&filter%5BreportDate%5D=2026-08-26&filter%5BreportType%5D=SALES&filter%5BreportSubType%5D=SUMMARY&filter%5BvendorNumber%5D=94471975 (Caused by NameResolutionError("HTTPSConnection(host='api.appstoreconnect.apple.com', port=443): Failed to resolve 'api.appstoreconnect.apple.com' ([Errno 8] nodename nor servname provided, or not known)"))
+# SHIRODO デイリーメトリクス — 2026-08-28
 
 ## Search Console (shirodo.com)
-- 直近7日クリック数: **2** ↓ (前週 6)
-- 直近7日表示回数: **48** ↓ (前週 281)
-- 直近7日 平均掲載順位: **8.9** (前週 13.8 / 小さいほど上位)
-- 最新日 2026-08-20: クリック 2 / 表示 48 / 順位 8.9
+- 直近7日クリック数: **4** ↓ (前週 7)
+- 直近7日表示回数: **119** ↓ (前週 278)
+- 直近7日 平均掲載順位: **8.5** (前週 11.8 / 小さいほど上位)
+- うち順位10位以内の表示: **41.4%** (11位以降はほぼクリックされない)
+- 最新日 2026-08-25: クリック 0 / 表示 3 / 順位 3.3
+
+### 上位クエリ (直近10日)
+| クエリ | クリック | 表示 | 順位 |
+|---|---|---|---|
+| 100名城スタンプ帳 入手 | 0 | 8 | 1.0 |
+| 城ドコ アプリ | 0 | 8 | 10.4 |
+| 城道 | 0 | 7 | 2.0 |
+| 100名城スタンプ帳 どこで 売っ てる | 0 | 6 | 1.0 |
+| 100名城 | 0 | 4 | 16.8 |
+| 100 名城 | 0 | 3 | 36.7 |
+| 100名城スタンプ帳 おすすめ | 0 | 2 | 1.0 |
+| shiredo | 0 | 2 | 2.0 |
+| 日本 百名 城一覧 | 0 | 2 | 13.0 |
+| 日本百名城 | 0 | 2 | 21.0 |
+
+### 上位ページ (直近10日)
+| ページ | クリック | 表示 | 順位 |
+|---|---|---|---|
+| https://shirodo.com/100meijo/ | 4 | 146 | 12.6 |
+| https://shirodo.com/guide/mochimono/ | 2 | 60 | 4.4 |
+| https://shirodo.com/guide/kiroku/ | 1 | 3 | 8.0 |
+| https://shirodo.com/ | 0 | 28 | 5.2 |
+| https://shirodo.com/privacy/ | 0 | 6 | 5.7 |
+| https://shirodo.com/shindan/ | 0 | 4 | 4.8 |
+| https://shirodo.com/support/ | 0 | 2 | 4.0 |
 
 ## App Store (城道)
-- 直近7日初回DL: **1** ↑ (前週 0)
+- 直近7日初回DL: **2** ↑ (前週 0)
 - 直近7日再DL: **0** → (前週 0)
-- 最新日 2026-08-21: 初回DL 1 / 再DL 0 / 更新 0
+- 最新日 2026-08-23: 初回DL 1 / 再DL 0 / 更新 0
 
 ---
 *自分のアクセス/DLも含む数値。絶対数ではなく前週比の傾きを見ること。*
 *表示回数の増加は順位とセットで読むこと。順位50位前後の表示が増えても流入には結びつかない。*
-*生成: 2026-08-27 (scripts/metrics/run_daily.py)*
+*生成: 2026-08-28 (scripts/metrics/run_daily.py)*
