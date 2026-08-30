@@ -182,6 +182,34 @@
   }
   .cta-note { font-size: 0.72rem; color: var(--washi-dim); margin-top: 10px; }
 
+  .bridge-slot { margin: 36px 0 48px; }
+  .bridge-line { padding: 14px 2px; border-top: 1px solid var(--line); font-size: 0.9rem; }
+  .bridge-line span { color: var(--washi-dim); }
+  .bridge-line a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 3px; }
+
+  .bridge-chip {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 16px 14px 14px;
+    background: var(--sumi-3); border: 1px solid var(--line); border-radius: 10px;
+  }
+  .bridge-chip .badge {
+    width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%;
+    border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center;
+    font-family: var(--f-serif); font-size: 0.8rem; color: var(--gold-bright);
+  }
+  .bridge-chip .text { font-size: 0.86rem; color: var(--washi-dim); flex: 1; }
+  .bridge-chip .text b { color: var(--washi); font-weight: 500; }
+  .bridge-chip a.arrow { color: var(--gold-bright); font-size: 0.83rem; flex-shrink: 0; text-decoration: none; white-space: nowrap; }
+
+  .bridge-box {
+    padding: 16px 18px;
+    background: var(--sumi-2); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0;
+  }
+  .bridge-box .q { font-size: 0.9rem; color: var(--washi); margin-bottom: 8px; font-weight: 500; }
+  .bridge-box .link-row { font-size: 0.84rem; margin-bottom: 0; }
+  .bridge-box .link-row span { color: var(--washi-dim); }
+  .bridge-box .link-row a { color: var(--gold-bright); text-decoration: underline; text-underline-offset: 3px; font-weight: 500; }
+
   .author-box {
     display: flex; gap: 4px; flex-direction: column;
     padding: 18px 20px; margin-bottom: 48px;
@@ -286,12 +314,28 @@
     <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
 
-  <div class="app-callout">
-    <h2 class="serif">持ち物がひとつ減らせます。記録はスマホで。</h2>
-    <p>城道（しろどう／SHIRODO）は、日本100名城の登城記録とメモを残せる無料iOSアプリ。スタンプ帳を忘れた日も、設置場所が閉まっていた日も、記録が途切れません。毎朝ひとつ届く「問い」で、城の文脈を学びながらめぐれます。</p>
-    <a class="cta-primary" href="https://apps.apple.com/app/id6781983836">App Storeで入手する ›</a>
-    <p class="cta-note">無料 · 広告なし · アカウント登録不要 · iOS 16以上</p>
-  </div>
+  <div id="bridge-slot" class="bridge-slot"></div>
+  <script>
+  (function () {
+    var APP_URL = 'https://apps.apple.com/app/id6781983836';
+    var variants = {
+      C1: '<p class="bridge-line"><span>登城の記録も、その場でスマホに残せます。</span> <a href="' + APP_URL + '" class="bridge-link bridge-link--c1">城道（しろどう）を見る ›</a></p>',
+      C2: '<div class="bridge-chip"><span class="badge">城</span><span class="text">登城の記録とメモは、<b>城道（しろどう）</b>という無料アプリでも残せます。</span><a href="' + APP_URL + '" class="arrow bridge-link bridge-link--c2">見てみる ›</a></div>',
+      C3: '<div class="bridge-box"><p class="q">持ち物と合わせてよく聞かれるのが、登城の記録の残し方です。</p><p class="link-row"><span>城道（しろどう）は、その場で登城の記録とメモを残せる無料アプリです。</span> <a href="' + APP_URL + '" class="bridge-link bridge-link--c3">App Storeで見る ›</a></p></div>'
+    };
+    var keys = Object.keys(variants);
+    var STORAGE_KEY = 'mochimono_bridge_variant';
+    var variant = localStorage.getItem(STORAGE_KEY);
+    if (!variant || !variants[variant]) {
+      variant = keys[Math.floor(Math.random() * keys.length)];
+      try { localStorage.setItem(STORAGE_KEY, variant); } catch (e) {}
+    }
+    document.getElementById('bridge-slot').innerHTML = variants[variant];
+    if (window.posthog) {
+      posthog.capture('bridge_variant_view', { variant: variant, page_path: location.pathname });
+    }
+  })();
+  </script>
 
   <section id="faq">
     <h2>よくある質問</h2>
