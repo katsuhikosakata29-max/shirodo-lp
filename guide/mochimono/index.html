@@ -331,9 +331,11 @@
       try { localStorage.setItem(STORAGE_KEY, variant); } catch (e) {}
     }
     document.getElementById('bridge-slot').innerHTML = variants[variant];
-    if (window.posthog) {
-      posthog.capture('bridge_variant_view', { variant: variant, page_path: location.pathname });
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      if (window.posthog) {
+        posthog.capture('bridge_variant_view', { variant: variant, page_path: location.pathname });
+      }
+    });
   })();
   </script>
 
