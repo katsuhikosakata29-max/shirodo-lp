@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""data/nanido.json から /guide/nanido/index.html を生成する
+"""data/level.json から /guide/level/index.html を生成する
 
 難易度レベルは one_way_min（片道分）と elevation_gain_m（標高差m）から機械判定する。
 判定を上書きしたい城は data 側に "level_override" を持たせる。
@@ -12,8 +12,8 @@ TODAY = date.today().isoformat()
 TODAY_JA = f"{date.today().year}年{date.today().month}月{date.today().day}日"
 
 CASTLES_SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
-DATA_SRC = os.path.join(os.path.dirname(__file__), "..", "data", "nanido.json")
-OUT = os.path.join(os.path.dirname(__file__), "..", "guide", "nanido", "index.html")
+DATA_SRC = os.path.join(os.path.dirname(__file__), "..", "data", "level.json")
+OUT = os.path.join(os.path.dirname(__file__), "..", "guide", "level", "index.html")
 
 LEVELS = {
     1: {"label": "散策", "css": "lv-c1", "desc": "登りは20分未満の平地〜石段。普段の靴やスニーカーで問題なし（例：仙台城・松江城・姫路城）"},
@@ -211,11 +211,11 @@ page = f'''<!DOCTYPE html>
 <title>100名城の登城難易度一覧｜「実は登山」の城はどこ？ | 城道（SHIRODO）</title>
 <meta name="description" content="100名城を「現代の登城のきつさ」でLv.1〜3に分類。登りの時間・標高差・クマ注意など現地の注意を一覧で解説。鳥取城・月山富田城の実登経験に基づく、登城記録アプリ城道（SHIRODO）のガイド。">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://shirodo.com/guide/nanido/">
+<link rel="canonical" href="https://shirodo.com/guide/level/">
 <meta property="og:title" content="100名城の登城難易度一覧｜「実は登山」の城はどこ？">
 <meta property="og:description" content="100名城を登城のきつさでLv.1〜3に分類。登りの時間・標高差・現地の注意を一覧で解説。">
 <meta property="og:image" content="https://shirodo.com/assets/kumamoto-castle.jpg">
-<meta property="og:url" content="https://shirodo.com/guide/nanido/">
+<meta property="og:url" content="https://shirodo.com/guide/level/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="城道（SHIRODO）">
 <meta property="og:locale" content="ja_JP">
@@ -230,7 +230,7 @@ page = f'''<!DOCTYPE html>
  "@type": "BreadcrumbList",
  "itemListElement": [
   {{"@type": "ListItem", "position": 1, "name": "城道（SHIRODO）", "item": "https://shirodo.com/"}},
-  {{"@type": "ListItem", "position": 2, "name": "100名城の登城難易度一覧", "item": "https://shirodo.com/guide/nanido/"}}
+  {{"@type": "ListItem", "position": 2, "name": "100名城の登城難易度一覧", "item": "https://shirodo.com/guide/level/"}}
  ]
 }}
 </script>
@@ -245,7 +245,7 @@ page = f'''<!DOCTYPE html>
  "dateModified": "{TODAY}",
  "author": {{"@type": "Person", "@id": "https://shirodo.com/#author", "name": "城道（SHIRODO）開発者", "url": "https://shirodo.com/"}},
  "publisher": {{"@type": "Organization", "name": "城道（SHIRODO）", "url": "https://shirodo.com/"}},
- "mainEntityOfPage": "https://shirodo.com/guide/nanido/",
+ "mainEntityOfPage": "https://shirodo.com/guide/level/",
  "image": "https://shirodo.com/assets/kumamoto-castle.jpg"
 }}
 </script>
@@ -566,7 +566,7 @@ page = f'''<!DOCTYPE html>
       C3: '<div class="bridge-box"><p class="q">登山になる城ほど、登った記録を残したくなります。</p><p class="link-row"><span>城道（しろどう）は、その場で登城の記録とメモを残せる無料アプリです。</span> <a href="' + APP_URL + '" class="bridge-link bridge-link--c3">App Storeで見る ›</a></p></div>'
     }};
     var keys = Object.keys(variants);
-    var STORAGE_KEY = 'nanido_bridge_variant';
+    var STORAGE_KEY = 'level_bridge_variant';
     var variant = null;
     try {{ variant = localStorage.getItem(STORAGE_KEY); }} catch (e) {{}}
     if (!variant || !variants[variant]) {{
