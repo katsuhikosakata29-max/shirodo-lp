@@ -1,0 +1,524 @@
+{
+  "published": "2026-08-30",
+  "criteria": "難易度は「一般観光客が本丸・天守に至る最も楽な経路（ロープウェー・リフト・バス・車を含む）」の登り徒歩区間で判定（城内の見学時間は含まない）。Lv.3=登り45分超または標高差300m超 / Lv.2=登り20分以上または標高差100m以上 / Lv.1=それ未満",
+  "castles": [
+    {
+      "no": 63,
+      "name": "鳥取城",
+      "easiest_route": "山麓から徒歩登山のみ（リフト・車道なし）",
+      "one_way_min": 40,
+      "elevation_gain_m": 240,
+      "on_foot_alt": null,
+      "shoes": "歩き慣れたスニーカー",
+      "cautions": [
+        "クマ注意の掲示あり・熊鈴推奨",
+        "山上に自販機なし・水必須",
+        "山頂付近は狭い土の道",
+        "山麓部だけなら登山不要"
+      ],
+      "memo": "実際に登った際は片道30分ほど。スニーカーで登れるが、序盤の石段の先は狭い土の道になる。夏の暑い日は汗だくになるので水は必須。山上ノ丸からの眺めは格別。",
+      "visited": "2026年8月",
+      "sources": [
+        "https://www.torican.jp/spot/detail_1001.html",
+        "https://www.city.tottori.lg.jp/page/6234.html"
+      ],
+      "confidence": "high",
+      "note": "山上ノ丸（久松山山頂・標高263m）基準。所要は資料により30〜40分。標高差は登城口（標高約20m）からの概算"
+    },
+    {
+      "no": 65,
+      "name": "月山富田城",
+      "easiest_route": "中腹駐車場から徒歩",
+      "one_way_min": 30,
+      "elevation_gain_m": 130,
+      "on_foot_alt": "麓の歴史資料館からは片道約60分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "七曲りは急峻な石畳の坂",
+        "トイレ・自販機なし・水必須",
+        "冬季は積雪・雪山装備が必要",
+        "サンダル不可"
+      ],
+      "memo": "山中御殿までは歩きやすい。その先の七曲りが本番。登城者が少なく、夏は虫が多いので虫除け必須。",
+      "visited": "2026年8月",
+      "sources": [
+        "https://www.kankou-shimane.com/pickup/50871.html",
+        "https://tabi.torisetsu-shimane.com/gassantodajo-guide/"
+      ],
+      "confidence": "medium",
+      "note": "山中御殿までは約10分で、核心はその先の七曲り（約570m・約20分）。標高差は月山山頂約190mからの概算"
+    },
+    {
+      "no": 22,
+      "name": "八王子城",
+      "easiest_route": "管理棟から本丸コースを徒歩（車道なし）",
+      "one_way_min": 40,
+      "elevation_gain_m": 240,
+      "on_foot_alt": "平坦な御主殿コースなら約15〜20分（軽装可）",
+      "shoes": "スニーカー",
+      "cautions": [
+        "ツキノワグマ出没エリア・鈴を推奨",
+        "散策路以外は立入禁止",
+        "本丸コースと御主殿コースで難易度が大きく違う"
+      ],
+      "sources": [
+        "https://www.city.hachioji.tokyo.jp/kurashi/kyoiku/005/bunkazaikanrenshisetsu/p005201.html"
+      ],
+      "confidence": "high",
+      "note": "本丸標高446m。標高差は麓のガイダンス施設（約200m）からの概算。往復90〜120分"
+    },
+    {
+      "no": 72,
+      "name": "郡山城",
+      "easiest_route": "博物館脇の登山口から徒歩",
+      "one_way_min": 40,
+      "elevation_gain_m": 190,
+      "on_foot_alt": null,
+      "shoes": "スニーカー",
+      "cautions": [
+        "未舗装で急勾配の区間あり",
+        "外灯なし・日没前に下山",
+        "クマ出没情報あり・熊鈴推奨",
+        "夏場は飲み物必須"
+      ],
+      "sources": [
+        "https://www.akitakata.jp/ja/hakubutsukan/assets/koriyama/",
+        "https://akitakata-kankou.jp/main/motonari/koriyamamap/"
+      ],
+      "confidence": "high",
+      "note": "標高390m・比高190mは市公式値。所要は資料により片道30〜60分の幅（代表値40分）"
+    },
+    {
+      "no": 37,
+      "name": "一乗谷城",
+      "easiest_route": "三万谷ルート登山口から徒歩",
+      "one_way_min": 40,
+      "elevation_gain_m": null,
+      "on_foot_alt": "館跡からの各ルートは片道40〜75分",
+      "shoes": "滑りにくい靴",
+      "cautions": [
+        "クマ注意・熊鈴の貸出あり",
+        "急傾斜・岩肌の滑りやすい箇所あり",
+        "麓の朝倉館跡と山頂の山城は別物"
+      ],
+      "sources": [
+        "https://www.city.fukui.lg.jp/faq/kyouiku/bunkarekishi/s03.html",
+        "https://www.pref.fukui.lg.jp/doc/bunshin/tozan.html"
+      ],
+      "confidence": "medium",
+      "note": "山頂（一乗城山）標高435.8m。最短の三万谷ルートで片道30〜45分だが急勾配。登山口の標高が未確認のため標高差は記載なし"
+    },
+    {
+      "no": 51,
+      "name": "安土城",
+      "easiest_route": "大手道の石段405段を徒歩（車道なし）",
+      "one_way_min": 30,
+      "elevation_gain_m": 100,
+      "on_foot_alt": null,
+      "shoes": "スニーカー",
+      "cautions": [
+        "マムシ注意（受付掲示）",
+        "入山後はトイレなし",
+        "入山料700円・杖の貸出あり"
+      ],
+      "sources": [
+        "https://www.azuchi-shiga.com/n-adutijyouato.htm",
+        "https://www.omi8.com/course/detail_15.html"
+      ],
+      "confidence": "high",
+      "note": "往復約60分（じっくり見るなら90分）。標高差は資料により90〜110m"
+    },
+    {
+      "no": 32,
+      "name": "春日山城",
+      "easiest_route": "神社下駐車場から徒歩",
+      "one_way_min": 30,
+      "elevation_gain_m": 100,
+      "on_foot_alt": "春日山駅からは通算約70分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "クマ注意・市が熊鈴を無料貸出",
+        "上り坂が続く・水分補給を",
+        "雨後は土の道が滑りやすい"
+      ],
+      "sources": [
+        "https://joetsukankonavi.jp/spot/detail.php?id=133",
+        "https://www.city.joetsu.niigata.jp/soshiki/bunkagyousei/kasugayama-kumasuzu.html"
+      ],
+      "confidence": "high",
+      "note": "本丸所要は資料により20〜40分（代表値30分）。本丸標高約180m"
+    },
+    {
+      "no": 49,
+      "name": "小谷城",
+      "easiest_route": "車で中腹の番所跡付近まで→徒歩",
+      "one_way_min": 30,
+      "elevation_gain_m": 100,
+      "on_foot_alt": "麓から徒歩なら計約70分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "クマ出没注意の看板あり",
+        "本丸より先は十分な登山装備を（公式）",
+        "冬季は林道凍結・積雪注意"
+      ],
+      "sources": [
+        "https://kitabiwako.jp/spot/spot_736",
+        "https://kitabiwako.jp/spot/spot_25272"
+      ],
+      "confidence": "medium",
+      "note": "番所跡→本丸約30分は長浜観光協会の値。標高差は概算。中腹までのシャトルバスは限定日のみ"
+    },
+    {
+      "no": 55,
+      "name": "千早城",
+      "easiest_route": "金剛登山口から石段を徒歩（車道なし）",
+      "one_way_min": 25,
+      "elevation_gain_m": 175,
+      "on_foot_alt": null,
+      "shoes": "スニーカー",
+      "cautions": [
+        "石段500段超をひたすら登る",
+        "雨後は石段が滑りやすい",
+        "冬季は積雪注意"
+      ],
+      "sources": [
+        "https://www.chihayaakasaka.org/spot/castle.html"
+      ],
+      "confidence": "medium",
+      "note": "観光協会も「ちょっとした登山の心構えが必要」と明記。所要20〜30分（代表値25分）。比高175m"
+    },
+    {
+      "no": 61,
+      "name": "高取城",
+      "easiest_route": "車で八幡口付近まで→徒歩",
+      "one_way_min": 20,
+      "elevation_gain_m": 100,
+      "on_foot_alt": "壺阪山駅から大手道は約2時間・標高差約460m",
+      "shoes": "スニーカー",
+      "cautions": [
+        "正規駐車場なし・県道は離合困難",
+        "トイレ・売店・自販機なし",
+        "ヘビ等の野生動物に注意"
+      ],
+      "sources": [
+        "https://sightseeing2.takatori.info/takatorijyofaq/",
+        "https://sightseeing2.takatori.info/access/"
+      ],
+      "confidence": "high",
+      "note": "八幡口から本丸まで徒歩約20分（町観光ガイドFAQ）。麓から歩くなら実質Lv.3相当"
+    },
+    {
+      "no": 56,
+      "name": "竹田城",
+      "easiest_route": "天空バス等で中腹→徒歩",
+      "one_way_min": 20,
+      "elevation_gain_m": 100,
+      "on_foot_alt": "麓の駅裏登山道からは約40分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "1月4日〜2月末は冬季閉山",
+        "バス停から900mは全員徒歩",
+        "気象条件により入城規制あり"
+      ],
+      "sources": [
+        "https://www.city.asago.hyogo.jp/site/takeda/3086.html",
+        "https://asago-kanko.com/takedajyoseki"
+      ],
+      "confidence": "high",
+      "note": "中腹バス停→城跡入口が徒歩約20分（車両乗入不可）。城内見学は別途30〜60分。公式が飲み物持参を明記"
+    },
+    {
+      "no": 52,
+      "name": "観音寺城",
+      "easiest_route": "林道で山上駐車場→観音正寺経由",
+      "one_way_min": 20,
+      "elevation_gain_m": 80,
+      "on_foot_alt": "麓からは石段の表参道で約60分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "林道は通行時間制限・冬季通行止め",
+        "通行料600円＋観音正寺入山料",
+        "観音正寺から本丸は未整備の山道"
+      ],
+      "sources": [
+        "https://kannonshoji.or.jp/access/"
+      ],
+      "confidence": "medium",
+      "note": "駐車場→観音正寺 徒歩10分、観音正寺→本丸 約10分。標高差80mは概算"
+    },
+    {
+      "no": 68,
+      "name": "備中松山城",
+      "easiest_route": "バスでふいご峠→徒歩",
+      "one_way_min": 20,
+      "elevation_gain_m": 140,
+      "on_foot_alt": "城見橋公園から徒歩なら約50分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "土日祝はマイカー規制・シャトルバス利用",
+        "ふいご峠駐車場は14台のみ",
+        "雨上がりは滑りやすい"
+      ],
+      "sources": [
+        "https://www.bitchumatsuyamacastle.jp/access-castle/",
+        "https://www.city.takahashi.lg.jp/site/bichu-matsuyama/access.html"
+      ],
+      "confidence": "high",
+      "note": "ふいご峠→天守は700m・徒歩約20分、往復90分が目安。天守標高430m（現存天守で最高所）"
+    },
+    {
+      "no": 66,
+      "name": "津和野城",
+      "easiest_route": "観光リフト＋徒歩",
+      "one_way_min": 20,
+      "elevation_gain_m": null,
+      "on_foot_alt": "徒歩のみなら急勾配を約40分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "リフトは12〜2月の平日運休",
+        "降車後は砂利道・ガレ場あり",
+        "雨後は石段が滑りやすい"
+      ],
+      "sources": [
+        "https://www.town.tsuwano.lg.jp/www/genre/1643088275267/index.html",
+        "https://tsuwano-kanko.net/info/lift/"
+      ],
+      "confidence": "medium",
+      "note": "リフト約5分＋徒歩約20分（15分とする資料もあり）。本丸は霊亀山山頂・標高約362m。リフト降り場の標高が未確認のため標高差は記載なし"
+    },
+    {
+      "no": 86,
+      "name": "大野城",
+      "easiest_route": "県民の森センターまで車→散策",
+      "one_way_min": 45,
+      "elevation_gain_m": 120,
+      "on_foot_alt": "公共交通ならバス停から徒歩60分でセンター着",
+      "shoes": "スニーカー",
+      "cautions": [
+        "城域342haと広大・遺構が点在",
+        "携帯の通じないエリアあり・地図携行を",
+        "公式散策コースは1時間30分〜2時間30分"
+      ],
+      "sources": [
+        "https://www.town.umi.lg.jp/site/asobu-taiken/kanko162.html",
+        "https://shioujikenminnomori.org/access/"
+      ],
+      "confidence": "medium",
+      "note": "単一の本丸がなく見どころが分散。one_way_minは最高所の大城山（410m）到達目安の概算"
+    },
+    {
+      "no": 39,
+      "name": "岐阜城",
+      "easiest_route": "金華山ロープウェー＋徒歩8分",
+      "one_way_min": 8,
+      "elevation_gain_m": 60,
+      "on_foot_alt": "徒歩登山は約60分・標高差約310m",
+      "shoes": "スニーカー",
+      "cautions": [
+        "天守は改修工事で休館中（令和9年10月末までの予定）",
+        "山頂駅から天守までは石段・坂",
+        "徒歩登山は滑りにくい靴で"
+      ],
+      "sources": [
+        "https://www.city.gifu.lg.jp/shitsumon/kanko/1010077/1010080.html",
+        "https://www.kinkazan.co.jp/pages/about"
+      ],
+      "confidence": "high",
+      "note": "金華山329m・ロープウェー高低差約255m（乗車4分）。山頂駅→天守の標高差約60mは概算"
+    },
+    {
+      "no": 17,
+      "name": "金山城",
+      "easiest_route": "山頂駐車場から徒歩",
+      "one_way_min": 15,
+      "elevation_gain_m": 50,
+      "on_foot_alt": "麓から西山コースで約30分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "山中に照明なし・日没時刻に注意",
+        "ハイキングコースには険しい箇所あり"
+      ],
+      "sources": [
+        "https://www.city.ota.gunma.jp/page/4140.html"
+      ],
+      "confidence": "high",
+      "note": "山頂駐車場（モータープール）から実城まで約600〜700m・徒歩15分は太田市公式。標高差は概算"
+    },
+    {
+      "no": 40,
+      "name": "山中城",
+      "easiest_route": "国道1号沿い駐車場から園内徒歩",
+      "one_way_min": 15,
+      "elevation_gain_m": 30,
+      "on_foot_alt": null,
+      "shoes": "スニーカー",
+      "cautions": [
+        "夜間入場禁止（照明なし）",
+        "雨後は芝の斜面が滑りやすい",
+        "障子堀・斜面への立入禁止"
+      ],
+      "sources": [
+        "https://www.city.mishima.shizuoka.jp/page/3516.html",
+        "https://www.mishima-kankou.com/spot/282/"
+      ],
+      "confidence": "medium",
+      "note": "城跡入口が駐車場の目の前で登山不要。周遊は障子堀コース約1時間・全域約2時間"
+    },
+    {
+      "no": 95,
+      "name": "岡城",
+      "easiest_route": "総役所跡駐車場から石段を徒歩",
+      "one_way_min": 15,
+      "elevation_gain_m": 70,
+      "on_foot_alt": "豊後竹田駅から駐車場まで徒歩約35分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "雨後は石段が非常に滑りやすい",
+        "石垣の縁に柵なし・転落注意",
+        "マムシ・ハチに注意"
+      ],
+      "sources": [
+        "https://okajou.jp/",
+        "https://www.visit-oita.jp/spots/detail/4438"
+      ],
+      "confidence": "medium",
+      "note": "本丸・二の丸・三の丸の最短往復が約30分。本丸標高325m。標高差は駐車場からの概算"
+    },
+    {
+      "no": 64,
+      "name": "松江城",
+      "easiest_route": "大手門跡から本坂の石段を徒歩",
+      "one_way_min": 15,
+      "elevation_gain_m": 25,
+      "on_foot_alt": null,
+      "shoes": "普段の靴",
+      "cautions": [
+        "天守内の階段は急勾配",
+        "エレベーターなし"
+      ],
+      "memo": "大手前から天守までは15分ほど。天守内の階段は急だが、城歩きとしては散策の部類。",
+      "visited": "2026年8月",
+      "sources": [
+        "https://www.matsue-castle.jp/course/matsue_castle",
+        "https://www.matsue-castle.jp/faq/index"
+      ],
+      "confidence": "high",
+      "note": "公式は「大手前から本丸までゆっくり見学して約20分」。標高差は亀田山（約29m）からの概算"
+    },
+    {
+      "no": 59,
+      "name": "姫路城",
+      "easiest_route": "入城口から坂と石段を徒歩",
+      "one_way_min": 15,
+      "elevation_gain_m": 30,
+      "on_foot_alt": "姫路駅から入城口まで徒歩約20分",
+      "shoes": "普段の靴",
+      "cautions": [
+        "天守内の階段は急で狭い",
+        "混雑期は入場整理・待ち時間あり",
+        "見学全体の所要は1時間半〜2時間が目安"
+      ],
+      "memo": "入城口から天守まで、門をくぐりながら坂と石段が続く。天守内は急で狭い階段。",
+      "visited": "2026年8月",
+      "sources": [
+        "https://www.himejicastle.jp/faq.html"
+      ],
+      "confidence": "high",
+      "note": "公式FAQで入城口から天守入口まで徒歩約15分。標高差は姫山（標高45.6m）からの概算"
+    },
+    {
+      "no": 74,
+      "name": "岩国城",
+      "easiest_route": "ロープウェー＋徒歩10分",
+      "one_way_min": 10,
+      "elevation_gain_m": 15,
+      "on_foot_alt": "紅葉谷公園から登山道で約40分",
+      "shoes": "スニーカー",
+      "cautions": [
+        "ロープウェーに点検運休日あり（運休時は徒歩のみ）",
+        "山頂駅から天守までは山道・坂"
+      ],
+      "sources": [
+        "https://kankou.iwakuni-city.net/ropeway.html",
+        "https://yamaguchi-tourism.jp/spot/detail_11254.html"
+      ],
+      "confidence": "high",
+      "note": "城山は標高200.3m。山頂駅〜天守間の標高差は小さい（概算）"
+    },
+    {
+      "no": 34,
+      "name": "七尾城",
+      "easiest_route": "本丸北駐車場から徒歩",
+      "one_way_min": 10,
+      "elevation_gain_m": 40,
+      "on_foot_alt": "麓からは片道60〜75分・標高差約250m",
+      "shoes": "スニーカー",
+      "cautions": [
+        "雨で登山道が滑りやすい箇所あり",
+        "一部区間閉鎖の可能性・事前確認を",
+        "登山道に自販機なし"
+      ],
+      "sources": [
+        "https://www.city.nanao.lg.jp/syougai/nanaojoushi/sansaku.html"
+      ],
+      "confidence": "high",
+      "note": "本丸北駐車場から本丸まで約300m・徒歩約10分。本丸標高約300m。標高差40mは概算"
+    },
+    {
+      "no": 69,
+      "name": "鬼ノ城",
+      "easiest_route": "ビジターセンターまで車→徒歩",
+      "one_way_min": 15,
+      "elevation_gain_m": null,
+      "on_foot_alt": "麓の砂川公園から登山路あり",
+      "shoes": "スニーカー",
+      "cautions": [
+        "センターまでの車道3kmは道幅が狭い",
+        "城内（遊歩道上）にトイレなし",
+        "城壁一周2.8kmは健脚で約70分"
+      ],
+      "sources": [
+        "https://www.okayama-kanko.jp/spot/detail_10755.html",
+        "https://www.city.soja.okayama.jp/kanko_project/bunka_sports/hakubutukantekisisetu/kinojouzan_vc.html"
+      ],
+      "confidence": "medium",
+      "note": "センター→西門は約600m・徒歩約15分の緩やかな遊歩道。鬼城山は標高約397m。徒歩区間の標高差は公式値未確認のため記載なし"
+    },
+    {
+      "no": 8,
+      "name": "仙台城",
+      "easiest_route": "るーぷる仙台で本丸直行",
+      "one_way_min": 5,
+      "elevation_gain_m": 10,
+      "on_foot_alt": "国際センター駅からは徒歩約20分の上り坂",
+      "shoes": "普段の靴",
+      "cautions": [
+        "連休・お盆は周辺道路が渋滞（公共交通推奨）"
+      ],
+      "sources": [
+        "https://www.city.sendai.jp/shisekichosa/sendaijoaccess.html",
+        "https://loople-sendai.jp/sightseeing/sendaijo.php"
+      ],
+      "confidence": "high",
+      "note": "バス停・駐車場が本丸内でほぼ平坦。車でも本丸まで乗り入れ可。本丸は標高約130m"
+    },
+    {
+      "no": 38,
+      "name": "岩村城",
+      "easiest_route": "出丸駐車場から徒歩",
+      "one_way_min": 5,
+      "elevation_gain_m": 20,
+      "on_foot_alt": "麓の資料館から石畳を20〜30分・高低差約180m",
+      "shoes": "スニーカー",
+      "cautions": [
+        "出丸への道は狭く大型車不可",
+        "城全体を見るなら麓からの登城が推奨されている"
+      ],
+      "sources": [
+        "https://www.kankou-ena.jp/455.php"
+      ],
+      "confidence": "high",
+      "note": "本丸標高717mで日本三大山城の最高所。麓から歩けばLv.2相当"
+    }
+  ]
+}

@@ -380,7 +380,7 @@ page = f'''<!DOCTYPE html>
       <li>各城のスタンプ設置場所（管理事務所・休憩所・資料館など）で、スタンプ帳に直接押印する（別紙に押した切り貼りは原則無効）</li>
       <li>全100城達成後、日本城郭協会へスタンプ帳を郵送して登城認定を申請する</li>
     </ol>
-    <p class="src-note">出典: <a href="https://jokaku.jp/" target="_blank" rel="noopener">公益財団法人日本城郭協会</a>（日本100名城の選定は2006年、スタンプラリー開始は2007年）。城巡りに必要な装備は<a href="/guide/mochimono/">城巡りの持ち物ガイド</a>、記録の残し方は<a href="/guide/kiroku/">登城記録のつけ方</a>にまとめています。</p>
+    <p class="src-note">出典: <a href="https://jokaku.jp/" target="_blank" rel="noopener">公益財団法人日本城郭協会</a>（日本100名城の選定は2006年、スタンプラリー開始は2007年）。城巡りに必要な装備は<a href="/guide/mochimono/">城巡りの持ち物ガイド</a>、どの城が「登山」になるかは<a href="/guide/nanido/">登城難易度一覧</a>、記録の残し方は<a href="/guide/kiroku/">登城記録のつけ方</a>にまとめています。</p>
 
     <h2>スタンプの代わりにスマホで記録するには？</h2>
     <p><strong>城道（SHIRODO）</strong>は、その旅にもうひとつの楽しみ方を足すアプリです。スタンプの代わりに登城記録とメモをスマホに残せるので、スタンプ帳を忘れた日も記録が途切れません。そして何より、各城の「なぜ？」から入る問いと物語で、<strong>文脈を知ってから城を訪ねる</strong>体験ができます。</p>
@@ -399,7 +399,7 @@ page = f'''<!DOCTYPE html>
 
 <footer>
   <span class="footer-brand">城道 SHIRODO</span>
-  <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="/shindan/">城めぐりタイプ診断</a> &nbsp;·&nbsp; <a href="/guide/mochimono/">城巡りの持ち物ガイド</a> &nbsp;·&nbsp; <a href="/guide/kiroku/">登城記録のつけ方</a> &nbsp;·&nbsp; <a href="/support/">サポート</a> &nbsp;·&nbsp; <a href="/privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 Katsuhiko Sakata</p>
+  <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="/shindan/">城めぐりタイプ診断</a> &nbsp;·&nbsp; <a href="/guide/mochimono/">城巡りの持ち物ガイド</a> &nbsp;·&nbsp; <a href="/guide/nanido/">登城難易度一覧</a> &nbsp;·&nbsp; <a href="/guide/kiroku/">登城記録のつけ方</a> &nbsp;·&nbsp; <a href="/support/">サポート</a> &nbsp;·&nbsp; <a href="/privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 城道（SHIRODO）</p>
 </footer>
 
 <script defer src="/assets/analytics.js"></script>
