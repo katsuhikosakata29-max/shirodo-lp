@@ -99,8 +99,14 @@ def detail_rows_html(c):
         visited = f'<span class="visited">{esc(c["visited"])} 実登</span>' if c.get("visited") else ""
         detail += f'<p class="exp">{esc(c["memo"])}{visited}</p>'
     if c.get("sources"):
-        detail += (f'<p class="src"><a href="{esc(c["sources"][0])}" target="_blank" '
-                   f'rel="noopener">出典を見る</a></p>')
+        srcs = c["sources"]
+        if len(srcs) == 1:
+            links = f'<a href="{esc(srcs[0])}" target="_blank" rel="noopener">出典を見る</a>'
+        else:
+            links = "出典を見る: " + "・".join(
+                f'<a href="{esc(u)}" target="_blank" rel="noopener">{i}</a>'
+                for i, u in enumerate(srcs, 1))
+        detail += f'<p class="src">{links}</p>'
     return f'''          <tr class="main" id="c{c["no"]}">
             <td class="cname">{esc(c["name"])}<small class="kana">{esc(c["kana"])}</small><small class="pref">{esc(c["pref_full"])}{esc(c["city"])} · No.{c["no"]} · 分類は「{esc(c["type"])}」</small></td>
             <td class="stat" data-k="登り">{ow}</td>

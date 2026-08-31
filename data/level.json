@@ -122,8 +122,8 @@
         "入山料700円・杖の貸出あり"
       ],
       "sources": [
-        "https://www.azuchi-shiga.com/n-adutijyouato.htm",
-        "https://www.omi8.com/course/detail_15.html"
+        "https://www.omi8.com/spot/detail_1217.html",
+        "https://www.azuchi-shiga.com/n-adutijyouato.htm"
       ],
       "confidence": "high",
       "note": "往復約60分（じっくり見るなら90分）。標高差は資料により90〜110m"
@@ -177,7 +177,7 @@
       "on_foot_alt": null,
       "shoes": "スニーカー",
       "cautions": [
-        "石段500段超をひたすら登る",
+        "石段の登りがずっと続く",
         "雨後は石段が滑りやすい",
         "冬季は積雪注意"
       ],
@@ -280,8 +280,8 @@
         "雨後は石段が滑りやすい"
       ],
       "sources": [
-        "https://www.town.tsuwano.lg.jp/www/genre/1643088275267/index.html",
-        "https://tsuwano-kanko.net/info/lift/"
+        "https://tsuwano-kanko.net/info/lift/",
+        "https://www.town.tsuwano.lg.jp/www/genre/1643088275267/index.html"
       ],
       "confidence": "medium",
       "note": "リフト約5分＋徒歩約20分（15分とする資料もあり）。本丸は霊亀山山頂・標高約362m。リフト降り場の標高が未確認のため標高差は記載なし"
@@ -312,7 +312,7 @@
       "easiest_route": "金華山ロープウェー＋徒歩8分",
       "one_way_min": 8,
       "elevation_gain_m": 60,
-      "on_foot_alt": "徒歩登山は約60分・標高差約310m",
+      "on_foot_alt": "徒歩登山は約60分・標高差約310m。めい想の小径・鼻高コースは工事で山頂手前まで（令和9年9月末までの予定）",
       "shoes": "スニーカー",
       "cautions": [
         "天守は改修工事で休館中（令和9年10月末までの予定）",
@@ -321,7 +321,8 @@
       ],
       "sources": [
         "https://www.city.gifu.lg.jp/shitsumon/kanko/1010077/1010080.html",
-        "https://www.kinkazan.co.jp/pages/about"
+        "https://www.kinkazan.co.jp/pages/about",
+        "https://www.city.gifu.lg.jp/kankoubunka/kankou/1013051/1005097/1031926.html"
       ],
       "confidence": "high",
       "note": "金華山329m・ロープウェー高低差約255m（乗車4分）。山頂駅→天守の標高差約60mは概算"
@@ -368,7 +369,7 @@
       "no": 95,
       "name": "岡城",
       "easiest_route": "総役所跡駐車場から石段を徒歩",
-      "one_way_min": 15,
+      "one_way_min": 20,
       "elevation_gain_m": 70,
       "on_foot_alt": "豊後竹田駅から駐車場まで徒歩約35分",
       "shoes": "スニーカー",
@@ -378,11 +379,12 @@
         "マムシ・ハチに注意"
       ],
       "sources": [
+        "https://taketa.guide/spots/detail/07fb5cc5-fa6c-4eee-9b51-fea20d2b67fc",
         "https://okajou.jp/",
         "https://www.visit-oita.jp/spots/detail/4438"
       ],
-      "confidence": "medium",
-      "note": "本丸・二の丸・三の丸の最短往復が約30分。本丸標高325m。標高差は駐車場からの概算"
+      "confidence": "high",
+      "note": "竹田市観光ツーリズム協会「たけ旅」に、料金所から三の丸・二の丸・本丸まで「往復40分（最短コースの場合）」と明記（片道約20分）。本丸標高325m。標高差は駐車場からの概算"
     },
     {
       "no": 64,
@@ -473,7 +475,7 @@
       "on_foot_alt": "麓の砂川公園から登山路あり",
       "shoes": "スニーカー",
       "cautions": [
-        "センターまでの車道3kmは道幅が狭い",
+        "センターまでの車道3kmは狭く、車幅2.1m・全長7m以内の車両制限あり",
         "城内（遊歩道上）にトイレなし",
         "城壁一周2.8kmは健脚で約70分"
       ],
