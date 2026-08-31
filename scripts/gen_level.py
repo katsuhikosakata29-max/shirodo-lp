@@ -150,7 +150,7 @@ card_sections_html = "\n\n".join(card_sections)
 def table_row(c):
     ow = f'約{c["one_way_min"]}分' if c.get("one_way_min") is not None else "—"
     el = f'約{c["elevation_gain_m"]}m' if c.get("elevation_gain_m") is not None else "—"
-    note_items = [warn_note(x) for x in (c.get("cautions") or [])[:2]]
+    note_items = [warn_note(x) for x in (c.get("cautions") or [])[:4]]
     if c.get("on_foot_alt"):
         note_items.append(f'<span class="alt">徒歩のみの場合：{esc(c["on_foot_alt"])}</span>')
     notes = "・".join(note_items) or "—"
