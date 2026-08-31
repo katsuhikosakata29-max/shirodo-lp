@@ -50,16 +50,15 @@ def mt_glyphs(level):
     return f'<span class="mt">{one * level}</span>'
 
 
-def lv_pill(level):
+def lv_txt(level):
     lv = LEVELS[level]
-    return (f'<span class="lv-pill {lv["css"]}">{mt_glyphs(level)}'
+    return (f'<span class="lv-txt {lv["css"]}">{mt_glyphs(level)}'
             f'<b>Lv.{level}</b>{esc(lv["label"])}</span>')
 
 
-def flag_html(text):
+def caution_html(text):
     warn = any(w in text for w in WARN_WORDS)
-    cls = "flag warn" if warn else "flag"
-    return f'<span class="{cls}">{esc(text)}</span>'
+    return f'<span class="warn">{esc(text)}</span>' if warn else esc(text)
 
 
 def warn_note(text):
@@ -86,47 +85,39 @@ rows.sort(key=lambda c: (-c["level"], (c.get("one_way_min") or 0) * -1, int(c["n
 count_tozan = len([c for c in rows if c["level"] >= 2])
 count_total = len(rows)
 
-# ---- カード（Lv.2以上＝登山の城のみ詳述）----
-def card_html(c):
-    stats = []
-    if c.get("one_way_min") is not None:
-        stats.append(f'<span><span class="k">登り</span><b>約{c["one_way_min"]}分</b></span>')
-    if c.get("elevation_gain_m") is not None:
-        stats.append(f'<span><span class="k">標高差</span><b>約{c["elevation_gain_m"]}m</b></span>')
-    if c.get("shoes"):
-        stats.append(f'<span><span class="k">靴</span><b>{esc(c["shoes"])}</b></span>')
-    flags = "".join(flag_html(f) for f in (c.get("cautions") or [])[:4])
-    route = f'<p class="route">経路: {esc(c["easiest_route"])}'
+# ---- 詳細行（Lv.2以上＝登山の城のみ詳述。案C′: PCは表・スマホは積み重ね）----
+def detail_rows_html(c):
+    ow = f'約{c["one_way_min"]}分' if c.get("one_way_min") is not None else "—"
+    el = f'約{c["elevation_gain_m"]}m' if c.get("elevation_gain_m") is not None else "—"
+    shoes = esc(c.get("shoes") or "—")
+    note = "・".join(caution_html(f) for f in (c.get("cautions") or [])[:4])
+    detail = f'<p class="route">経路: {esc(c["easiest_route"])}'
     if c.get("on_foot_alt"):
-        route += f'（{esc(c["on_foot_alt"])}）'
-    route += "</p>"
-    memo = ""
+        detail += f'（{esc(c["on_foot_alt"])}）'
+    detail += "</p>"
     if c.get("memo"):
         visited = f'<span class="visited">{esc(c["visited"])} 実登</span>' if c.get("visited") else ""
-        memo = f'<p class="exp">{esc(c["memo"])}{visited}</p>'
-    src = ""
+        detail += f'<p class="exp">{esc(c["memo"])}{visited}</p>'
     if c.get("sources"):
-        src = (f'<p class="card-src"><a href="{esc(c["sources"][0])}" target="_blank" '
-               f'rel="noopener">出典を見る</a></p>')
-    return f'''      <article class="card" id="c{c["no"]}">
-        <div class="card-top">
-          <div>
-            <p class="cname">{esc(c["name"])}<small>{esc(c["kana"])}</small></p>
-            <p class="cpref">{esc(c["pref_full"])}{esc(c["city"])} · No.{c["no"]} · 分類は「{esc(c["type"])}」</p>
-          </div>
-          {lv_pill(c["level"])}
-        </div>
-        <div class="stats">{"".join(stats)}</div>
-        <div class="flags">{flags}</div>
-        {route}{memo}{src}
-      </article>'''
+        detail += (f'<p class="src"><a href="{esc(c["sources"][0])}" target="_blank" '
+                   f'rel="noopener">出典を見る</a></p>')
+    return f'''          <tr class="main" id="c{c["no"]}">
+            <td class="cname">{esc(c["name"])}<small class="kana">{esc(c["kana"])}</small><small class="pref">{esc(c["pref_full"])}{esc(c["city"])} · No.{c["no"]} · 分類は「{esc(c["type"])}」</small></td>
+            <td class="stat" data-k="登り">{ow}</td>
+            <td class="stat" data-k="標高差">{el}</td>
+            <td class="stat" data-k="靴">{shoes}</td>
+            <td class="note-cell">{note}</td>
+          </tr>
+          <tr class="detail">
+            <td colspan="5">{detail}</td>
+          </tr>'''
 
 
 cards_by_level = {}
 for lv in (3, 2):
     items = [c for c in rows if c["level"] == lv]
     if items:
-        cards_by_level[lv] = "\n".join(card_html(c) for c in items)
+        cards_by_level[lv] = "\n".join(detail_rows_html(c) for c in items)
 
 card_sections = []
 for lv in (3, 2):
@@ -135,8 +126,15 @@ for lv in (3, 2):
     sub = "— ここを知らずに行くと困る" if lv == 2 else "— 軽登山のつもりで計画を"
     card_sections.append(f'''  <section id="lv{lv}">
     <h2>Lv.{lv}「{LEVELS[lv]["label"]}」の城 <span class="h2-sub">{sub}</span></h2>
-    <div class="cards">
+    <div class="tbl-wrap">
+      <table class="ctable">
+        <thead>
+          <tr><th>城名</th><th>登り</th><th>標高差</th><th>靴</th><th>注意</th></tr>
+        </thead>
+        <tbody>
 {cards_by_level[lv]}
+        </tbody>
+      </table>
     </div>
     <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>''')
@@ -152,17 +150,17 @@ def table_row(c):
     notes = "・".join(note_items) or "—"
     return f'''            <tr>
               <td><a class="tname" href="#c{c["no"]}">{esc(c["name"])}</a><span class="tkana">{esc(c["kana"])} · {esc(c["pref"])}</span></td>
-              <td>{lv_pill(c["level"])}</td>
-              <td>{ow}</td>
-              <td>{el}</td>
-              <td>{esc(c.get("shoes") or "—")}</td>
+              <td class="lv-cell">{lv_txt(c["level"])}</td>
+              <td class="stat" data-k="登り">{ow}</td>
+              <td class="stat" data-k="標高差">{el}</td>
+              <td class="stat" data-k="靴">{esc(c.get("shoes") or "—")}</td>
               <td class="tnote">{notes}</td>
             </tr>''' if c["level"] >= 2 else f'''            <tr>
               <td><span class="tname">{esc(c["name"])}</span><span class="tkana">{esc(c["kana"])} · {esc(c["pref"])}</span></td>
-              <td>{lv_pill(c["level"])}</td>
-              <td>{ow}</td>
-              <td>{el}</td>
-              <td>{esc(c.get("shoes") or "—")}</td>
+              <td class="lv-cell">{lv_txt(c["level"])}</td>
+              <td class="stat" data-k="登り">{ow}</td>
+              <td class="stat" data-k="標高差">{el}</td>
+              <td class="stat" data-k="靴">{esc(c.get("shoes") or "—")}</td>
               <td class="tnote">{notes}</td>
             </tr>'''
 
@@ -196,7 +194,7 @@ toc_card_items = "\n".join(
 
 # ---- 凡例 ----
 legend_html = "\n".join(f'''        <div class="legend-row">
-          {lv_pill(lv)}
+          {lv_txt(lv)}
           <span>{esc(LEVELS[lv]["desc"])}</span>
         </div>''' for lv in (1, 2, 3))
 
@@ -354,13 +352,12 @@ page = f'''<!DOCTYPE html>
   .lv-c1 {{ color: var(--gold); }}
   .lv-c2 {{ color: var(--ochre); }}
   .lv-c3 {{ color: var(--vermilion); }}
-  .lv-pill {{
+  .lv-txt {{
     display: inline-flex; align-items: center; gap: 7px;
     font-size: 0.72rem; letter-spacing: 0.08em;
-    padding: 4px 12px; border-radius: 999px; border: 1px solid currentColor;
     white-space: nowrap;
   }}
-  .lv-pill b {{ font-family: var(--f-serif); font-weight: 500; font-size: 0.8rem; }}
+  .lv-txt b {{ font-family: var(--f-serif); font-weight: 500; font-size: 0.8rem; }}
 
   .legend {{ display: grid; gap: 10px; margin: 18px 0 8px; }}
   .legend-row {{
@@ -370,61 +367,63 @@ page = f'''<!DOCTYPE html>
   }}
   .legend-row b {{ color: var(--washi); font-weight: 500; }}
 
-  .cards {{ display: grid; gap: 12px; }}
-  .card {{
-    background: var(--sumi-2); border: 1px solid var(--line); border-radius: 12px;
-    padding: 16px 18px; scroll-margin-top: 76px;
-  }}
-  .card-top {{ display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }}
-  .card .cname {{ font-family: var(--f-serif); font-size: 1.08rem; color: var(--washi); margin: 0; }}
-  .card .cname small {{ font-size: 0.68rem; color: var(--washi-dim); margin-left: 8px; letter-spacing: 0.08em; }}
-  .card .cpref {{ font-size: 0.72rem; color: var(--washi-dim); margin: 1px 0 0; }}
-  .stats {{
-    display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 12px;
-    font-size: 0.8rem; color: var(--washi-dim);
-  }}
-  .stats b {{ color: var(--washi); font-weight: 500; font-variant-numeric: tabular-nums; }}
-  .stats .k {{ font-size: 0.68rem; letter-spacing: 0.12em; color: var(--gold); margin-right: 6px; }}
-  .flags {{ display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }}
-  .flag {{
-    font-size: 0.7rem; padding: 3px 10px; border-radius: 999px;
-    background: var(--sumi-3); border: 1px solid rgba(201,169,97,0.18); color: var(--washi-dim);
-  }}
-  .flag.warn {{ border-color: rgba(176,64,44,0.5); color: #d98a77; }}
-  .card .route {{ font-size: 0.78rem; margin: 10px 0 0; }}
   .visited {{
     font-size: 0.7rem; color: var(--gold-bright); letter-spacing: 0.1em;
     border-bottom: 1px solid var(--line); padding-bottom: 1px; margin-left: 6px;
   }}
-  .card .exp {{
-    margin: 12px 0 0; padding-top: 12px; border-top: 1px dotted rgba(201,169,97,0.2);
-    font-size: 0.82rem;
-  }}
-  .card .exp::before {{ content: "登城メモ　"; font-size: 0.68rem; letter-spacing: 0.18em; color: var(--gold); }}
-  .card-src {{ font-size: 0.7rem; margin: 8px 0 0; }}
-  .card-src a {{ color: var(--washi-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }}
 
-  .tbl-wrap {{ overflow-x: auto; margin: 20px 0 8px; border: 1px solid var(--line); border-radius: 12px; }}
-  table {{ border-collapse: collapse; width: 100%; min-width: 640px; font-size: 0.84rem; }}
-  thead th {{
-    font-family: var(--f-sans); font-weight: 500; font-size: 0.7rem; letter-spacing: 0.14em;
-    color: var(--gold); text-align: left; padding: 12px 14px;
-    background: var(--sumi-3); border-bottom: 1px solid var(--line);
+  .tbl-wrap {{ overflow-x: auto; margin: 20px 0 8px; }}
+  .ctable {{ border-collapse: collapse; width: 100%; font-size: 0.82rem; }}
+  .ctable thead th {{
+    font-family: var(--f-serif); font-weight: 500; font-size: 0.75rem; letter-spacing: 0.1em;
+    color: var(--gold); text-align: left; padding: 8px 14px 8px 2px;
+    border-bottom: 1px solid var(--line);
     white-space: nowrap;
   }}
-  tbody td {{
-    padding: 12px 14px; border-bottom: 1px solid rgba(201,169,97,0.1);
+  .ctable tbody td {{
+    padding: 13px 14px 13px 2px; border-bottom: 1px solid rgba(201,169,97,0.1);
     color: var(--washi-dim); vertical-align: top;
     font-variant-numeric: tabular-nums;
   }}
-  tbody tr:last-child td {{ border-bottom: none; }}
-  td .tname {{ font-family: var(--f-serif); color: var(--washi); font-size: 0.95rem; white-space: nowrap; }}
-  td a.tname {{ text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }}
-  td .tkana {{ display: block; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--washi-dim); }}
-  td.tnote {{ font-size: 0.76rem; }}
-  td .warn {{ color: #d98a77; }}
-  td .alt {{ color: var(--washi-dim); opacity: 0.85; }}
+  .ctable tbody tr:last-child td {{ border-bottom: none; }}
+  .ctable tr.main {{ scroll-margin-top: 76px; }}
+  .ctable tr.main td {{ border-bottom: none; padding-bottom: 4px; }}
+  .ctable tr.detail td {{ padding-top: 0; font-size: 0.76rem; }}
+  .ctable p {{ margin-bottom: 0; }}
+  .ctable td .tname {{ font-family: var(--f-serif); color: var(--washi); font-size: 0.95rem; white-space: nowrap; }}
+  .ctable td a.tname {{ text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }}
+  .ctable td .tkana {{ display: block; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--washi-dim); }}
+  .ctable td.cname {{ font-family: var(--f-serif); color: var(--washi); font-size: 0.95rem; min-width: 165px; }}
+  .ctable td.cname .kana {{ font-size: 0.65rem; letter-spacing: 0.1em; color: var(--washi-dim); font-family: var(--f-sans); margin-left: 6px; }}
+  .ctable td.cname .pref {{ display: block; font-size: 0.65rem; color: var(--washi-dim); font-family: var(--f-sans); }}
+  .ctable td.stat {{ white-space: nowrap; color: var(--washi); }}
+  .ctable td.tnote, .ctable td.note-cell {{ font-size: 0.76rem; }}
+  .ctable .warn {{ color: #d98a77; }}
+  .ctable td .alt {{ color: var(--washi-dim); opacity: 0.85; }}
+  .ctable .route {{ font-size: inherit; }}
+  .ctable .exp {{ font-size: 0.8rem; margin-top: 8px; }}
+  .ctable .exp::before {{ content: "登城メモ　"; font-size: 0.68rem; letter-spacing: 0.18em; color: var(--gold); }}
+  .ctable .src {{ font-size: 0.7rem; margin-top: 6px; }}
+  .ctable .src a {{ color: var(--washi-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }}
   .tbl-cap {{ font-size: 0.72rem; color: var(--washi-dim); margin-top: 10px; }}
+  @media (max-width: 619px) {{
+    .ctable, .ctable tbody, .ctable tr, .ctable td {{ display: block; }}
+    .ctable thead {{ display: none; }}
+    .ctable tbody tr {{ padding: 16px 0; border-bottom: 1px solid rgba(201,169,97,0.1); }}
+    .ctable tbody td {{ padding: 0; border-bottom: none; }}
+    .ctable tbody tr:last-child {{ border-bottom: none; }}
+    .ctable tr.main {{ border-bottom: none; padding-bottom: 0; }}
+    .ctable tr.main td {{ padding-bottom: 0; }}
+    .ctable tr.detail {{ padding-top: 6px; }}
+    .ctable td.cname {{ font-size: 1.05rem; }}
+    .ctable td .tname {{ font-size: 1.05rem; }}
+    .ctable td .tkana {{ display: inline; margin-left: 6px; }}
+    .ctable td.lv-cell {{ margin-top: 2px; }}
+    .ctable td.stat {{ display: inline-block; margin: 4px 16px 0 0; }}
+    .ctable td.stat::before {{ content: attr(data-k); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--gold); margin-right: 6px; }}
+    .ctable td.tnote, .ctable td.note-cell {{ margin-top: 6px; }}
+    .ctable td.note-cell::before, .ctable td.tnote::before {{ content: "注意 — "; color: #d98a77; font-size: 0.72rem; letter-spacing: 0.1em; }}
+  }}
 
   .faq-item {{ border-bottom: 1px solid rgba(201,169,97,0.12); }}
   .faq-item summary {{
@@ -534,9 +533,9 @@ page = f'''<!DOCTYPE html>
 
   <section id="table">
     <h2>難易度データ一覧表</h2>
-    <p>調査済みの{count_total}城を難易度が高い順に並べています。城名をタップすると詳細カードに移動します（Lv.2以上）。</p>
+    <p>調査済みの{count_total}城を難易度が高い順に並べています。城名をタップすると各城の詳細に移動します（Lv.2以上）。</p>
     <div class="tbl-wrap">
-      <table>
+      <table class="ctable">
         <thead>
           <tr><th>城</th><th>難易度</th><th>登り</th><th>標高差</th><th>靴</th><th>注意</th></tr>
         </thead>
@@ -552,7 +551,7 @@ page = f'''<!DOCTYPE html>
   <section id="about-data">
     <h2>データについて</h2>
     <p>所要時間・標高差は、各城の自治体・観光協会・公式サイトの公開情報をもとにし、幅がある場合は代表値を採用しています。鳥取城・月山富田城・松江城・姫路城は2026年8月に実際に登城して確認しました（「実登」表示）。現地の状況（クマ出没・通行止め・リフト運休など）は変わるため、<strong>登城前に必ず公式の最新情報を確認してください</strong>。</p>
-    <p class="src-note">各城の出典は詳細カードの「出典を見る」から確認できます。誤りを見つけた場合は<a href="/support/">サポート</a>からお知らせください。山城の装備は<a href="/guide/mochimono/">城巡りの持ち物リスト</a>、全100城の一覧は<a href="/100meijo/">日本100名城 一覧</a>へ。</p>
+    <p class="src-note">各城の出典は詳細欄の「出典を見る」から確認できます。誤りを見つけた場合は<a href="/support/">サポート</a>からお知らせください。山城の装備は<a href="/guide/mochimono/">城巡りの持ち物リスト</a>、訪ねたあとの記録は<a href="/guide/kiroku/">登城記録のつけ方</a>、全100城の一覧は<a href="/100meijo/">日本100名城 一覧</a>へ。</p>
     <a class="back-to-toc" href="#toc">▲ 目次へ戻る</a>
   </section>
 

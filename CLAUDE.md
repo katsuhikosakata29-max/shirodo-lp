@@ -8,7 +8,7 @@
    - 新ページを作った場合、sitemap への `<url>` 追記は手動。未掲載は同スクリプトが警告する
    - `--check` を付けるとズレを検出するだけで書き換えない（終了コード1）
 2. 新しいディレクトリを公開する場合は `.github/workflows/deploy-pages.yml` の許可リストに `cp -r <dir> _site/<dir>` を追記する（許可リスト方式のため、追記しないと本番に出ない）
-3. `/100meijo/` は `scripts/gen_100meijo.py` の生成物。**HTMLを直接編集せず、スクリプトを直して再生成する**
+3. `/100meijo/` は `scripts/gen_100meijo.py`、`/guide/level/` は `scripts/gen_level.py`（データは `data/level.json`）の生成物。**HTMLを直接編集せず、スクリプトを直して再生成する**
 
 ### アプリの機能に言及するとき
 
