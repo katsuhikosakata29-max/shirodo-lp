@@ -1,36 +1,12 @@
-# SHIRODO デイリーメトリクス — 2026-09-03
+# SHIRODO デイリーメトリクス — 2026-09-04
+
+> ⚠️ 取得エラー: GSC: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("HTTPSConnection(host='oauth2.googleapis.com', port=443): Failed to resolve 'oauth2.googleapis.com' ([Errno 8] nodename nor servname provided, or not known)")) / ASC: HTTPSConnectionPool(host='api.appstoreconnect.apple.com', port=443): Max retries exceeded with url: /v1/salesReports?filter%5Bfrequency%5D=DAILY&filter%5BreportDate%5D=2026-09-03&filter%5BreportType%5D=SALES&filter%5BreportSubType%5D=SUMMARY&filter%5BvendorNumber%5D=94471975 (Caused by NameResolutionError("HTTPSConnection(host='api.appstoreconnect.apple.com', port=443): Failed to resolve 'api.appstoreconnect.apple.com' ([Errno 8] nodename nor servname provided, or not known)"))
 
 ## Search Console (shirodo.com)
-- 直近7日クリック数: **5** ↓ (前週 7)
-- 直近7日表示回数: **164** ↓ (前週 173)
-- 直近7日 平均掲載順位: **14.7** (前週 8.9 / 小さいほど上位)
-- うち順位10位以内の表示: **41.6%** (11位以降はほぼクリックされない)
+- 直近7日クリック数: **5** → (前週 5)
+- 直近7日表示回数: **130** ↓ (前週 159)
+- 直近7日 平均掲載順位: **12.5** (前週 12.0 / 小さいほど上位)
 - 最新日 2026-08-31: クリック 0 / 表示 35 / 順位 14.6
-
-### 上位クエリ (直近10日)
-| クエリ | クリック | 表示 | 順位 |
-|---|---|---|---|
-| 日本100名城 リスト | 1 | 1 | 15.0 |
-| 城道 | 0 | 12 | 2.2 |
-| 100名城 | 0 | 3 | 32.3 |
-| shirodo | 0 | 3 | 3.7 |
-| 日本 100 名城 | 0 | 2 | 54.0 |
-| 日本 名城 100 選 | 0 | 2 | 49.5 |
-| "龍勢" "作成中" "城めぐり" アプリ | 0 | 1 | 11.0 |
-| 100 名城 | 0 | 1 | 51.0 |
-| 100 名城 マップ | 0 | 1 | 67.0 |
-| 100名城 九州 | 0 | 1 | 2.0 |
-
-### 上位ページ (直近10日)
-| ページ | クリック | 表示 | 順位 |
-|---|---|---|---|
-| https://shirodo.com/100meijo/ | 2 | 115 | 20.5 |
-| https://shirodo.com/ | 2 | 40 | 4.0 |
-| https://shirodo.com/guide/mochimono/ | 1 | 21 | 6.1 |
-| https://shirodo.com/guide/level/ | 1 | 11 | 5.4 |
-| https://shirodo.com/guide/kiroku/ | 0 | 6 | 7.0 |
-| https://shirodo.com/privacy/ | 0 | 2 | 8.5 |
-| https://shirodo.com/shindan/ | 0 | 2 | 8.0 |
 
 ## App Store (城道)
 - 直近7日初回DL: **1** ↓ (前週 2)
@@ -40,4 +16,4 @@
 ---
 *自分のアクセス/DLも含む数値。絶対数ではなく前週比の傾きを見ること。*
 *表示回数の増加は順位とセットで読むこと。順位50位前後の表示が増えても流入には結びつかない。*
-*生成: 2026-09-03 (scripts/metrics/run_daily.py)*
+*生成: 2026-09-04 (scripts/metrics/run_daily.py)*
