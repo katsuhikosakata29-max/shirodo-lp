@@ -69,7 +69,9 @@
     --gold: #c9a961;
     --gold-bright: #e5c67d;
     --ochre: #c97b3f;
-    --vermilion: #b0402c;
+    --vermilion: #a33a2a;
+    --vermilion-text: #d85c45;
+    --warn: #d98a77;
     --sumi: #0a0908;
     --sumi-2: #14120e;
     --sumi-3: #1e1a14;
@@ -155,7 +157,7 @@
   .mt svg { display: block; }
   .lv-c1 { color: var(--gold); }
   .lv-c2 { color: var(--ochre); }
-  .lv-c3 { color: var(--vermilion); }
+  .lv-c3 { color: var(--vermilion-text); }
   .lv-txt {
     display: inline-flex; align-items: center; gap: 7px;
     font-size: 0.72rem; letter-spacing: 0.08em;
@@ -202,7 +204,7 @@
   .ctable td.cname .pref { display: block; font-size: 0.65rem; color: var(--washi-dim); font-family: var(--f-sans); }
   .ctable td.stat { white-space: nowrap; color: var(--washi); }
   .ctable td.tnote, .ctable td.note-cell { font-size: 0.76rem; }
-  .ctable .warn { color: #d98a77; }
+  .ctable .warn { color: var(--warn); }
   .ctable td .alt { color: var(--washi-dim); opacity: 0.85; }
   .ctable .route { font-size: inherit; }
   .ctable .exp { font-size: 0.8rem; margin-top: 8px; }
@@ -226,7 +228,7 @@
     .ctable td.stat { display: inline-block; margin: 4px 16px 0 0; }
     .ctable td.stat::before { content: attr(data-k); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--gold); margin-right: 6px; }
     .ctable td.tnote, .ctable td.note-cell { margin-top: 6px; }
-    .ctable td.note-cell::before, .ctable td.tnote::before { content: "注意 — "; color: #d98a77; font-size: 0.72rem; letter-spacing: 0.1em; }
+    .ctable td.note-cell::before, .ctable td.tnote::before { content: "注意 — "; color: var(--warn); font-size: 0.72rem; letter-spacing: 0.1em; }
   }
 
   .faq-item { border-bottom: 1px solid rgba(201,169,97,0.12); }
