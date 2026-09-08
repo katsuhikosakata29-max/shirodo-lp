@@ -1,12 +1,36 @@
-# SHIRODO デイリーメトリクス — 2026-09-08
-
-> ⚠️ 取得エラー: GSC: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("HTTPSConnection(host='oauth2.googleapis.com', port=443): Failed to resolve 'oauth2.googleapis.com' ([Errno 8] nodename nor servname provided, or not known)")) / ASC: HTTPSConnectionPool(host='api.appstoreconnect.apple.com', port=443): Max retries exceeded with url: /v1/salesReports?filter%5Bfrequency%5D=DAILY&filter%5BreportDate%5D=2026-09-07&filter%5BreportType%5D=SALES&filter%5BreportSubType%5D=SUMMARY&filter%5BvendorNumber%5D=94471975 (Caused by NameResolutionError("HTTPSConnection(host='api.appstoreconnect.apple.com', port=443): Failed to resolve 'api.appstoreconnect.apple.com' ([Errno 8] nodename nor servname provided, or not known)"))
+# SHIRODO デイリーメトリクス — 2026-09-09
 
 ## Search Console (shirodo.com)
-- 直近7日クリック数: **9** ↑ (前週 6)
-- 直近7日表示回数: **111** ↓ (前週 173)
-- 直近7日 平均掲載順位: **14.2** (前週 14.6 / 小さいほど上位)
-- 最新日 2026-09-04: クリック 1 / 表示 31 / 順位 14.1
+- 直近7日クリック数: **6** ↓ (前週 10)
+- 直近7日表示回数: **252** ↑ (前週 196)
+- 直近7日 平均掲載順位: **12.4** (前週 14.2 / 小さいほど上位)
+- うち順位10位以内の表示: **36.6%** (11位以降はほぼクリックされない)
+- 最新日 2026-09-06: クリック 0 / 表示 78 / 順位 10.2
+
+### 上位クエリ (直近10日)
+| クエリ | クリック | 表示 | 順位 |
+|---|---|---|---|
+| 100名城 難易度 ランキング | 1 | 5 | 8.0 |
+| 100名城 一覧 | 1 | 3 | 14.7 |
+| 日本100名城 一覧 | 1 | 3 | 21.7 |
+| 城アプリ | 1 | 1 | 4.0 |
+| 日本100名城 リスト | 1 | 1 | 15.0 |
+| shirodo | 0 | 7 | 6.6 |
+| 城道 | 0 | 7 | 1.4 |
+| 100名城 | 0 | 2 | 39.5 |
+| 100名城 難易度 | 0 | 2 | 7.0 |
+| 日本 100 名城 | 0 | 2 | 54.0 |
+
+### 上位ページ (直近10日)
+| ページ | クリック | 表示 | 順位 |
+|---|---|---|---|
+| https://shirodo.com/guide/level/ | 5 | 24 | 7.0 |
+| https://shirodo.com/100meijo/ | 3 | 229 | 16.5 |
+| https://shirodo.com/guide/mochimono/ | 2 | 52 | 6.2 |
+| https://shirodo.com/ | 2 | 41 | 6.0 |
+| https://shirodo.com/shindan/ | 1 | 7 | 6.7 |
+| https://shirodo.com/guide/kiroku/ | 0 | 4 | 7.8 |
+| https://shirodo.com/privacy/ | 0 | 4 | 9.8 |
 
 ## App Store (城道)
 - 直近7日初回DL: **1** → (前週 1)
@@ -16,4 +40,4 @@
 ---
 *自分のアクセス/DLも含む数値。絶対数ではなく前週比の傾きを見ること。*
 *表示回数の増加は順位とセットで読むこと。順位50位前後の表示が増えても流入には結びつかない。*
-*生成: 2026-09-08 (scripts/metrics/run_daily.py)*
+*生成: 2026-09-09 (scripts/metrics/run_daily.py)*
