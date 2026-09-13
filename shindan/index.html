@@ -50,54 +50,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=cac5b0cf">
 <!-- /shared:head -->
 
 <style>
-  :root {
-    --gold: #c9a961;
-    --gold-bright: #e5c67d;
-    --vermilion: #a33a2a;
-    --sumi: #0a0908;
-    --sumi-2: #14120e;
-    --sumi-3: #1e1a14;
-    --washi: #f2ede2;
-    --washi-dim: #b5ad9b;
-    --line: rgba(201, 169, 97, 0.22);
-    --f-serif: "Shippori Mincho", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-    --f-sans: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body {
-    background: var(--sumi);
-    color: var(--washi);
-    font-family: var(--f-sans);
-    line-height: 1.85;
-    font-feature-settings: "palt";
-    -webkit-font-smoothing: antialiased;
-  }
-  .serif { font-family: var(--f-serif); font-weight: 500; letter-spacing: 0.02em; }
-  a { color: var(--gold-bright); text-decoration: none; }
-
-  .nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 20px;
-    background: linear-gradient(to bottom, rgba(10,9,8,0.95), rgba(10,9,8,0.6) 80%, transparent);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-  .nav-brand { font-family: var(--f-serif); font-size: 1.15rem; color: var(--washi); }
-  .nav-brand small { font-size: 0.6rem; letter-spacing: 0.25em; color: var(--gold); margin-left: 8px; }
-  .nav-cta {
-    font-size: 0.8rem; padding: 7px 18px; border: 1px solid var(--gold);
-    border-radius: 999px; color: var(--gold-bright);
-  }
-
+          .serif { font-family: var(--f-serif); font-weight: 500; letter-spacing: 0.02em; }
+  
+        
   main { max-width: 640px; margin: 0 auto; padding: 110px 20px 60px; }
-  .breadcrumb { font-size: 0.75rem; color: var(--washi-dim); margin-bottom: 28px; }
-  .breadcrumb a { color: var(--washi-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }
-
+    
   h1 { font-family: var(--f-serif); font-size: 1.75rem; line-height: 1.5; margin-bottom: 10px; }
   .page-lead { font-size: 0.92rem; color: var(--washi-dim); margin-bottom: 36px; }
   .page-lead strong { color: var(--washi); font-weight: 500; }
@@ -246,9 +207,7 @@
     border-top: 1px solid var(--line); margin-top: 60px;
   }
   footer p { margin-bottom: 10px; line-height: 1.7; }
-  .footer-brand { font-family: var(--f-serif); color: var(--washi-dim); display: block; margin-bottom: 12px; font-size: 0.95rem; }
-  footer a { color: rgba(255,255,255,0.55); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(201,169,97,0.4); }
-
+    
   [hidden] { display: none !important; }
 
   @media (min-width: 768px) {

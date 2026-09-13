@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SHARED_SOURCES = {"scripts/shared_parts.py", "scripts/sync_shared.py"}
+SHARED_SOURCES = {"scripts/shared_parts.py", "scripts/sync_shared.py", "assets/site.css"}
 
 
 def is_relevant(path: str) -> bool:

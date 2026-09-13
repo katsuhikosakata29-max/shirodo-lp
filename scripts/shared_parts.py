@@ -10,6 +10,8 @@
 手書きページへの反映は scripts/sync_shared.py、生成ページは各生成スクリプトが読み込む。
 新しいページを作ったら FOOTER_LINKS に追加し、4つの目印を置いて sync_shared.py を実行する。
 """
+import hashlib
+import os
 import re
 
 APP_ID = "6781983836"
@@ -36,6 +38,13 @@ FOOTER_LINKS = [
 TOP_FOOTER_NOTE = "すべての記録は、あなたの端末とあなたのiCloudにのみ保存されます。<br>アカウント登録・広告・トラッキングはありません。"
 
 REGION_NAMES = ("head", "nav", "footer", "scripts")
+SITE_CSS = os.path.join(os.path.dirname(__file__), "..", "assets", "site.css")
+
+
+def site_css_version() -> str:
+    """共通CSSの中身から作る版番号。CSSを変えると全ページの読み込みURLが変わり、ブラウザやCDNの古いキャッシュを避けられる。"""
+    with open(SITE_CSS, "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:8]
 
 
 def page_path(rel_file: str) -> str:
@@ -51,6 +60,8 @@ def _head(path: str) -> str:
         '<link rel="preconnect" href="https://fonts.googleapis.com">',
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
         f'<link rel="stylesheet" href="{FONTS_URL}">',
+        # ページ固有の <style> より前に読み込み、同じセレクタはページ側が上書きできるようにする
+        f'<link rel="stylesheet" href="/assets/site.css?v={site_css_version()}">',
     ])
 
 

@@ -195,68 +195,18 @@ page = f'''<!DOCTYPE html>
 {SHARED_HEAD}
 
 <style>
-  :root {{
-    --gold: #c9a961;
-    --gold-bright: #e5c67d;
-    --vermilion: #a33a2a;
-    --sumi: #0a0908;
-    --sumi-2: #14120e;
-    --sumi-3: #1e1a14;
-    --washi: #f2ede2;
-    --washi-dim: #b5ad9b;
-    --line: rgba(201, 169, 97, 0.22);
-    --f-serif: "Shippori Mincho", "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
-    --f-sans: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-  }}
-  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  html {{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }}
-  body {{
-    background: var(--sumi);
-    color: var(--washi);
-    font-family: var(--f-sans);
-    line-height: 1.85;
-    font-feature-settings: "palt";
-    -webkit-font-smoothing: antialiased;
-  }}
-  .serif {{ font-family: var(--f-serif); font-weight: 500; letter-spacing: 0.02em; }}
-  .visually-hidden {{
-    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-  }}
-  a {{ color: var(--gold-bright); text-decoration: none; }}
-
-  .nav {{
-    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 14px 20px;
-    background: linear-gradient(to bottom, rgba(10,9,8,0.95), rgba(10,9,8,0.6) 80%, transparent);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }}
-  .nav-brand {{ font-family: var(--f-serif); font-size: 1.15rem; color: var(--washi); }}
-  .nav-brand small {{ font-size: 0.6rem; letter-spacing: 0.25em; color: var(--gold); margin-left: 8px; }}
-  .nav-cta {{
-    font-size: 0.8rem; padding: 7px 18px; border: 1px solid var(--gold);
-    border-radius: 999px; color: var(--gold-bright);
-  }}
-
+          .serif {{ font-family: var(--f-serif); font-weight: 500; letter-spacing: 0.02em; }}
+    
+        
   main {{ max-width: 760px; margin: 0 auto; padding: 110px 20px 60px; }}
-  .breadcrumb {{ font-size: 0.75rem; color: var(--washi-dim); margin-bottom: 28px; }}
-  .breadcrumb a {{ color: var(--washi-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }}
-
+    
   h1 {{ font-family: var(--f-serif); font-size: 1.9rem; line-height: 1.5; margin-bottom: 6px; }}
   .h1-sub {{ font-size: 0.85rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 24px; }}
   .updated {{ color: var(--washi-dim); letter-spacing: 0.02em; }}
   .lead {{ color: var(--washi-dim); font-size: 0.95rem; margin-bottom: 16px; }}
-  .lead strong {{ color: var(--washi); font-weight: 500; }}
-
-  .app-callout {{
-    margin: 36px 0 48px; padding: 22px 22px;
-    background: var(--sumi-2); border: 1px solid var(--line); border-radius: 12px;
-  }}
-  .app-callout h2 {{ font-family: var(--f-serif); font-size: 1.15rem; margin-bottom: 10px; }}
-  .app-callout p {{ font-size: 0.9rem; color: var(--washi-dim); margin-bottom: 14px; }}
-  .cta-primary {{
+  
+    .app-callout h2 {{ font-family: var(--f-serif); font-size: 1.15rem; margin-bottom: 10px; }}
+    .cta-primary {{
     display: inline-block; padding: 11px 26px; border-radius: 999px;
     background: linear-gradient(135deg, var(--gold), var(--gold-bright));
     color: var(--sumi); font-weight: 700; font-size: 0.9rem;
@@ -272,10 +222,7 @@ page = f'''<!DOCTYPE html>
     font-family: var(--f-serif); font-size: 0.95rem; color: var(--gold);
     letter-spacing: 0.2em; margin-bottom: 16px;
   }}
-  .toc ol {{ list-style: none; }}
-  .toc li {{ border-bottom: 1px solid rgba(201,169,97,0.12); }}
-  .toc li:last-child {{ border-bottom: none; }}
-  .toc a {{
+        .toc a {{
     display: flex; align-items: baseline; justify-content: space-between;
     padding: 11px 2px; font-size: 0.92rem; color: var(--washi);
   }}
@@ -287,13 +234,7 @@ page = f'''<!DOCTYPE html>
   }}
 
   .region, .about, .faq {{ scroll-margin-top: 76px; }}
-  .back-to-toc {{
-    display: inline-block; margin-top: 18px; font-size: 0.78rem;
-    color: var(--washi-dim); text-decoration: underline;
-    text-underline-offset: 3px; text-decoration-color: var(--line);
-  }}
-  .back-to-toc:hover {{ color: var(--gold-bright); }}
-
+    
   .region {{ margin-bottom: 52px; }}
   .region h3 {{
     font-size: 1.3rem; padding-bottom: 10px; margin-bottom: 18px;
@@ -328,27 +269,18 @@ page = f'''<!DOCTYPE html>
   .about .steps {{ margin: 0 0 14px 1.4em; font-size: 0.92rem; color: var(--washi-dim); }}
   .about .steps li {{ margin-bottom: 8px; }}
   .src-note {{ font-size: 0.75rem !important; }}
-  .src-note a {{ color: var(--washi-dim); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line); }}
-
+  
   .faq-item {{ border-bottom: 1px solid rgba(201,169,97,0.12); }}
   .faq-item summary {{
     cursor: pointer; padding: 16px 4px; font-size: 0.95rem; font-weight: 500;
     list-style: none; position: relative; padding-right: 28px;
   }}
-  .faq-item summary::-webkit-details-marker {{ display: none; }}
-  .faq-item summary::after {{
+    .faq-item summary::after {{
     content: "＋"; position: absolute; right: 4px; top: 16px; color: var(--gold);
   }}
-  .faq-item[open] summary::after {{ content: "－"; }}
-  .faq-body {{ padding: 0 4px 18px; font-size: 0.88rem; color: var(--washi-dim); }}
+    .faq-body {{ padding: 0 4px 18px; font-size: 0.88rem; color: var(--washi-dim); }}
 
-  footer {{
-    text-align: center; padding: 44px 20px 60px; font-size: 0.75rem;
-    color: rgba(255,255,255,0.45); border-top: 1px solid var(--line);
-  }}
-  footer a {{ color: rgba(255,255,255,0.55); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(201,169,97,0.4); }}
-  .footer-brand {{ font-family: var(--f-serif); color: var(--washi-dim); display: block; margin-bottom: 12px; font-size: 0.95rem; }}
-
+      
   @media (min-width: 720px) {{
     h1 {{ font-size: 2.3rem; }}
   }}

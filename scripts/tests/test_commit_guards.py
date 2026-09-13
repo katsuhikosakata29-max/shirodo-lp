@@ -31,7 +31,7 @@ class RelevantPathTest(unittest.TestCase):
 
 class SharedPartsRelevantPathTest(unittest.TestCase):
     def test_pages_and_shared_sources_are_checked(self):
-        for p in ["index.html", "guide/kiroku/index.html", "scripts/shared_parts.py", "scripts/sync_shared.py"]:
+        for p in ["index.html", "guide/kiroku/index.html", "scripts/shared_parts.py", "scripts/sync_shared.py", "assets/site.css"]:
             with self.subTest(path=p):
                 self.assertTrue(precommit_shared.is_relevant(p))
 
