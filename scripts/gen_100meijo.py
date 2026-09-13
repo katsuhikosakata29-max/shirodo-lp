@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """castles.json から /100meijo/index.html を生成する"""
-import json, html
+import json, html, os
 from datetime import date
 
-TODAY = date.today().isoformat()
-TODAY_JA = f"{date.today().year}年{date.today().month}月{date.today().day}日"
+# 更新日。内容を変えない再生成（計測タグの追加など）では GEN_DATE=YYYY-MM-DD で既存の日付を据え置く
+_GEN_DATE = date.fromisoformat(os.environ["GEN_DATE"]) if os.environ.get("GEN_DATE") else date.today()
+TODAY = _GEN_DATE.isoformat()
+TODAY_JA = f"{_GEN_DATE.year}年{_GEN_DATE.month}月{_GEN_DATE.day}日"
 
 SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 OUT = "/Users/sakatakatsuhiko/Developer/shirodo-lp/100meijo/index.html"
@@ -86,6 +88,8 @@ itemlist = {
 faq = [
     ("日本100名城とは何ですか？",
      "日本100名城とは、公益財団法人日本城郭協会が2006年に選定した、日本を代表する100の城です。江戸城・大阪城・姫路城などの有名な城から、根室半島チャシ跡群のような史跡まで、全都道府県から選ばれています。"),
+    ("「百名城」と「100名城」は同じですか？",
+     "同じものを指します。公益財団法人日本城郭協会が選定した「日本100名城」を、漢数字で「百名城」と書いたり「100名城」と略したりするだけの表記の違いです。スタンプラリーの対象も、このページに掲載している全100城も同一です。なお「続日本100名城」は、これとは別に選定された100城を指します。"),
     ("100名城スタンプ帳はどこで買えますか？",
      "公式スタンプ帳は単体では販売されておらず、公式ガイドブック『日本100名城に行こう 公式スタンプ帳つき』（770円・税込）の巻末に付属しています。全国の書店やAmazon・楽天などの通販で購入できます。続日本100名城と一体になった『日本100名城と続日本100名城に行こう』（1,300円・税込）もあります。"),
     ("100名城スタンプ帳のアプリはありますか？",
@@ -151,7 +155,7 @@ page = f'''<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>日本100名城 一覧（全100城・地方別）と記録アプリ | 城道（SHIRODO）</title>
+<title>日本100名城（百名城）一覧 全100城・地方別 | 城道（SHIRODO）</title>
 <meta name="description" content="日本100名城の全一覧を地方別・公式番号順に掲載。各城には「なぜ？」から入る問い付き。スタンプ帳の代わりにスマホで登城記録を残せる無料アプリ、城道（SHIRODO）。">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://shirodo.com/100meijo/">
@@ -355,7 +359,7 @@ page = f'''<!DOCTYPE html>
   <h1>日本100名城 一覧<span class="visually-hidden">（全100城・地方別・公式番号順）</span></h1>
   <p class="h1-sub">全100城 · 地方別 · 公式番号順　<span class="updated">最終更新: {TODAY_JA}</span></p>
 
-  <p class="lead"><strong>日本100名城</strong>は、公益財団法人日本城郭協会が選定した、日本を代表する100の城です。このページでは全100城を地方別に、公式スタンプラリーの番号順で掲載しています。</p>
+  <p class="lead"><strong>日本100名城</strong>は、公益財団法人日本城郭協会が選定した、日本を代表する100の城です。単に<strong>百名城</strong>とも呼ばれます。このページでは全100城を地方別に、公式スタンプラリーの番号順で掲載しています。</p>
   <p class="lead">各城には、登城記録アプリ<strong>城道（SHIRODO）</strong>に収録されている「問い」を添えました。答えを知ってから訪ねると、同じ石垣がちがって見えます。</p>
 
   <div class="app-callout">
@@ -403,6 +407,7 @@ page = f'''<!DOCTYPE html>
 </footer>
 
 <script defer src="/assets/analytics.js"></script>
+<script defer src="/assets/appstore-qr.js"></script>
 </body>
 </html>
 '''

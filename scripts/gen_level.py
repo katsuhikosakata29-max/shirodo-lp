@@ -8,8 +8,10 @@
 import json, html, os
 from datetime import date
 
-TODAY = date.today().isoformat()
-TODAY_JA = f"{date.today().year}年{date.today().month}月{date.today().day}日"
+# 更新日。内容を変えない再生成（計測タグの追加など）では GEN_DATE=YYYY-MM-DD で既存の日付を据え置く
+_GEN_DATE = date.fromisoformat(os.environ["GEN_DATE"]) if os.environ.get("GEN_DATE") else date.today()
+TODAY = _GEN_DATE.isoformat()
+TODAY_JA = f"{_GEN_DATE.year}年{_GEN_DATE.month}月{_GEN_DATE.day}日"
 
 CASTLES_SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 DATA_SRC = os.path.join(os.path.dirname(__file__), "..", "data", "level.json")
@@ -489,6 +491,7 @@ page = f'''<!DOCTYPE html>
   }}
 </style>
 <script defer src="/assets/analytics.js"></script>
+<script defer src="/assets/appstore-qr.js"></script>
 </head>
 <body>
 
