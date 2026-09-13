@@ -57,6 +57,19 @@ class AppStoreQrTest(unittest.TestCase):
         self.assertRegex(src, r"apps\.apple\.com/app/apple-store/id6781983836\?pt=\d+&ct=LP-QR&mt=8")
 
 
+class HeaderConsistencyTest(unittest.TestCase):
+    """ヘッダーは各ページに直書きのため、文言がページごとにずれやすい。"""
+
+    def test_header_cta_text_is_the_same_on_every_page(self):
+        texts = {}
+        for page in published_pages():
+            m = re.search(r'<a class="nav-cta"[^>]*>([^<]*)</a>', page.read_text(encoding="utf-8"))
+            if m:
+                texts[str(page.relative_to(ROOT))] = m.group(1)
+        self.assertGreater(len(texts), 0)
+        self.assertEqual(set(texts.values()), {"アプリ入手"}, texts)
+
+
 class GeneratedMarkerTest(unittest.TestCase):
     def test_generated_pages_carry_do_not_edit_marker(self):
         for page, gen in [("100meijo/index.html", "gen_100meijo.py"), ("guide/level/index.html", "gen_level.py")]:

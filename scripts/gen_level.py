@@ -500,7 +500,7 @@ page = f'''<!DOCTYPE html>
 
 <nav class="nav">
   <div class="nav-brand"><a href="/" style="color:inherit">城道</a><small>SHIRODO</small></div>
-  <a class="nav-cta" href="https://apps.apple.com/app/id6781983836">入手</a>
+  <a class="nav-cta" href="https://apps.apple.com/app/id6781983836">アプリ入手</a>
 </nav>
 
 <main>
