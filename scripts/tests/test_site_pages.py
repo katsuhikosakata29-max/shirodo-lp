@@ -48,6 +48,14 @@ class AppStoreQrTest(unittest.TestCase):
         self.assertRegex(src, r"apps\.apple\.com/app/apple-store/id6781983836\?pt=\d+&ct=LP-QR&mt=8")
 
 
+class GeneratedMarkerTest(unittest.TestCase):
+    def test_generated_pages_carry_do_not_edit_marker(self):
+        for page, gen in [("100meijo/index.html", "gen_100meijo.py"), ("guide/level/index.html", "gen_level.py")]:
+            with self.subTest(page=page):
+                second_line = (ROOT / page).read_text(encoding="utf-8").splitlines()[1]
+                self.assertIn(f"自動生成ファイル: scripts/{gen}", second_line)
+
+
 class HyakumeijoNotationTest(unittest.TestCase):
     """「百名城」表記は主力クエリ対策。生成元から消えると再生成で本番から失われる。"""
 

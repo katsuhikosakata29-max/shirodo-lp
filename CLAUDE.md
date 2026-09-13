@@ -9,6 +9,11 @@
    - `--check` を付けるとズレを検出するだけで書き換えない（終了コード1）
 2. 新しいディレクトリを公開する場合は `.github/workflows/deploy-pages.yml` の許可リストに `cp -r <dir> _site/<dir>` を追記する（許可リスト方式のため、追記しないと本番に出ない）
 3. `/100meijo/` は `scripts/gen_100meijo.py`、`/guide/level/` は `scripts/gen_level.py`（データは `data/level.json`）の生成物。**HTMLを直接編集せず、スクリプトを直して再生成する**
+   - **タイトル・リード文・FAQなどの文章もスクリプトの中にある**。文章だけの修正でもHTMLではなくスクリプトを直す（2026-09-12に「百名城」の修正をHTMLへ直接入れ、再生成で消える状態を作った事故がある）
+   - 生成物の2行目には「自動生成ファイル」の目印コメントが入っている。HTMLを開いてこれがあれば編集しない
+   - `python3 scripts/gen_100meijo.py --check`（`gen_level.py` も同様）で、公開中のHTMLとスクリプト出力のズレを検出する（書き換えない。ズレがあれば終了コード1）。アプリ本体の `castles.json` が変わった場合もズレとして出る
+   - 内容を変えない再生成（計測タグの追加など）は `GEN_DATE=YYYY-MM-DD` を付けて、ページ上の更新日を据え置く
+4. コミット前に `python3 -m unittest discover scripts/tests` を実行する（生成ページのズレ検出もここに含まれる）
 
 ### アプリの機能に言及するとき
 

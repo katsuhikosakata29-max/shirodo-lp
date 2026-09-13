@@ -4,18 +4,21 @@
 難易度レベルは one_way_min（片道分）と elevation_gain_m（標高差m）から機械判定する。
 判定を上書きしたい城は data 側に "level_override" を持たせる。
 城の基本情報（かな・県・分類）はアプリ本体の castles.json から引く。
+
+--check で公開中のHTMLとのズレを検出する（書き換えない）。
+GEN_DATE=YYYY-MM-DD で内容を変えない再生成の更新日を据え置く。
 """
 import json, html, os
-from datetime import date
 
-# 更新日。内容を変えない再生成（計測タグの追加など）では GEN_DATE=YYYY-MM-DD で既存の日付を据え置く
-_GEN_DATE = date.fromisoformat(os.environ["GEN_DATE"]) if os.environ.get("GEN_DATE") else date.today()
-TODAY = _GEN_DATE.isoformat()
-TODAY_JA = f"{_GEN_DATE.year}年{_GEN_DATE.month}月{_GEN_DATE.day}日"
+from gen_common import insert_marker, resolve_gen_date, write_or_check
 
 CASTLES_SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 DATA_SRC = os.path.join(os.path.dirname(__file__), "..", "data", "level.json")
 OUT = os.path.join(os.path.dirname(__file__), "..", "guide", "level", "index.html")
+
+_GEN_DATE = resolve_gen_date(OUT)
+TODAY = _GEN_DATE.isoformat()
+TODAY_JA = f"{_GEN_DATE.year}年{_GEN_DATE.month}月{_GEN_DATE.day}日"
 
 LEVELS = {
     1: {"label": "散策", "css": "lv-c1", "desc": "登りは20分未満の平地〜石段。普段の靴やスニーカーで問題なし（例：仙台城・松江城・姫路城）"},
@@ -613,7 +616,5 @@ page = f'''<!DOCTYPE html>
 </html>
 '''
 
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
-with open(OUT, "w") as f:
-    f.write(page)
+write_or_check(OUT, insert_marker(page, "gen_level.py"), "gen_level.py")
 print(f"OK: {len(rows)}城（登山レベルLv.2以上 {count_tozan}城）→ {os.path.relpath(OUT)}")

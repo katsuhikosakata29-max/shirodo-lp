@@ -1,15 +1,20 @@
 # -*- coding: utf-8 -*-
-"""castles.json から /100meijo/index.html を生成する"""
-import json, html, os
-from datetime import date
+"""castles.json から /100meijo/index.html を生成する
 
-# 更新日。内容を変えない再生成（計測タグの追加など）では GEN_DATE=YYYY-MM-DD で既存の日付を据え置く
-_GEN_DATE = date.fromisoformat(os.environ["GEN_DATE"]) if os.environ.get("GEN_DATE") else date.today()
-TODAY = _GEN_DATE.isoformat()
-TODAY_JA = f"{_GEN_DATE.year}年{_GEN_DATE.month}月{_GEN_DATE.day}日"
+python3 scripts/gen_100meijo.py          # 生成
+python3 scripts/gen_100meijo.py --check  # 公開中のHTMLとのズレ検出（書き換えない）
+GEN_DATE=YYYY-MM-DD python3 ...          # 内容を変えない再生成で更新日を据え置く
+"""
+import json, html, os
+
+from gen_common import insert_marker, resolve_gen_date, write_or_check
 
 SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 OUT = "/Users/sakatakatsuhiko/Developer/shirodo-lp/100meijo/index.html"
+
+_GEN_DATE = resolve_gen_date(OUT)
+TODAY = _GEN_DATE.isoformat()
+TODAY_JA = f"{_GEN_DATE.year}年{_GEN_DATE.month}月{_GEN_DATE.day}日"
 
 REGIONS = [
     ("北海道・東北", "hokkaido-tohoku", ["北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県"]),
@@ -412,7 +417,5 @@ page = f'''<!DOCTYPE html>
 </html>
 '''
 
-import os
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
-open(OUT, "w").write(page)
+write_or_check(OUT, insert_marker(page, "gen_100meijo.py"), "gen_100meijo.py")
 print(f"OK: {OUT} ({len(page)} bytes, {len(castles)} castles)")
