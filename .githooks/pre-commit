@@ -1,0 +1,4 @@
+#!/bin/sh
+# 生成ページ（/100meijo/, /guide/level/）の直接編集をコミット前に止める。
+# 有効化（クローンごとに一度）: git config core.hooksPath .githooks
+exec python3 "$(git rev-parse --show-toplevel)/scripts/precommit_generated.py"

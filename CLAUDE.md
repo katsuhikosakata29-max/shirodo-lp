@@ -14,6 +14,10 @@
    - `python3 scripts/gen_100meijo.py --check`（`gen_level.py` も同様）で、公開中のHTMLとスクリプト出力のズレを検出する（書き換えない。ズレがあれば終了コード1）。アプリ本体の `castles.json` が変わった場合もズレとして出る
    - 内容を変えない再生成（計測タグの追加など）は `GEN_DATE=YYYY-MM-DD` を付けて、ページ上の更新日を据え置く
 4. コミット前に `python3 -m unittest discover scripts/tests` を実行する（生成ページのズレ検出もここに含まれる）
+5. **コミット前フックで、生成ページの直接編集を機械的に止めている**
+   - `.githooks/pre-commit` が、生成ページ・生成スクリプト・`data/` を含むコミットのときだけ `--check` を実行し、ズレがあればコミットを止める
+   - クローンしたら一度だけ `git config core.hooksPath .githooks` を実行して有効にする
+   - フックが失敗したら、**飛ばさずに原因を直す**。`--no-verify` / `-n` や `core.hooksPath` の変更は、Claude Code 側のフック（`.claude/hooks/block_hook_bypass.py`）が止める
 
 ### アプリの機能に言及するとき
 
