@@ -1,4 +1,7 @@
 #!/bin/sh
-# 生成ページ（/100meijo/, /guide/level/）の直接編集をコミット前に止める。
-# 有効化（クローンごとに一度）: git config core.hooksPath .githooks
-exec python3 "$(git rev-parse --show-toplevel)/scripts/precommit_generated.py"
+# コミット前の関所。有効化（クローンごとに一度）: git config core.hooksPath .githooks
+#  1. 生成ページ（/100meijo/, /guide/level/）の直接編集を止める
+#  2. 共通部品（ヘッダー・フッター・head内の共通タグ・共通スクリプト）のズレを止める
+root="$(git rev-parse --show-toplevel)"
+python3 "$root/scripts/precommit_generated.py" || exit 1
+exec python3 "$root/scripts/precommit_shared.py"

@@ -13,7 +13,7 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 APP_CASTLES = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 GENERATORS = ["scripts/gen_100meijo.py", "scripts/gen_level.py"]
 RELEVANT_PREFIXES = ("100meijo/", "guide/level/", "data/")
-RELEVANT_FILES = {"scripts/gen_100meijo.py", "scripts/gen_level.py", "scripts/gen_common.py"}
+RELEVANT_FILES = {"scripts/gen_100meijo.py", "scripts/gen_level.py", "scripts/gen_common.py", "scripts/shared_parts.py"}
 
 
 def is_relevant(path: str) -> bool:

@@ -11,6 +11,7 @@ GEN_DATE=YYYY-MM-DD で内容を変えない再生成の更新日を据え置く
 import json, html, os
 
 from gen_common import insert_marker, resolve_gen_date, write_or_check
+import shared_parts
 
 CASTLES_SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 DATA_SRC = os.path.join(os.path.dirname(__file__), "..", "data", "level.json")
@@ -212,6 +213,10 @@ legend_html = "\n".join(f'''        <div class="legend-row">
 published = data.get("published", TODAY)
 published_ja = f"{int(published[:4])}年{int(published[5:7])}月{int(published[8:10])}日"
 
+# 全ページ共通の部品（head内の共通タグ・ヘッダー・フッター・共通スクリプト）。正本は scripts/shared_parts.py
+PAGE_PATH = "/guide/level/"
+SHARED_HEAD, SHARED_NAV, SHARED_FOOTER, SHARED_SCRIPTS = (shared_parts.region(n, PAGE_PATH) for n in ("head", "nav", "footer", "scripts"))
+
 page = f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -232,7 +237,6 @@ page = f'''<!DOCTYPE html>
 <meta name="twitter:title" content="100名城の登城難易度一覧｜「実は登山」の城はどこ？">
 <meta name="twitter:description" content="100名城を登城のきつさでLv.1〜3に分類。登りの時間・標高差・現地の注意を一覧で解説。">
 <meta name="twitter:image" content="https://shirodo.com/assets/kumamoto-castle.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏯</text></svg>">
 <script type="application/ld+json">
 {{
  "@context": "https://schema.org",
@@ -268,9 +272,8 @@ page = f'''<!DOCTYPE html>
  ]
 }}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap">
+{SHARED_HEAD}
+
 <style>
   :root {{
     --gold: #c9a961;
@@ -493,15 +496,11 @@ page = f'''<!DOCTYPE html>
     h1 {{ font-size: 2.1rem; }}
   }}
 </style>
-<script defer src="/assets/analytics.js"></script>
-<script defer src="/assets/appstore-qr.js"></script>
+{SHARED_SCRIPTS}
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-brand"><a href="/" style="color:inherit">城道</a><small>SHIRODO</small></div>
-  <a class="nav-cta" href="https://apps.apple.com/app/id6781983836">アプリ入手</a>
-</nav>
+{SHARED_NAV}
 
 <main>
   <p class="breadcrumb"><a href="/">城道（SHIRODO）</a> › 100名城の登城難易度一覧</p>
@@ -607,10 +606,7 @@ page = f'''<!DOCTYPE html>
 
 </main>
 
-<footer>
-  <span class="footer-brand">城道 SHIRODO</span>
-  <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="/shindan/">城めぐりタイプ診断</a> &nbsp;·&nbsp; <a href="/100meijo/">日本100名城 一覧</a> &nbsp;·&nbsp; <a href="/guide/mochimono/">城巡りの持ち物ガイド</a> &nbsp;·&nbsp; <a href="/guide/kiroku/">登城記録のつけ方</a> &nbsp;·&nbsp; <a href="/support/">サポート</a> &nbsp;·&nbsp; <a href="/privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 城道（SHIRODO）</p>
-</footer>
+{SHARED_FOOTER}
 
 </body>
 </html>

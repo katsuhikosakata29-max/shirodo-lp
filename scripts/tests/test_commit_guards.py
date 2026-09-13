@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import precommit_generated  # noqa: E402
+import precommit_shared  # noqa: E402
 
 _spec = importlib.util.spec_from_file_location("block_hook_bypass", ROOT / ".claude" / "hooks" / "block_hook_bypass.py")
 bypass = importlib.util.module_from_spec(_spec)
@@ -17,7 +18,7 @@ _spec.loader.exec_module(bypass)
 class RelevantPathTest(unittest.TestCase):
     def test_generated_pages_and_sources_are_checked(self):
         for p in ["100meijo/index.html", "guide/level/index.html", "data/level.json",
-                  "scripts/gen_100meijo.py", "scripts/gen_level.py", "scripts/gen_common.py"]:
+                  "scripts/gen_100meijo.py", "scripts/gen_level.py", "scripts/gen_common.py", "scripts/shared_parts.py"]:
             with self.subTest(path=p):
                 self.assertTrue(precommit_generated.is_relevant(p))
 
@@ -26,6 +27,18 @@ class RelevantPathTest(unittest.TestCase):
         for p in ["metrics/DAILY.md", "index.html", "guide/mochimono/index.html", "sitemap.xml", "CLAUDE.md"]:
             with self.subTest(path=p):
                 self.assertFalse(precommit_generated.is_relevant(p))
+
+
+class SharedPartsRelevantPathTest(unittest.TestCase):
+    def test_pages_and_shared_sources_are_checked(self):
+        for p in ["index.html", "guide/kiroku/index.html", "scripts/shared_parts.py", "scripts/sync_shared.py"]:
+            with self.subTest(path=p):
+                self.assertTrue(precommit_shared.is_relevant(p))
+
+    def test_metrics_commits_pass_through(self):
+        for p in ["metrics/DAILY.md", "metrics/gsc_daily.csv", "sitemap.xml", "assets/appstore-qr.js"]:
+            with self.subTest(path=p):
+                self.assertFalse(precommit_shared.is_relevant(p))
 
 
 class BypassDetectionTest(unittest.TestCase):
@@ -70,6 +83,7 @@ class HookWiringTest(unittest.TestCase):
     def test_pre_commit_calls_generated_check(self):
         hook = (ROOT / ".githooks" / "pre-commit").read_text(encoding="utf-8")
         self.assertIn("scripts/precommit_generated.py", hook)
+        self.assertIn("scripts/precommit_shared.py", hook)
 
 
 if __name__ == "__main__":

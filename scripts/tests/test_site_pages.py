@@ -32,10 +32,14 @@ class AppStoreQrTest(unittest.TestCase):
                 self.assertLess(html.index(ANALYTICS_TAG), html.index(QR_TAG))
 
     def test_generators_emit_qr_script(self):
-        # 生成ページは再生成で上書きされるので、生成元にもタグが必要
+        # 生成ページは再生成で上書きされるので、生成元が共通スクリプト部品を出力している必要がある
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import shared_parts
+        self.assertIn(QR_TAG, shared_parts.region("scripts", "/"))
         for gen in ["gen_100meijo.py", "gen_level.py"]:
             with self.subTest(generator=gen):
-                self.assertIn(QR_TAG, (ROOT / "scripts" / gen).read_text(encoding="utf-8"))
+                self.assertIn("{SHARED_SCRIPTS}", (ROOT / "scripts" / gen).read_text(encoding="utf-8"))
 
     def test_qr_svg_is_valid(self):
         svg = ROOT / "assets" / "appstore-qr.svg"

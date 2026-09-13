@@ -19,6 +19,14 @@
    - クローンしたら一度だけ `git config core.hooksPath .githooks` を実行して有効にする
    - フックが失敗したら、**飛ばさずに原因を直す**。`--no-verify` / `-n` や `core.hooksPath` の変更は、Claude Code 側のフック（`.claude/hooks/block_hook_bypass.py`）が止める
 
+### 全ページ共通の部品（ヘッダー・フッター・head内の共通タグ・共通スクリプト）
+
+- 正本は `scripts/shared_parts.py`。各ページの `<!-- shared:head -->`、`shared:nav`、`shared:footer`、`shared:scripts` の目印の間はここから書き込まれる。**目印の間を直接編集しない**
+- 変更したら `python3 scripts/sync_shared.py` で手書きページに反映し、生成ページ（100meijo・level）は生成スクリプトを再生成する（`GEN_DATE` で更新日を据え置く）
+- **新しいページを作るとき**: 4つの目印を置き、`FOOTER_LINKS` にページを追加して `sync_shared.py` を実行する。フッターは各ページで自分自身へのリンクを自動で外す
+- ズレはコミット前フックで止まる（`sync_shared.py --check`）。テストでも、全ページに目印があること・全ページがフッターに載っていることを確認している
+- ページ固有のCSS（見た目）はまだ各ページのインラインCSSにある。共通CSSへの切り出しは未実施（2段階目）
+
 ### ヘッダーの入手ボタン
 
 - 文言は全ページ「アプリ入手」で統一する（検索から読み物ページに来た人は、城道がアプリだと知らないため。2026-09-13決定）。テストで一致を確認している

@@ -8,6 +8,7 @@ GEN_DATE=YYYY-MM-DD python3 ...          # 内容を変えない再生成で更�
 import json, html, os
 
 from gen_common import insert_marker, resolve_gen_date, write_or_check
+import shared_parts
 
 SRC = "/Users/sakatakatsuhiko/Developer/shirodo/native/src/data/castles.json"
 OUT = "/Users/sakatakatsuhiko/Developer/shirodo-lp/100meijo/index.html"
@@ -155,6 +156,10 @@ faq_html = "\n".join(
 
 jld = lambda d: json.dumps(d, ensure_ascii=False, indent=1)
 
+# 全ページ共通の部品（head内の共通タグ・ヘッダー・フッター・共通スクリプト）。正本は scripts/shared_parts.py
+PAGE_PATH = "/100meijo/"
+SHARED_HEAD, SHARED_NAV, SHARED_FOOTER, SHARED_SCRIPTS = (shared_parts.region(n, PAGE_PATH) for n in ("head", "nav", "footer", "scripts"))
+
 page = f'''<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -175,7 +180,6 @@ page = f'''<!DOCTYPE html>
 <meta name="twitter:title" content="日本100名城 一覧（全100城・地方別）| 城道（SHIRODO）">
 <meta name="twitter:description" content="日本100名城の全一覧を地方別・公式番号順に掲載。各城に「なぜ？」から入る問い付き。">
 <meta name="twitter:image" content="https://shirodo.com/assets/matsumoto-castle.jpg">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏯</text></svg>">
 <script type="application/ld+json">
 {jld(webpage)}
 </script>
@@ -188,9 +192,8 @@ page = f'''<!DOCTYPE html>
 <script type="application/ld+json">
 {jld(faqpage)}
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;700&display=swap">
+{SHARED_HEAD}
+
 <style>
   :root {{
     --gold: #c9a961;
@@ -353,10 +356,7 @@ page = f'''<!DOCTYPE html>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-brand"><a href="/" style="color:inherit">城道</a><small>SHIRODO</small></div>
-  <a class="nav-cta" href="https://apps.apple.com/app/id6781983836">アプリ入手</a>
-</nav>
+{SHARED_NAV}
 
 <main>
   <p class="breadcrumb"><a href="/">城道（SHIRODO）</a> › 日本100名城 一覧</p>
@@ -406,13 +406,9 @@ page = f'''<!DOCTYPE html>
 
 </main>
 
-<footer>
-  <span class="footer-brand">城道 SHIRODO</span>
-  <p><a href="/">トップページ</a> &nbsp;·&nbsp; <a href="/shindan/">城めぐりタイプ診断</a> &nbsp;·&nbsp; <a href="/guide/mochimono/">城巡りの持ち物ガイド</a> &nbsp;·&nbsp; <a href="/guide/level/">登城難易度一覧</a> &nbsp;·&nbsp; <a href="/guide/kiroku/">登城記録のつけ方</a> &nbsp;·&nbsp; <a href="/support/">サポート</a> &nbsp;·&nbsp; <a href="/privacy/">プライバシーポリシー</a> &nbsp;·&nbsp; © 2026 城道（SHIRODO）</p>
-</footer>
+{SHARED_FOOTER}
 
-<script defer src="/assets/analytics.js"></script>
-<script defer src="/assets/appstore-qr.js"></script>
+{SHARED_SCRIPTS}
 </body>
 </html>
 '''
