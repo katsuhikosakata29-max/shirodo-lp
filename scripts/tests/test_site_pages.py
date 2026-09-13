@@ -43,6 +43,15 @@ class AppStoreQrTest(unittest.TestCase):
         self.assertTrue(root.tag.endswith("svg"))
         self.assertRegex(root.get("viewBox", ""), r"^0 0 \d+ \d+$")
 
+    def test_all_visible_qr_codes_use_campaign_image(self):
+        # 計測を揃えるため、ページに置くQRはすべてキャンペーン付きの共通画像にする（素のURLのQRを直書きしない）
+        for page in published_pages():
+            html = page.read_text(encoding="utf-8")
+            with self.subTest(page=str(page.relative_to(ROOT))):
+                self.assertNotIn('id="qr-appstore"', html)
+                for box in re.findall(r'<div class="qr-box">(.*?)</div>', html, re.S):
+                    self.assertIn('src="/assets/appstore-qr.svg"', box)
+
     def test_qr_generator_uses_campaign_link(self):
         src = (ROOT / "scripts" / "gen_appstore_qr.py").read_text(encoding="utf-8")
         self.assertRegex(src, r"apps\.apple\.com/app/apple-store/id6781983836\?pt=\d+&ct=LP-QR&mt=8")

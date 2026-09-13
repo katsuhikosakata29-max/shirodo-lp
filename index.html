@@ -377,15 +377,16 @@
   .qr-card { display: none; }
   @media (min-width: 768px) {
     .qr-card { display: flex; align-items: center; gap: 14px; }
+    /* QRは assets/appstore-qr.svg（キャンペーン LP-QR、余白込み）。PCでボタンを押したときのダイアログと同じ画像 */
     .qr-box {
-      background: #fff;
+      background: #f2ede2;
       border-radius: 10px;
-      padding: 11px;
-      width: 96px;
-      height: 96px;
+      overflow: hidden;
+      width: 112px;
+      height: 112px;
       flex: none;
     }
-    .qr-box svg { width: 100%; height: 100%; display: block; }
+    .qr-box img { width: 100%; height: 100%; display: block; }
     .qr-card span {
       font-size: 0.75rem;
       color: var(--washi-dim);
@@ -967,9 +968,7 @@
     </a>
     <div class="qr-card">
       <div class="qr-box">
-        <svg viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="App StoreダウンロードページのQRコード">
-          <path id="qr-appstore" d="M0 0h7v1H0zM10 0h5v1H10zM17 0h3v1H17zM22 0h7v1H22zM0 1h1v1H0zM6 1h1v1H6zM9 1h2v1H9zM15 1h3v1H15zM20 1h1v1H20zM22 1h1v1H22zM28 1h1v1H28zM0 2h1v1H0zM2 2h3v1H2zM6 2h1v1H6zM8 2h1v1H8zM10 2h2v1H10zM20 2h1v1H20zM22 2h1v1H22zM24 2h3v1H24zM28 2h1v1H28zM0 3h1v1H0zM2 3h3v1H2zM6 3h1v1H6zM8 3h1v1H8zM10 3h2v1H10zM13 3h1v1H13zM15 3h3v1H15zM19 3h1v1H19zM22 3h1v1H22zM24 3h3v1H24zM28 3h1v1H28zM0 4h1v1H0zM2 4h3v1H2zM6 4h1v1H6zM8 4h2v1H8zM14 4h1v1H14zM18 4h3v1H18zM22 4h1v1H22zM24 4h3v1H24zM28 4h1v1H28zM0 5h1v1H0zM6 5h1v1H6zM8 5h4v1H8zM13 5h1v1H13zM15 5h1v1H15zM18 5h1v1H18zM20 5h1v1H20zM22 5h1v1H22zM28 5h1v1H28zM0 6h7v1H0zM8 6h1v1H8zM10 6h1v1H10zM12 6h1v1H12zM14 6h1v1H14zM16 6h1v1H16zM18 6h1v1H18zM20 6h1v1H20zM22 6h7v1H22zM8 7h1v1H8zM11 7h1v1H11zM14 7h2v1H14zM19 7h2v1H19zM0 8h1v1H0zM2 8h5v1H2zM9 8h1v1H9zM11 8h3v1H11zM16 8h2v1H16zM19 8h1v1H19zM22 8h5v1H22zM0 9h1v1H0zM3 9h2v1H3zM10 9h1v1H10zM12 9h1v1H12zM14 9h1v1H14zM19 9h4v1H19zM24 9h1v1H24zM28 9h1v1H28zM0 10h1v1H0zM2 10h1v1H2zM5 10h3v1H5zM13 10h4v1H13zM18 10h1v1H18zM20 10h1v1H20zM22 10h2v1H22zM1 11h2v1H1zM5 11h1v1H5zM9 11h3v1H9zM15 11h1v1H15zM18 11h2v1H18zM21 11h2v1H21zM24 11h2v1H24zM27 11h1v1H27zM1 12h3v1H1zM6 12h1v1H6zM8 12h1v1H8zM11 12h1v1H11zM16 12h2v1H16zM23 12h1v1H23zM25 12h2v1H25zM1 13h2v1H1zM4 13h2v1H4zM7 13h1v1H7zM9 13h1v1H9zM12 13h2v1H12zM19 13h6v1H19zM28 13h1v1H28zM3 14h4v1H3zM9 14h1v1H9zM13 14h4v1H13zM18 14h1v1H18zM21 14h1v1H21zM24 14h3v1H24zM2 15h1v1H2zM5 15h1v1H5zM7 15h1v1H7zM9 15h1v1H9zM11 15h1v1H11zM13 15h1v1H13zM15 15h1v1H15zM18 15h3v1H18zM24 15h1v1H24zM27 15h1v1H27zM2 16h2v1H2zM6 16h4v1H6zM11 16h1v1H11zM14 16h6v1H14zM23 16h1v1H23zM25 16h2v1H25zM0 17h1v1H0zM3 17h2v1H3zM7 17h2v1H7zM11 17h1v1H11zM17 17h3v1H17zM22 17h3v1H22zM26 17h1v1H26zM28 17h1v1H28zM0 18h1v1H0zM2 18h1v1H2zM4 18h3v1H4zM8 18h4v1H8zM15 18h1v1H15zM17 18h1v1H17zM20 18h2v1H20zM24 18h1v1H24zM26 18h1v1H26zM0 19h1v1H0zM2 19h1v1H2zM8 19h2v1H8zM12 19h1v1H12zM14 19h2v1H14zM20 19h2v1H20zM24 19h1v1H24zM27 19h1v1H27zM0 20h1v1H0zM2 20h2v1H2zM6 20h2v1H6zM16 20h2v1H16zM20 20h5v1H20zM26 20h3v1H26zM8 21h1v1H8zM12 21h3v1H12zM17 21h2v1H17zM20 21h1v1H20zM24 21h5v1H24zM0 22h7v1H0zM9 22h8v1H9zM18 22h3v1H18zM22 22h1v1H22zM24 22h3v1H24zM0 23h1v1H0zM6 23h1v1H6zM8 23h1v1H8zM10 23h1v1H10zM12 23h2v1H12zM16 23h1v1H16zM19 23h2v1H19zM24 23h1v1H24zM28 23h1v1H28zM0 24h1v1H0zM2 24h3v1H2zM6 24h1v1H6zM8 24h1v1H8zM10 24h1v1H10zM14 24h4v1H14zM20 24h5v1H20zM26 24h1v1H26zM0 25h1v1H0zM2 25h3v1H2zM6 25h1v1H6zM8 25h4v1H8zM13 25h1v1H13zM18 25h1v1H18zM23 25h1v1H23zM25 25h4v1H25zM0 26h1v1H0zM2 26h3v1H2zM6 26h1v1H6zM8 26h1v1H8zM14 26h2v1H14zM19 26h2v1H19zM22 26h6v1H22zM0 27h1v1H0zM6 27h1v1H6zM10 27h1v1H10zM12 27h1v1H12zM14 27h1v1H14zM16 27h1v1H16zM18 27h1v1H18zM20 27h2v1H20zM23 27h3v1H23zM27 27h1v1H27zM0 28h7v1H0zM8 28h1v1H8zM13 28h1v1H13zM15 28h5v1H15zM21 28h1v1H21zM24 28h1v1H24zM26 28h1v1H26z" fill="#141210"/>
-        </svg>
+        <img src="/assets/appstore-qr.svg" width="112" height="112" alt="城道のApp StoreページのQRコード" loading="lazy">
       </div>
       <span>iPhoneのカメラで読み取ると<br>App Storeが開きます</span>
     </div>
@@ -1317,9 +1316,7 @@
       </a>
       <div class="qr-card">
         <div class="qr-box">
-          <svg viewBox="0 0 29 29" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="App StoreダウンロードページのQRコード">
-            <use href="#qr-appstore"/>
-          </svg>
+          <img src="/assets/appstore-qr.svg" width="112" height="112" alt="城道のApp StoreページのQRコード" loading="lazy">
         </div>
         <span>iPhoneのカメラで読み取ると<br>App Storeが開きます</span>
       </div>
